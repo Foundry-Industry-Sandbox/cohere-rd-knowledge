@@ -1,0 +1,29 @@
+Updates in the Management of EGFR-Mutated Non-small Cell Lung Cancer (NSCLC)
+============================================================================
+Research article evidence card
+
+Document ID: RDOC-PMC13070087
+Category: research_documents
+Source entity: entity/RDOC-PMC13070087.json
+
+Article Identity
+----------------
+Document ID: RDOC-PMC13070087
+PMCID: PMC13070087
+PMID: 41964727
+Title: Updates in the Management of EGFR-Mutated Non-small Cell Lung Cancer (NSCLC)
+Journal: Curr Oncol Rep
+Publication date: 2026-04-11
+License: CC BY
+
+Extractable Content
+-------------------
+Primary entities: osimertinib; EGFR; NSCLC
+Keywords: EGFR-mutant; Non-small cell lung cancer; Targeted therapy
+Abstract: Purpose of ReviewWith the approvals of various targeted therapies including tyrosine kinase inhibitors to antibody–drug conjugates, the treatment landscape of patients with EGFR-mutant non-small cell lung cancer has drastically improved. The use of EGFR-targeted therapies has shifted to include not only advanced/ metastatic disease but also to early-stage non-small cell lung cancer.Recent FindingsNovel therapy options have sought to address the need for effective agents against acquired resistance mechanisms in EGFR mutations. Further, the role of tyrosine kinase inhibitors against EGFR mutation in the perioperative setting has been most recently evaluated. With early outcomes, clinicians are met with the need to guide patients through various treatment regimens, and mature survival results are anticipated for several key trials. Of import, the growing focus on personalized treatment options based on outcomes, quality-of-life, toxicity, tolerability, and various disease-related factors warrants consideration.SummaryThis review comprehensively describes frontline and subsequent-line therapy options for patients with early stage, unresectable/ locally advanced, and advanced/ metas...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: no patient-level source selected for normalized entity
+Raw source trace: corpus/xml/articles/pmc_oa/PMC13070087/article.xml

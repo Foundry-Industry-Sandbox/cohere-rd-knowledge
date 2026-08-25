@@ -1,0 +1,35 @@
+Policy Ref: HLS-DATA-100
+Rule: Do not ingest patient-level records, case report narratives, or real patient trajectories into this dataset seed.
+Threshold: Any source that contains real patient identifiers or patient specimen labels is excluded.
+Action: deny_source_for_raw_layer
+Exception: none.
+
+Policy Ref: HLS-DATA-110
+Rule: Generated ELN, LIMS, reviewer, scientist, or repository records must be explicitly labeled synthetic.
+Threshold: All generated lab operations records must include provenance synthetic_from_public_structure.
+Action: require_synthetic_provenance
+Exception: none.
+
+Policy Ref: HLS-GEO-400
+Rule: Use GEO records whose samples are cell-line or assay-level records for the first dataset iteration.
+Threshold: Reject records whose sample titles reference patient FFPE, before/after treatment patient specimens, or similar patient-derived labels.
+Action: allow_cell_line_dataset_reject_patient_sample_dataset
+Exception: none.
+
+Policy Ref: HLS-LIC-200
+Rule: Store article full text only when PMC OA license metadata confirms acceptable reuse terms.
+Threshold: PMC OA API license must match the catalog expected_license before article.xml is kept.
+Action: allow_full_text_when_license_verified
+Exception: none.
+
+Policy Ref: HLS-REG-500
+Rule: Use only public regulatory labels, approval letters, reviews, and EPAR pages for regulatory entities.
+Threshold: Source must be a public FDA/openFDA/Drugs@FDA/EMA document or API response.
+Action: allow_public_regulatory_documents
+Exception: none.
+
+Policy Ref: HLS-TRIAL-300
+Rule: ClinicalTrials.gov records may be used only as aggregate public registry/results documents.
+Threshold: Use protocol, SAP, eligibility, arms, outcomes, and aggregate results; do not generate patient-level rows.
+Action: allow_aggregate_trial_documents
+Exception: none.

@@ -1,0 +1,93 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "200323366": {
+      "accession": "GSE323366",
+      "bioproject": "PRJNA1432659",
+      "entrytype": "GSE",
+      "extrelations": [],
+      "ftplink": "ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE323nnn/GSE323366/",
+      "gds": "",
+      "gdstype": "Expression profiling by high throughput sequencing",
+      "geo2r": "no",
+      "gpl": "24676",
+      "gse": "323366",
+      "n_samples": 12,
+      "pdat": "2026/03/10",
+      "platformtaxa": "",
+      "platformtitle": "",
+      "projects": [],
+      "ptechtype": "",
+      "pubmedids": [
+        "41932441"
+      ],
+      "relations": [],
+      "samples": [
+        {
+          "accession": "GSM9564412",
+          "title": "PC9 cells, Osimertinib, 36 hours, replicate 1"
+        },
+        {
+          "accession": "GSM9564415",
+          "title": "H1650 cells, DMSO, 0 hour, replicate 2"
+        },
+        {
+          "accession": "GSM9564418",
+          "title": "PC9 cells, Osimertinib, 36 hours, replicate 2"
+        },
+        {
+          "accession": "GSM9564413",
+          "title": "H1650 cells, Osimertinib, 36 hours, replicate 1"
+        },
+        {
+          "accession": "GSM9564410",
+          "title": "PC9 cells, Erlotinib, 36 hours, replicate 1"
+        },
+        {
+          "accession": "GSM9564419",
+          "title": "H1650 cells, Osimertinib, 36 hours, replicate 2"
+        },
+        {
+          "accession": "GSM9564416",
+          "title": "PC9 cells, Erlotinib, 36 hours, replicate 2"
+        },
+        {
+          "accession": "GSM9564408",
+          "title": "PC9 cells, DMSO, 0 hour, replicate 1"
+        },
+        {
+          "accession": "GSM9564414",
+          "title": "PC9 cells, DMSO, 0 hour, replicate 2"
+        },
+        {
+          "accession": "GSM9564417",
+          "title": "H1650 cells, Erlotinib, 36 hours, replicate 2"
+        },
+        {
+          "accession": "GSM9564411",
+          "title": "H1650 cells, Erlotinib, 36 hours, replicate 1"
+        },
+        {
+          "accession": "GSM9564409",
+          "title": "H1650 cells, DMSO, 0 hour, replicate 1"
+        }
+      ],
+      "samplestaxa": "",
+      "seriestitle": "",
+      "ssinfo": "",
+      "subsetinfo": "",
+      "summary": "EGFR is a proto-oncogene that is mutationally activated in a variety of cancers. Small molecule inhibitors targeting EGFR can effectively slow the progression of disease, and in some settings, these drugs even cause dramatic tumor regression. However, responses to EGFR inhibitors are rarely durable, and the mechanisms contributing to response variation remain unclear. In particular, several distinct mechanisms have been proposed to explain how EGFR inhibition activates cell death, and a consensus has yet to emerge. In this study, we use functional genomics with specialized analyses to infer how genetic perturbations affect the drug-induced death rate. Our data clarify that inhibition of PI3K signaling drives the lethality of EGFR inhibition. Inhibition of other pathways downstream of EGFR, including the RAS-MAPK pathway, promotes growth suppression but not the lethal effects of EGFR inhibitors. Taken together, our study provides a “reference map” for the genome-wide genetic dependencies of lethality in response to EGFR inhibitors.",
+      "suppfile": "CSV",
+      "taxon": "Homo sapiens",
+      "title": "Genome-wide profiling identifies the genetic dependencies of cell death following EGFR inhibition [RNA-Seq]",
+      "uid": "200323366",
+      "valtype": ""
+    },
+    "uids": [
+      "200323366"
+    ]
+  }
+}

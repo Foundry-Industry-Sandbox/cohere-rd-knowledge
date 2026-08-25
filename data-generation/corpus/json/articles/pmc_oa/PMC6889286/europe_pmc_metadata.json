@@ -1,0 +1,57 @@
+{
+  "hitCount": 1,
+  "request": {
+    "cursorMark": "*",
+    "internalQuery": "PMCID:PMC6889286",
+    "pageSize": 1,
+    "queryString": "PMCID:PMC6889286",
+    "resultType": "LITE",
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "authorString": "Leonetti A, Sharma S, Minari R, Perego P, Giovannetti E, Tiseo M.",
+        "citedByCount": 1098,
+        "doi": "10.1038/s41416-019-0573-8",
+        "firstIndexDate": "2019-10-05",
+        "firstPublicationDate": "2019-09-30",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC6889286"
+          ]
+        },
+        "hasBook": "N",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasPDF": "Y",
+        "hasReferences": "Y",
+        "hasSuppl": "N",
+        "hasTMAccessionNumbers": "Y",
+        "hasTextMinedTerms": "Y",
+        "id": "31564718",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "isOpenAccess": "Y",
+        "issue": "9",
+        "journalIssn": "0007-0920; 1532-1827; ",
+        "journalTitle": "Br J Cancer",
+        "journalVolume": "121",
+        "pageInfo": "725-737",
+        "pmcid": "PMC6889286",
+        "pmid": "31564718",
+        "pubType": "research support, non-u.s. gov't; review-article; review; journal article",
+        "pubYear": "2019",
+        "source": "MED",
+        "title": "Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer.",
+        "tmAccessionTypeList": {
+          "accessionType": [
+            "nct"
+          ]
+        }
+      }
+    ]
+  },
+  "version": "6.9"
+}

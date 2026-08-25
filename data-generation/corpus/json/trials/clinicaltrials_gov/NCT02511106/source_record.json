@@ -1,0 +1,31 @@
+{
+  "acronym": "ADAURA",
+  "documents": [
+    {
+      "date": "2023-08-09",
+      "filename": "Prot_002.pdf",
+      "label": "Study Protocol",
+      "local_path": "00_raw/pdf/trials/clinicaltrials_gov/NCT02511106/Prot_002.pdf",
+      "size_from_api": 3564575,
+      "url": "https://cdn.clinicaltrials.gov/large-docs/06/NCT02511106/Prot_002.pdf"
+    },
+    {
+      "date": "2020-06-23",
+      "filename": "SAP_001.pdf",
+      "label": "Statistical Analysis Plan",
+      "local_path": "00_raw/pdf/trials/clinicaltrials_gov/NCT02511106/SAP_001.pdf",
+      "size_from_api": 3620937,
+      "url": "https://cdn.clinicaltrials.gov/large-docs/06/NCT02511106/SAP_001.pdf"
+    }
+  ],
+  "local_paths": [
+    "00_raw/json/trials/clinicaltrials_gov/NCT02511106/study.json",
+    "00_raw/pdf/trials/clinicaltrials_gov/NCT02511106/Prot_002.pdf",
+    "00_raw/pdf/trials/clinicaltrials_gov/NCT02511106/SAP_001.pdf"
+  ],
+  "nct_id": "NCT02511106",
+  "public_page": "https://clinicaltrials.gov/study/NCT02511106",
+  "raw_layer_policy": "Aggregate trial registration/results plus public protocol/SAP documents only.",
+  "role": "Adjuvant osimertinib after complete tumor resection",
+  "study_url": "https://clinicaltrials.gov/api/v2/studies/NCT02511106"
+}

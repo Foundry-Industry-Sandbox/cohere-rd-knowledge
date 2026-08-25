@@ -1,0 +1,57 @@
+{
+  "hitCount": 1,
+  "request": {
+    "cursorMark": "*",
+    "internalQuery": "PMCID:PMC5447962",
+    "pageSize": 1,
+    "queryString": "PMCID:PMC5447962",
+    "resultType": "LITE",
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "authorString": "Wee P, Wang Z.",
+        "citedByCount": 1318,
+        "doi": "10.3390/cancers9050052",
+        "firstIndexDate": "2017-05-17",
+        "firstPublicationDate": "2017-05-17",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC5447962"
+          ]
+        },
+        "hasBook": "N",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasPDF": "Y",
+        "hasReferences": "Y",
+        "hasSuppl": "N",
+        "hasTMAccessionNumbers": "Y",
+        "hasTextMinedTerms": "Y",
+        "id": "28513565",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "isOpenAccess": "Y",
+        "issue": "5",
+        "journalIssn": "2072-6694",
+        "journalTitle": "Cancers (Basel)",
+        "journalVolume": "9",
+        "pageInfo": "E52",
+        "pmcid": "PMC5447962",
+        "pmid": "28513565",
+        "pubType": "review-article; review; journal article",
+        "pubYear": "2017",
+        "source": "MED",
+        "title": "Epidermal Growth Factor Receptor Cell Proliferation Signaling Pathways.",
+        "tmAccessionTypeList": {
+          "accessionType": [
+            "nct"
+          ]
+        }
+      }
+    ]
+  },
+  "version": "6.9"
+}

@@ -1,0 +1,52 @@
+# OS and editor files
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+.vs/
+
+# Local environment and secrets
+.env
+.env.*
+*.local
+*.user
+*.suo
+appsettings.*.local.json
+
+# .NET build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+.artifacts/
+*.nupkg
+*.snupkg
+*.binlog
+
+# Node and frontend build output
+node_modules/
+dist/
+build/
+coverage/
+
+# Python local output
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+~$*
+
+# Agent local state
+.claude/
+.cursor/

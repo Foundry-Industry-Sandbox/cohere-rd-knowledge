@@ -1,0 +1,23 @@
+@if (Flags.Count > 0)
+{
+    <ul class="flag-list">
+        @foreach (var flag in Flags)
+        {
+            <li class="flag-item severity-@flag.Severity.ToLowerInvariant()">
+                <div class="flag-header">
+                    <span class="flag-severity">@flag.Severity</span>
+                    <span class="flag-category">@flag.Category</span>
+                </div>
+                <p>@flag.Description</p>
+                @if (!string.IsNullOrWhiteSpace(flag.PolicyReference))
+                {
+                    <p class="meta-line">Policy: @flag.PolicyReference</p>
+                }
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<ComplianceFlag> Flags { get; set; } = [];
+}

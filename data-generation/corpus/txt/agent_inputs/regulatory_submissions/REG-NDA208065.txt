@@ -1,0 +1,30 @@
+REG-NDA208065
+=============
+Regulatory evidence card
+
+Document ID: REG-NDA208065
+Category: regulatory_submissions
+Source entity: entity/REG-NDA208065.json
+
+Regulatory Identity
+-------------------
+Document ID: REG-NDA208065
+Document type: regulatory_application
+Source system: openfda_drugsfda
+Application number: NDA208065
+Brand name: TAGRISSO
+Generic name: OSIMERTINIB
+Sponsor/manufacturer: ASTRAZENECA
+
+Regulatory Extract
+------------------
+Products: {"active_ingredients": [{"name": "OSIMERTINIB MESYLATE", "strength": "EQ 40MG BASE"}], "brand_name": "TAGRISSO", "dosage_form": "TABLET", "marketing_status": "Prescription", "product_number": "001", "reference_drug": "Yes", "reference_standard": "No", "route": "ORAL"}; {"active_ingredients": [{"name": "OSIMERTINIB MESYLATE", "strength": "EQ 80MG BASE"}], "brand_name": "TAGRISSO", "dosage_form": "TABLET", "marketing_status": "Prescription", "product_number": "002", "reference_drug": "Yes", "reference_standard": "Yes", "route": "ORAL"}
+Submission count: 23
+Priority submissions: 7
+URL: 
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: 
+Raw source trace: corpus/json/regulatory/OPENFDA_DRUGSFDA_NDA208065/OPENFDA_DRUGSFDA_NDA208065.json

@@ -1,0 +1,7 @@
+{
+  "format": "json",
+  "local_path": "00_raw/json/regulatory/OPENFDA_DRUGSFDA_NDA208065/OPENFDA_DRUGSFDA_NDA208065.json",
+  "raw_layer_policy": "Public regulatory or policy source page/document.",
+  "source_id": "OPENFDA_DRUGSFDA_NDA208065",
+  "url": "https://api.fda.gov/drug/drugsfda.json?search=application_number:%22NDA208065%22&limit=1"
+}

@@ -1,0 +1,23 @@
+<section class="page-section">
+    <div class="page-section-header">
+        <div>
+            <h2 class="page-section-title">@Title</h2>
+            @if (!string.IsNullOrWhiteSpace(Subtitle))
+            {
+                <p class="page-section-subtitle">@Subtitle</p>
+            }
+        </div>
+        @if (HeaderActions is not null)
+        {
+            <div>@HeaderActions</div>
+        }
+    </div>
+    <div class="page-section-body">@ChildContent</div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string? Subtitle { get; set; }
+    [Parameter] public RenderFragment? HeaderActions { get; set; }
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = default!;
+}

@@ -1,0 +1,25 @@
+{
+  "esearchresult": {
+    "count": "19",
+    "idlist": [
+      "200300311"
+    ],
+    "querytranslation": "GSE300311[ACCN]",
+    "retmax": "1",
+    "retstart": "0",
+    "translationset": [],
+    "translationstack": [
+      {
+        "count": "19",
+        "explode": "N",
+        "field": "ACCN",
+        "term": "GSE300311[ACCN]"
+      },
+      "GROUP"
+    ]
+  },
+  "header": {
+    "type": "esearch",
+    "version": "0.3"
+  }
+}

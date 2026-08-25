@@ -1,0 +1,24 @@
+@if (Sources.Count > 0)
+{
+    <ul class="source-list">
+        @foreach (var source in Sources)
+        {
+            <li class="source-item card card-nested">
+                <div class="source-header">
+                    <span class="source-type">@source.SourceType</span>
+                    <span class="source-format">@source.Format</span>
+                </div>
+                <h4 class="source-title">@source.Title</h4>
+                <p class="source-summary">@source.Summary</p>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <EmptyState Title="No sources loaded" Description="Source material will appear when the study catalog is available." />
+}
+
+@code {
+    [Parameter] public IReadOnlyList<KnowledgeSource> Sources { get; set; } = [];
+}

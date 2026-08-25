@@ -1,0 +1,25 @@
+{
+  "esearchresult": {
+    "count": "8",
+    "idlist": [
+      "200298111"
+    ],
+    "querytranslation": "GSE298111[ACCN]",
+    "retmax": "1",
+    "retstart": "0",
+    "translationset": [],
+    "translationstack": [
+      {
+        "count": "8",
+        "explode": "N",
+        "field": "ACCN",
+        "term": "GSE298111[ACCN]"
+      },
+      "GROUP"
+    ]
+  },
+  "header": {
+    "type": "esearch",
+    "version": "0.3"
+  }
+}

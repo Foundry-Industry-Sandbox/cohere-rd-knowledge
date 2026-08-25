@@ -1,0 +1,19 @@
+{
+  "aliases": [
+    "Tagrisso",
+    "AZD9291"
+  ],
+  "chembl_id": "CHEMBL3353410",
+  "local_paths": [
+    "00_raw/json/registries/chembl/CHEMBL3353410/molecule.json",
+    "00_raw/json/registries/chembl/CHEMBL3353410/mechanism.json",
+    "00_raw/json/registries/chembl/CHEMBL3353410/target_CHEMBL203.json"
+  ],
+  "preferred_name": "Osimertinib",
+  "raw_layer_policy": "Public compound/target metadata only.",
+  "urls": {
+    "mechanism.json": "https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL3353410",
+    "molecule.json": "https://www.ebi.ac.uk/chembl/api/data/molecule/CHEMBL3353410.json",
+    "target_CHEMBL203.json": "https://www.ebi.ac.uk/chembl/api/data/target/CHEMBL203.json"
+  }
+}

@@ -1,0 +1,27 @@
+N6-methyladenosine modification of cLMNB1 overcomes osimertinib resistance by destabilizing FGFR4 in non-small cell lung cancer
+================================================================================
+Experimental dataset evidence card
+
+Document ID: DATASET-GSE272182
+Category: experimental_datasets
+Source entity: entity/DATASET-GSE272182.json
+
+Dataset Identity
+----------------
+Dataset ID: GSE272182
+Title: N6-methyladenosine modification of cLMNB1 overcomes osimertinib resistance by destabilizing FGFR4 in non-small cell lung cancer
+Taxon: Homo sapiens
+Sample count: 6
+Selected reason: PC9 sensitive versus osimertinib-resistant replicates
+
+Experimental Context
+--------------------
+Assay context: RNA-seq; resistance model; EGFR inhibition; osimertinib response
+Sample accessions: GSM8395373; GSM8395374; GSM8395370; GSM8395371; GSM8395372; GSM8395375
+Summary: Background: Osimertinib resistance is the main challenge of the treatment in EGFR mutant lung adenocarcinoma (LUAD). The role of N6-methyladenosine (m6A) modification of circular RNAs (circRNAs) in osimertinib-resistant LUAD remains largely unknown. Methods: Parental and resistant cell lines, as well as human and mouse lung tissue samples were implemented. We used MeRIP-seq and circRNA-seq to screen the potential circRNA candidate that influenced osimertinib resistance. The sensitivity of LUAD cells was detected by Cell Counting Kit-8 (CCK-8) assay. The interaction between circRNA and proteins was validated by RNA immunoprecipitation and RNA pulldown. We generated circRNA encapsulated in lipid nanoparticle (LNP). Bioluminescence imaging assay was used for the monitoring of orthotopic transplantation model. Results: It was observed that circRNA LMNB1 (cLMNB1) exhibited elevated levels of m6A modification and diminished expression in osimertinib-resistant LUAD. cLMNB1 increased the sensitivity of LUAD to osimertinib in vitro and in vivo. METTL3 increased the m6A modification of cLMNB1 and inhibited its expression through the reading protein YTHDF2. cLMNB1 acted as a scaffold betwe...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: cell-line or assay-level source selected
+Raw source trace: corpus/json/datasets/geo/GSE272182/geo_esummary.json; corpus/txt/datasets/geo/GSE272182/series_soft.txt; corpus/json/datasets/geo/GSE272182/source_record.json

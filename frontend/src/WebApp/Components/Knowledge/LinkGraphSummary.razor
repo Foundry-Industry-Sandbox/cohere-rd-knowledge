@@ -1,0 +1,19 @@
+@if ((Links?.Count ?? 0) > 0)
+{
+    <ul class="link-list">
+        @foreach (var link in Links!)
+        {
+            <li>
+                <span class="link-from">@link.FromDocument</span>
+                <span class="link-arrow">→</span>
+                <span class="link-rel">@link.Relationship</span>
+                <span class="link-arrow">→</span>
+                <span class="link-to">@link.ToTarget</span>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<DocumentLink> Links { get; set; } = [];
+}

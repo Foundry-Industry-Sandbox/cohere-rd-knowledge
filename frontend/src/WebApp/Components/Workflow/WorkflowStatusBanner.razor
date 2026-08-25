@@ -1,0 +1,34 @@
+@{
+    var status = Progress?.Status ?? CurationProgress?.Status ?? (Session?.IsChatRunning == true ? WorkflowStatus.Running : Session?.Messages.Count > 0 ? WorkflowStatus.Running : null);
+    var message = Progress?.StatusMessage ?? CurationProgress?.StatusMessage ?? Session?.StatusMessage;
+}
+
+@if (status is not null)
+{
+    <div class="workflow-banner @WorkflowStageUi.ToStatusBadgeClass(status.Value)">
+        <div class="banner-main">
+            <StatusBadge Label="@WorkflowStageUi.ToBusinessStatusLabel(status.Value)" CssClass="@WorkflowStageUi.ToStatusBadgeClass(status.Value)" />
+            <span class="banner-stage">@StageLabel</span>
+        </div>
+        <p class="banner-message">@message</p>
+        @if (IsPolling)
+        {
+            <p class="banner-polling" aria-live="polite"><span class="spinner spinner-sm"></span> Updating workflow status. This could take a few minutes...</p>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public IngestionWorkflowProgress? Progress { get; set; }
+    [Parameter] public QuerySessionState? Session { get; set; }
+    [Parameter] public CurationWorkflowProgress? CurationProgress { get; set; }
+    [Parameter] public bool IsPolling { get; set; }
+
+    private string StageLabel => Progress is not null
+        ? WorkflowStageUi.ToIngestionStageLabel(Progress.CurrentStage)
+        : CurationProgress is not null
+            ? WorkflowStageUi.ToQueryStageLabel(CurationProgress.CurrentStage)
+            : Session is not null
+                ? WorkflowStageUi.ToQueryStageLabel(Session.CurrentStage)
+                : string.Empty;
+}

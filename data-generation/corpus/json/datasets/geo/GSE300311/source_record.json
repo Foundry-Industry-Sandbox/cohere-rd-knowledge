@@ -1,0 +1,14 @@
+{
+  "accession": "GSE300311",
+  "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gds&term=GSE300311%5BACCN%5D&retmode=json&retmax=1",
+  "esummary_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200300311&retmode=json",
+  "local_paths": [
+    "00_raw/json/datasets/geo/GSE300311/geo_esearch.json",
+    "00_raw/json/datasets/geo/GSE300311/geo_esummary.json",
+    "00_raw/txt/datasets/geo/GSE300311/series_soft.txt"
+  ],
+  "public_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300311",
+  "raw_layer_policy": "Selected because samples are cell-line or assay-level records, not patient specimens.",
+  "role": "PC9 PKM2-deficient/control samples with vehicle/osimertinib and chromatin marks",
+  "soft_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300311&targ=self&form=text&view=quick"
+}

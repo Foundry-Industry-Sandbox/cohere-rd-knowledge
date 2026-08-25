@@ -1,0 +1,13 @@
+{
+  "name": "search-chat-agent",
+  "description": "Answers R&D knowledge questions with grounded citations and lineage from the Vector DB.",
+  "instructionsFile": "instructions.md",
+  "outputSchemaFile": "../../shared/search-chat-structured-output.schema.json",
+  "allowedDecisions": [
+    "Answered",
+    "Insufficient Evidence",
+    "Clarification Needed"
+  ],
+  "governancePolicyFile": "governance.yaml",
+  "governanceRogueFile": "rogue.yaml"
+}

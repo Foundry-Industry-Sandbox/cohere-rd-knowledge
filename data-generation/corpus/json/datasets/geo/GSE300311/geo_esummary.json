@@ -1,0 +1,107 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "200300311": {
+      "accession": "GSE300311",
+      "bioproject": "PRJNA1280074",
+      "entrytype": "GSE",
+      "extrelations": [],
+      "ftplink": "ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE300nnn/GSE300311/",
+      "gds": "",
+      "gdstype": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+      "geo2r": "no",
+      "gpl": "30209;24676",
+      "gse": "300311",
+      "n_samples": 16,
+      "pdat": "2026/06/15",
+      "platformtaxa": "",
+      "platformtitle": "",
+      "projects": [],
+      "ptechtype": "",
+      "pubmedids": [],
+      "relations": [],
+      "samples": [
+        {
+          "accession": "GSM9058183",
+          "title": "PC9 cells WT- H3K9me3-Osimertinib"
+        },
+        {
+          "accession": "GSM9058175",
+          "title": "PC9 cells-sgPKM2#2-Osimertinib"
+        },
+        {
+          "accession": "GSM9058172",
+          "title": "PC9 cells-sgPKM2#2-Vehicle"
+        },
+        {
+          "accession": "GSM9058178",
+          "title": "PC9 cells WT- H3K4me1-DMSO"
+        },
+        {
+          "accession": "GSM9058184",
+          "title": "PC9 cells WT- IgG-DMSO"
+        },
+        {
+          "accession": "GSM9058181",
+          "title": "PC9 cells WT- H3K4me3-Osimertinib"
+        },
+        {
+          "accession": "GSM9058170",
+          "title": "PC9 cells-sgCtrl-Vehicle"
+        },
+        {
+          "accession": "GSM9058176",
+          "title": "PC9 cells WT- KDM1A-DMSO"
+        },
+        {
+          "accession": "GSM9058173",
+          "title": "PC9 cells-sgCtrl-Osimertinib"
+        },
+        {
+          "accession": "GSM9058179",
+          "title": "PC9 cells WT- H3K4me1-Osimertinib"
+        },
+        {
+          "accession": "GSM9058174",
+          "title": "PC9 cells-sgPKM2#1-Osimertinib"
+        },
+        {
+          "accession": "GSM9058171",
+          "title": "PC9 cells-sgPKM2#1-Vehicle"
+        },
+        {
+          "accession": "GSM9058185",
+          "title": "PC9 cells WT- IgG-Osimertinib"
+        },
+        {
+          "accession": "GSM9058177",
+          "title": "PC9 cells WT- KDM1A-Osimertinib"
+        },
+        {
+          "accession": "GSM9058182",
+          "title": "PC9 cells WT- H3K9me3-DMSO"
+        },
+        {
+          "accession": "GSM9058180",
+          "title": "PC9 cells WT- H3K4me3-DMSO"
+        }
+      ],
+      "samplestaxa": "",
+      "seriestitle": "",
+      "ssinfo": "",
+      "subsetinfo": "",
+      "summary": "Non-small cell lung cancer (NSCLC) - the most common form of lung cancer - is an aggressive malignancy with limited effective therapeutic options1. Osimertinib, a third-generation epidermal growth factor receptor tyrosine kinase inhibitor (EGFR-TKI), has revolutionized treatment for EGFR-mutant NSCLC, yet resistance significantly limits its clinical benefit to patients2. Here, using a genome-wide genetic screen, we discover that pyruvate kinase M2 (PKM2) is a novel regulator of Osimertinib resistance. Loss of PKM2 triggers fatty acid biosynthesis activation in a glycolysis-independent manner. We have shown that PKM2 interacts with KDM1A in cytosol and nuclear translocation of KDM1A is increased in both PKM2-KO and Osimertinib-persister cells. Mechanistically, KDM1A demethylates H3K9me3 in the promoter region of the key lipid synthesis enzyme, fatty acid synthase (FASN), and cooperates with transcription factor AP-2 to activate FASN transcription, thereby conferring Osimertinib resistance. Pharmacological inhibition of FASN by Orlistat induces synthetic lethality with Osimertinib in vitro and vivo Osimertinib-resistant models. Treatment of 9 NSCLC patients who were unresponsive to Osimertinib with the combination of Osimertinib plus Orlistat  resulted in meaningful clinical responses. Our data highlights metabolic vulnerabilities and provides potential therapeutic approaches for treating TKI-resistant NSCLC.",
+      "suppfile": "BIGWIG, XLSX",
+      "taxon": "Homo sapiens",
+      "title": "PKM2-deficiency induced fatty acid biosynthesis activation limits the response of non-small cell lung cancer to Osimertinib",
+      "uid": "200300311",
+      "valtype": ""
+    },
+    "uids": [
+      "200300311"
+    ]
+  }
+}

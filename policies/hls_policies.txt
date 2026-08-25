@@ -1,0 +1,29 @@
+Policy Ref: HLS-TRIAL-300
+Rule: Clinical trial disclosures must cite the registered trial identifier and primary indication context when trial evidence supports a returned answer.
+Threshold: Any answer referencing interventional trial outcomes
+Action: Require TRIAL- entity citation and trial registry reference in capturedDecisions
+Exception: Exploratory mentions without outcome claims
+
+Policy Ref: HLS-LIC-200
+Rule: Licensing and label claims must anchor on an approved LBL- regulatory label entity when describing approved indications or first-line use.
+Threshold: Any answer describing approved regimen or first-line indication
+Action: Require LBL- entity citation and note regional label scope when EU context is requested
+Exception: Purely mechanistic preclinical discussion with no indication claim
+
+Policy Ref: HLS-PHI-100
+Rule: Returned knowledge responses must not include patient identifiers, contact details, or raw PHI fields from source systems.
+Threshold: Any detected PHI/PII pattern in reviewed chat text
+Action: Flag for Compliance Reviewer and set sensitive_content_found true
+Exception: De-identified aggregate trial statistics
+
+Policy Ref: HLS-PARTNER-110
+Rule: Confidential partner repository excerpts require explicit partner-data handling note before external return.
+Threshold: Text referencing confidential partner repositories or unreleased collaboration data
+Action: Flag for Review and require human approval
+Exception: Public publications already cleared for external use
+
+Policy Ref: HLS-REGION-EU-400
+Rule: When a query scope includes EU regional policy, answers on approved use must reference applicable EU regional policy context alongside trial and label anchors.
+Threshold: Query or chat context mentions EU, EMA, or regional European policy
+Action: Flag missing_eu_regional_policy_reference when EU context is omitted
+Exception: US-only scope explicitly stated in the query

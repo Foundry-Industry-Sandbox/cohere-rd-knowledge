@@ -1,0 +1,187 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "answer_with_citations",
+  "flow": "search",
+  "kb_state": "populated",
+  "path": "multi_turn_curate",
+  "phase": 2,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-09-multi-turn-query",
+  "scenario_id": "QRY-005",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC?",
+        "retrieval_scope_entities": [
+          "RDOC-PMC6889286"
+        ],
+        "task": "answer_grounded_query"
+      },
+      "decision": "answer_with_citations",
+      "expected_output": {
+        "decision": "answer_with_citations",
+        "expected_answer_points": [
+          "osimertinib is a third-generation EGFR-TKI active against the EGFR T790M resistance mutation",
+          "acquired resistance is heterogeneous: MET/HER2 amplification, RAS-MAPK or RAS-PI3K pathway activation, novel fusion events, and histological/phenotypic transformation"
+        ],
+        "expected_citations": [
+          "RDOC-PMC6889286"
+        ],
+        "turn": 1
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat_turn_1"
+    },
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "Which first-line clinical trial evidence supports osimertinib in this setting (FLAURA / NCT02296125)?",
+        "retrieval_scope_entities": [
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "task": "answer_grounded_query"
+      },
+      "decision": "answer_with_citations",
+      "expected_output": {
+        "decision": "answer_with_citations",
+        "expected_answer_points": [
+          "FLAURA (NCT02296125) is the first-line trial context for osimertinib",
+          "the Tagrisso openFDA label is the regulatory anchor for the regimen"
+        ],
+        "expected_citations": [
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "turn": 2
+      },
+      "gate": null,
+      "input_entities": [
+        "TRIAL-NCT02296125",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat_turn_2"
+    },
+    {
+      "actor": null,
+      "agent": "curation_compliance_agent",
+      "agent_input": {
+        "chat_responses_reviewed": 2,
+        "draft_answer_citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "enforced_policy_refs": [
+          "HLS-TRIAL-300",
+          "HLS-LIC-200"
+        ],
+        "task": "review_session_before_return"
+      },
+      "decision": "approve_response",
+      "expected_output": {
+        "chat_responses_reviewed": 2,
+        "decision": "approve_response",
+        "required_human_review": false,
+        "sensitive_content_found": false
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "TRIAL-NCT02296125",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curation_compliance"
+    },
+    {
+      "actor": "Daniel Okafor, Compliance Owner (fictional)",
+      "agent": null,
+      "decision": "approve",
+      "expected_output": null,
+      "gate": "approved",
+      "gate_record": {
+        "approved_citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "decision": "approve",
+        "request": "approve_multi_turn_response_before_return",
+        "reviewer": "Daniel Okafor, Compliance Owner (fictional)",
+        "reviews_joint_output_of": [
+          "search_chat_turn_1",
+          "search_chat_turn_2",
+          "curation_compliance"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 4,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "compliance_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "output",
+      "materialized": true,
+      "order": 5,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "response": {
+        "citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "raw_source_trace": true,
+        "returned": "Multi-turn grounded session on resistance mechanisms and FLAURA first-line evidence.",
+        "turn_count": 2
+      },
+      "stage": "response"
+    }
+  ],
+  "title": "Multi-turn grounded chat — Curate reviews accumulated responses",
+  "trigger": {
+    "action": "run_query",
+    "depends_on_ingestion": "ING-001 (entities must already be persisted)",
+    "kb_state": "populated",
+    "note": "run turn 1 then turn 2 in the same session before Curate",
+    "request_id": "QRY-005-REQ",
+    "surface": "search_console",
+    "type": "ui_action"
+  }
+}

@@ -1,0 +1,27 @@
+Genome-wide profiling identifies the genetic dependencies of cell death following EGFR inhibition [RNA-Seq]
+================================================================================
+Experimental dataset evidence card
+
+Document ID: DATASET-GSE323366
+Category: experimental_datasets
+Source entity: entity/DATASET-GSE323366.json
+
+Dataset Identity
+----------------
+Dataset ID: GSE323366
+Title: Genome-wide profiling identifies the genetic dependencies of cell death following EGFR inhibition [RNA-Seq]
+Taxon: Homo sapiens
+Sample count: 12
+Selected reason: PC9/H1650 RNA-seq with DMSO, erlotinib, and osimertinib conditions
+
+Experimental Context
+--------------------
+Assay context: RNA-seq; EGFR inhibition
+Sample accessions: GSM9564412; GSM9564415; GSM9564418; GSM9564413; GSM9564410; GSM9564419; GSM9564416; GSM9564408; GSM9564414; GSM9564417; GSM9564411; GSM9564409
+Summary: EGFR is a proto-oncogene that is mutationally activated in a variety of cancers. Small molecule inhibitors targeting EGFR can effectively slow the progression of disease, and in some settings, these drugs even cause dramatic tumor regression. However, responses to EGFR inhibitors are rarely durable, and the mechanisms contributing to response variation remain unclear. In particular, several distinct mechanisms have been proposed to explain how EGFR inhibition activates cell death, and a consensus has yet to emerge. In this study, we use functional genomics with specialized analyses to infer how genetic perturbations affect the drug-induced death rate. Our data clarify that inhibition of PI3K signaling drives the lethality of EGFR inhibition. Inhibition of other pathways downstream of EGFR, including the RAS-MAPK pathway, promotes growth suppression but not the lethal effects of EGFR inhibitors. Taken together, our study provides a “reference map” for the genome-wide genetic dependencies of lethality in response to EGFR inhibitors.
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: cell-line or assay-level source selected
+Raw source trace: corpus/json/datasets/geo/GSE323366/geo_esummary.json; corpus/txt/datasets/geo/GSE323366/series_soft.txt; corpus/json/datasets/geo/GSE323366/source_record.json

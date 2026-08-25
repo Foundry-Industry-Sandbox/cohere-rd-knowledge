@@ -1,0 +1,196 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "needs_human_review",
+  "flow": "ingestion",
+  "path": "guardrail_review",
+  "phase": 1,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": true,
+  "scenario_folder": "dataset-seed/cases/case-01-human-review",
+  "scenario_id": "ING-002",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "ingestion_translation_agent",
+      "agent_input": {
+        "negative_candidate": {
+          "decision_entity": "CUR-EXCLUDE-PMC4771182",
+          "expected": "deny",
+          "pmcid": "PMC4771182"
+        },
+        "portal_source_manifest": "corpus/csv/partner_vendor_repositories/partner_vendor_repository_index.csv",
+        "task": "ingest_and_license_check_uploaded_articles",
+        "uploaded_exclusion_cards": [
+          "corpus/txt/agent_inputs/curation_decisions/CUR-EXCLUDE-PMC4771182.txt",
+          "corpus/txt/agent_inputs/curation_decisions/CUR-EXCLUDE-GSE297057.txt",
+          "corpus/txt/agent_inputs/curation_decisions/CUR-EXCLUDE-GSE301973.txt"
+        ],
+        "uploaded_pmcids": [
+          "PMC6889286",
+          "PMC5447962",
+          "PMC13070087",
+          "PMC13129538",
+          "PMC13143971"
+        ]
+      },
+      "decision": "approve_with_exclusions",
+      "expected_output": {
+        "accepted_article_count": 5,
+        "denied_article_count": 1,
+        "denied_pmcids": [
+          "PMC4771182"
+        ],
+        "exclusion_card_count": 3
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [
+        "RDOC-PMC6889286",
+        "RDOC-PMC5447962",
+        "RDOC-PMC13070087",
+        "RDOC-PMC13129538",
+        "RDOC-PMC13143971",
+        "CUR-EXCLUDE-PMC4771182"
+      ],
+      "raw_layer_folder": null,
+      "stage": "ingestion_translation"
+    },
+    {
+      "actor": null,
+      "agent": "metadata_linking_agent",
+      "agent_input": {
+        "candidate_dataset_ids": [
+          "GSE323366",
+          "GSE323365",
+          "GSE272182",
+          "GSE300311",
+          "GSE298111",
+          "GSE297057",
+          "GSE301973"
+        ],
+        "negative_candidates": [
+          {
+            "dataset_id": "GSE297057",
+            "decision_entity": "CUR-EXCLUDE-GSE297057",
+            "expected": "exclude"
+          },
+          {
+            "dataset_id": "GSE301973",
+            "decision_entity": "CUR-EXCLUDE-GSE301973",
+            "expected": "exclude"
+          }
+        ],
+        "task": "select_cell_line_or_assay_level_datasets"
+      },
+      "decision": "approve_with_exclusions",
+      "expected_output": {
+        "accepted_geo_count": 5,
+        "excluded_geo_count": 2
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "RDOC-PMC5447962",
+        "RDOC-PMC13070087",
+        "RDOC-PMC13129538",
+        "RDOC-PMC13143971",
+        "CUR-EXCLUDE-PMC4771182"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [
+        "DATASET-GSE323366",
+        "DATASET-GSE323365",
+        "DATASET-GSE272182",
+        "DATASET-GSE300311",
+        "DATASET-GSE298111",
+        "CUR-EXCLUDE-GSE297057",
+        "CUR-EXCLUDE-GSE301973"
+      ],
+      "raw_layer_folder": null,
+      "stage": "metadata_linking"
+    },
+    {
+      "actor": "Marisol Vega, Knowledge Curator (fictional)",
+      "agent": null,
+      "decision": "flag_for_human_review",
+      "expected_output": null,
+      "gate": "denied_pending_human_review",
+      "gate_record": {
+        "decision": "needs_human_review",
+        "flagged_exclusions": [
+          "CUR-EXCLUDE-PMC4771182",
+          "CUR-EXCLUDE-GSE297057",
+          "CUR-EXCLUDE-GSE301973"
+        ],
+        "request": "review_exclusions_before_persistence",
+        "reviewer": "Marisol Vega, Knowledge Curator (fictional)",
+        "reviews_joint_output_of": [
+          "ingestion_translation",
+          "metadata_linking"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curator_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "sink",
+      "materialized": false,
+      "order": 4,
+      "output_entities": [],
+      "persisted": {
+        "persisted_entities": [],
+        "status": "pending_human_review",
+        "target": "cms_knowledge_base"
+      },
+      "raw_layer_folder": null,
+      "stage": "persistence"
+    }
+  ],
+  "title": "Load with a messy pool — license & PHI guardrails, routed to the curator",
+  "trigger": {
+    "action": "upload_and_ingest",
+    "candidate_dataset_ids": [
+      "GSE323366",
+      "GSE323365",
+      "GSE272182",
+      "GSE300311",
+      "GSE298111",
+      "GSE297057",
+      "GSE301973"
+    ],
+    "external_connector_conceptual": "Connect Portals — uploaded files stand in for data that could come from external medical portals",
+    "note": "controlled button/process trigger — not a free-form chatbot",
+    "portal_source_manifest": "corpus/csv/partner_vendor_repositories/partner_vendor_repository_index.csv",
+    "request_id": "ING-002-REQ",
+    "surface": "ingestion_console",
+    "type": "ui_action",
+    "uploaded_pmcids": [
+      "PMC6889286",
+      "PMC5447962",
+      "PMC13070087",
+      "PMC13129538",
+      "PMC13143971"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "accession": "GSE272182",
+  "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gds&term=GSE272182%5BACCN%5D&retmode=json&retmax=1",
+  "esummary_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200272182&retmode=json",
+  "local_paths": [
+    "00_raw/json/datasets/geo/GSE272182/geo_esearch.json",
+    "00_raw/json/datasets/geo/GSE272182/geo_esummary.json",
+    "00_raw/txt/datasets/geo/GSE272182/series_soft.txt"
+  ],
+  "public_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272182",
+  "raw_layer_policy": "Selected because samples are cell-line or assay-level records, not patient specimens.",
+  "role": "PC9 sensitive versus osimertinib-resistant replicates",
+  "soft_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE272182&targ=self&form=text&view=quick"
+}

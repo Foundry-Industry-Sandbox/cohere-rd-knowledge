@@ -1,0 +1,14 @@
+{
+  "accession": "GSE298111",
+  "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gds&term=GSE298111%5BACCN%5D&retmode=json&retmax=1",
+  "esummary_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200298111&retmode=json",
+  "local_paths": [
+    "00_raw/json/datasets/geo/GSE298111/geo_esearch.json",
+    "00_raw/json/datasets/geo/GSE298111/geo_esummary.json",
+    "00_raw/txt/datasets/geo/GSE298111/series_soft.txt"
+  ],
+  "public_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298111",
+  "raw_layer_policy": "Selected because samples are cell-line or assay-level records, not patient specimens.",
+  "role": "PC9OR control versus si-GLMP replicates",
+  "soft_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE298111&targ=self&form=text&view=quick"
+}

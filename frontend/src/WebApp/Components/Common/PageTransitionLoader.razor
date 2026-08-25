@@ -1,0 +1,22 @@
+@if (Visible)
+{
+    <div class="page-transition-loader @(Blocking ? "blocking" : "top-bar")" aria-live="polite">
+        @if (Blocking)
+        {
+            <div class="page-transition-overlay">
+                <span class="spinner"></span>
+                <span>@Message</span>
+            </div>
+        }
+        else
+        {
+            <div class="page-transition-bar"></div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public bool Visible { get; set; }
+    [Parameter] public bool Blocking { get; set; }
+    [Parameter] public string Message { get; set; } = "Loading…";
+}

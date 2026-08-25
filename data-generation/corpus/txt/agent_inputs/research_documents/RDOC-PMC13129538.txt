@@ -1,0 +1,29 @@
+The evolving landscape of first-line and subsequent therapies in EGFR-mutated NSCLC: efficacy, resistance, and tolerability
+================================================================================
+Research article evidence card
+
+Document ID: RDOC-PMC13129538
+Category: research_documents
+Source entity: entity/RDOC-PMC13129538.json
+
+Article Identity
+----------------
+Document ID: RDOC-PMC13129538
+PMCID: PMC13129538
+PMID: 42079860
+Title: The evolving landscape of first-line and subsequent therapies in EGFR-mutated NSCLC: efficacy, resistance, and tolerability
+Journal: Exploration of Targeted Anti-tumor Therapy
+Publication date: 2026-04-27
+License: CC BY
+
+Extractable Content
+-------------------
+Primary entities: osimertinib; EGFR; NSCLC
+Keywords: 
+Abstract: AbstractThe treatment paradigm for advanced non-small cell lung cancer (NSCLC) harboring EGFR mutations is undergoing a significant transition. While third-generation tyrosine kinase inhibitors (TKIs) like osimertinib have long served as the frontline standard, the emergence of heterogeneous resistance mechanisms requires more robust therapeutic strategies. This review evaluates the clinical impact of the MARIPOSA trial, which demonstrated the superior efficacy of combining the bispecific antibody amivantamab with lazertinib. Beyond improving progression-free and overall survival, this dual-inhibition approach fundamentally alters the clonal evolution of the disease by suppressing common escape routes, such as MET amplifications and secondary EGFR mutations. Furthermore, we explore the diversifying landscape of second-line interventions, including the rise of antibody-drug conjugates (ADCs) like Sac-TMT and patritumab-deruxtecan, dual PD-1/VEGF inhibitors, and novel fourth-generation TKIs. By integrating preclinical insights on drug-tolerant persister cells with late-phase clinical data, this article outlines a future for EGFR-mutant NSCLC management defined by precision sequenc...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: no patient-level source selected for normalized entity
+Raw source trace: corpus/xml/articles/pmc_oa/PMC13129538/article.xml

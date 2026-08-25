@@ -1,0 +1,69 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "200298111": {
+      "accession": "GSE298111",
+      "bioproject": "PRJNA1268374",
+      "entrytype": "GSE",
+      "extrelations": [],
+      "ftplink": "ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE298nnn/GSE298111/",
+      "gds": "",
+      "gdstype": "Expression profiling by high throughput sequencing",
+      "geo2r": "no",
+      "gpl": "24676",
+      "gse": "298111",
+      "n_samples": 6,
+      "pdat": "2025/12/10",
+      "platformtaxa": "",
+      "platformtitle": "",
+      "projects": [],
+      "ptechtype": "",
+      "pubmedids": [
+        "41298761"
+      ],
+      "relations": [],
+      "samples": [
+        {
+          "accession": "GSM9008618",
+          "title": "PC9OR NC repeat1"
+        },
+        {
+          "accession": "GSM9008621",
+          "title": "PC9OR si-GLMP repeat1"
+        },
+        {
+          "accession": "GSM9008619",
+          "title": "PC9OR NC repeat2"
+        },
+        {
+          "accession": "GSM9008622",
+          "title": "PC9OR si-GLMP repeat2"
+        },
+        {
+          "accession": "GSM9008620",
+          "title": "PC9OR NC repeat3"
+        },
+        {
+          "accession": "GSM9008623",
+          "title": "PC9OR si-GLMP repeat3"
+        }
+      ],
+      "samplestaxa": "",
+      "seriestitle": "",
+      "ssinfo": "",
+      "subsetinfo": "",
+      "summary": "Here, we report that the EGFR-TKI resistance mechanism is mediated by lysosome-related regulation. We established an osimertinib-resistant cell line, designated PC9OR, derived from the parental PC9 cells. The overexpression of glycosylated lysosomal membrane protein (GLMP) in PC9OR promotes resistance to Osimertinib. Mechanistically, GLMP could regulate the ubiquitination of RhoA and promote resistance by activating the epithelial-mesenchymal transition (EMT). Our findings provide a potential therapeutic strategy to overcome resistance to EGFR-TKIs.",
+      "suppfile": "TXT",
+      "taxon": "Homo sapiens",
+      "title": "GLMP promotes EGFR-TKI resistance by activating autophagy and RhoA pathway in non-small cell lung cancer",
+      "uid": "200298111",
+      "valtype": ""
+    },
+    "uids": [
+      "200298111"
+    ]
+  }
+}

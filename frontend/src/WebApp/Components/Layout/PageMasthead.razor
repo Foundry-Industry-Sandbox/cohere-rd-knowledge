@@ -1,0 +1,22 @@
+<div class="page-masthead">
+    @if (!string.IsNullOrWhiteSpace(Kicker))
+    {
+        <p class="page-kicker">@Kicker</p>
+    }
+    <h1 class="page-title">@Title</h1>
+    @if (!string.IsNullOrWhiteSpace(Subtitle))
+    {
+        <p class="page-subtitle">@Subtitle</p>
+    }
+    @if (ChildContent is not null)
+    {
+        <div class="page-masthead-actions">@ChildContent</div>
+    }
+</div>
+
+@code {
+    [Parameter] public string? Kicker { get; set; }
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string? Subtitle { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

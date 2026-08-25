@@ -1,0 +1,198 @@
+@page "/ingestion/{StudyId}"
+@page "/ingestion/{StudyId}/{ExecutionId}"
+@rendermode InteractiveServer
+@inject IngestionWorkspaceState WorkspaceState
+@inject WorkspaceSectionState SectionState
+@inject PortfolioScenarioService Scenarios
+@inject NavigationManager Navigation
+@implements IAsyncDisposable
+
+<PageTransitionLoader Visible="_navigating" Blocking="true" Message="Returning to portfolio…" />
+
+<div class="workspace-header">
+    <a href="/" class="back-link" @onclick="GoHome" @onclick:preventDefault>← Portfolio</a>
+    <PageMasthead Kicker="Ingestion"
+                  Title="@(_studyTitle ?? StudyId)"
+                  Subtitle="Ingestion & Translation → Metadata & Linking (Vector DB) → Knowledge Curator">
+        <LoadingButton IsLoading="WorkspaceState.IsBusy"
+                       Disabled="!WorkspaceState.CanStartWorkflow"
+                       OnClick="StartWorkflowAsync">
+            Start ingestion workflow
+        </LoadingButton>
+    </PageMasthead>
+</div>
+
+@if (WorkspaceState.IsBusy && WorkspaceState.Progress is null)
+{
+    <LoadingBlock Message="Loading ingestion workspace…" />
+}
+else if (!string.IsNullOrWhiteSpace(WorkspaceState.Error))
+{
+    <ErrorState Message="@WorkspaceState.Error" OnRetry="ReloadAsync" />
+}
+else
+{
+    <WorkflowStatusBanner Progress="WorkspaceState.Progress" IsPolling="WorkspaceState.IsPolling" />
+
+    <div class="workspace-grid">
+        <div class="workspace-main">
+            <CollapsiblePageSection SectionId="@WorkspaceSections.StageIngestionTranslation"
+                                    Title="Ingestion & Translation"
+                                    StatusLabel="@GetStageStatus(IngestionStage.IngestionTranslation)"
+                                    StatusCssClass="@GetStageCss(IngestionStage.IngestionTranslation)">
+                <IngestionTranslationPanel Result="WorkspaceState.Progress?.IngestionTranslation" />
+            </CollapsiblePageSection>
+
+            <CollapsiblePageSection SectionId="@WorkspaceSections.StageMetadataLinking"
+                                    Title="Metadata & Linking"
+                                    StatusLabel="@GetStageStatus(IngestionStage.MetadataLinking)"
+                                    StatusCssClass="@GetStageCss(IngestionStage.MetadataLinking)">
+                <MetadataLinkingPanel Result="WorkspaceState.Progress?.MetadataLinking" />
+                <RetrievalSummaryCard Events="WorkspaceState.Progress?.RetrievalTrace" />
+            </CollapsiblePageSection>
+
+            <CollapsiblePageSection SectionId="@WorkspaceSections.StageIngestionHitl"
+                                    Title="Knowledge Curator"
+                                    StatusLabel="@GetHitlStatus()"
+                                    StatusCssClass="@GetHitlStatusCss()">
+                <HumanReviewPanel Title="Knowledge Curator — review linking output"
+                                  Description="Metadata & Linking has already indexed embeddable content to the Vector DB. Approve or deny this ingestion run."
+                                  Decision="WorkspaceState.Progress?.HumanDecision"
+                                  CanSubmit="WorkspaceState.CanSubmitDecision"
+                                  IsBusy="WorkspaceState.IsBusy"
+                                  OnSubmit="SubmitDecisionAsync" />
+            </CollapsiblePageSection>
+        </div>
+
+        <aside class="workspace-side">
+            <CollapsiblePageSection SectionId="@WorkspaceSections.SidebarStudySummary"
+                                    Title="Study summary">
+                <StudySummaryCard Study="WorkspaceState.Progress?.Study ?? _fallbackStudy" Nested="true" />
+            </CollapsiblePageSection>
+            <CollapsiblePageSection SectionId="@WorkspaceSections.SidebarFabricSources"
+                                    Title="Source material">
+                <KnowledgeSourceList Sources="WorkspaceState.Documents?.Sources ?? []" />
+            </CollapsiblePageSection>
+            @if (WorkspaceState.Progress is not null)
+            {
+                <CollapsiblePageSection SectionId="@WorkspaceSections.SidebarWorkflowProgress"
+                                        Title="Workflow progress">
+                    <WorkflowTimeline Steps="BackendWorkflowMapper.BuildIngestionTimeline(WorkspaceState.Progress)"
+                                      Nested="true" />
+                </CollapsiblePageSection>
+            }
+            <div class="card vector-db-note">
+                <p>Extracted entities and linked documents/studies are embedded and persisted to the <strong>Vector DB</strong>. Query workflows read from the Vector DB independently.</p>
+            </div>
+        </aside>
+    </div>
+}
+
+@code {
+    [Parameter] public string StudyId { get; set; } = string.Empty;
+    [Parameter] public string? ExecutionId { get; set; }
+
+    private bool _navigating;
+    private string? _studyTitle;
+    private StudySummary? _fallbackStudy;
+
+    protected override async Task OnInitializedAsync()
+    {
+        WorkspaceState.OnChange += OnWorkspaceChanged;
+        await Scenarios.EnsureLoadedAsync();
+        RefreshScenarioMeta();
+        SectionState.ResetForResource(StudyId);
+        await ReloadAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Scenarios.EnsureLoadedAsync();
+        RefreshScenarioMeta();
+
+        if (WorkspaceState.StudyId != StudyId || WorkspaceState.ExecutionId != ExecutionId)
+        {
+            SectionState.ResetForResource(StudyId);
+            await ReloadAsync();
+        }
+    }
+
+    private void RefreshScenarioMeta()
+    {
+        _fallbackStudy = Scenarios.GetScenarioByStudyId(StudyId, WorkflowBlock.Ingestion)?.Study
+            ?? new StudySummary(StudyId, StudyId, "—", "—", "—", ["Microsoft Fabric"]);
+        _studyTitle = _fallbackStudy.Title;
+    }
+
+    private async Task ReloadAsync() => await WorkspaceState.LoadAsync(StudyId, ExecutionId);
+
+    private async Task StartWorkflowAsync()
+    {
+        await WorkspaceState.StartWorkflowAsync();
+        if (!string.IsNullOrWhiteSpace(WorkspaceState.ExecutionId))
+        {
+            Navigation.NavigateTo($"/ingestion/{StudyId}/{WorkspaceState.ExecutionId}", replace: true);
+        }
+    }
+
+    private async Task SubmitDecisionAsync((bool Approved, string? Notes) decision) =>
+        await WorkspaceState.SubmitDecisionAsync(decision.Approved, decision.Notes);
+
+    private string? GetStageStatus(IngestionStage stage)
+    {
+        var current = WorkspaceState.Progress?.CurrentStage;
+        if (current is null) return null;
+        if (current > stage || current == IngestionStage.Completed) return "Completed";
+        if (current == stage) return WorkspaceState.Progress?.Status == WorkflowStatus.Running ? "In progress" : null;
+        return "Pending";
+    }
+
+    private string GetStageCss(IngestionStage stage)
+    {
+        var label = GetStageStatus(stage);
+        return label switch
+        {
+            "Completed" => "status-success",
+            "In progress" => "status-info",
+            _ => "status-neutral"
+        };
+    }
+
+    private string? GetHitlStatus()
+    {
+        if (WorkspaceState.Progress?.HumanDecision is not null)
+        {
+            return "Completed";
+        }
+
+        if (WorkspaceState.CanSubmitDecision)
+        {
+            return "Action required";
+        }
+
+        return null;
+    }
+
+    private string GetHitlStatusCss() => GetHitlStatus() switch
+    {
+        "Completed" => "status-success",
+        "Action required" => "status-warning",
+        _ => "status-neutral"
+    };
+
+    private async void OnWorkspaceChanged() => await InvokeAsync(StateHasChanged);
+
+    private async Task GoHome()
+    {
+        _navigating = true;
+        Navigation.NavigateTo("/");
+        await Task.Delay(300);
+        _navigating = false;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        WorkspaceState.OnChange -= OnWorkspaceChanged;
+        await WorkspaceState.DisposeAsync();
+    }
+}

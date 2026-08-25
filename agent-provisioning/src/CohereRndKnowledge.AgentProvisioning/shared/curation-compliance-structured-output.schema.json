@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "summary": {
+      "type": "string",
+      "description": "Concise explanation of the curation and compliance review outcome."
+    },
+    "decision": {
+      "type": "string",
+      "description": "Overall curation recommendation for the Search and Chat material under review."
+    },
+    "evidence": {
+      "type": "string",
+      "description": "Key facts and rationale supporting the curation decision."
+    },
+    "flags": {
+      "type": "array",
+      "description": "Short labels for gaps, policy issues, missing citations, or other concerns detected in the chat responses.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capturedDecisions": {
+      "type": "array",
+      "description": "Recorded compliance decisions or mitigations captured during review.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "policyRefs": {
+      "type": "array",
+      "description": "HLS policy reference codes applied during review, such as HLS-TRIAL-300 or HLS-LIC-200.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "citations": {
+      "type": "array",
+      "description": "Approved or reviewed entity IDs and citation strings from the Search and Chat responses.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sensitive_content_found": {
+      "type": "boolean",
+      "description": "True when PHI, PII, confidential partner data, or other sensitive content requiring escalation is detected."
+    },
+    "required_human_review": {
+      "type": "boolean",
+      "description": "True when the compliance reviewer gate must act before the response can be finalized; false when the curation outcome is straightforward."
+    }
+  },
+  "required": [
+    "summary",
+    "decision",
+    "evidence",
+    "flags",
+    "capturedDecisions",
+    "policyRefs",
+    "citations",
+    "sensitive_content_found",
+    "required_human_review"
+  ]
+}

@@ -1,0 +1,7 @@
+REPOSITORY_ID,REPOSITORY_NAME,SOURCE_TYPE,SOURCE_KEYS,ACCESS_POLICY
+PVR-001,ClinicalTrials.gov,trial registry/results,NCT02296125;NCT02151981;NCT02511106;NCT04035486,public aggregate records
+PVR-002,NCBI PMC Open Access,research articles,PMC6889286;PMC5447962;PMC13070087;PMC13129538;PMC13143971,license-filtered OA full text
+PVR-003,NCBI GEO,experimental datasets,GSE323366;GSE323365;GSE272182;GSE300311;GSE298111,cell-line datasets only
+PVR-004,ChEMBL,compound and target registry,CHEMBL3353410,public compound metadata
+PVR-005,openFDA / Drugs@FDA,US regulatory submissions and label,NDA208065,public regulatory data
+PVR-006,EMA,EU regulatory EPAR,Tagrisso EPAR,public regulatory documents

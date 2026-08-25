@@ -1,0 +1,305 @@
+@page "/query/{SessionId}"
+@page "/query/{SessionId}/{ExecutionId}"
+@rendermode InteractiveServer
+@inject QueryWorkspaceState WorkspaceState
+@inject WorkspaceSectionState SectionState
+@inject KnowledgeSessionStore SessionStore
+@inject PortfolioScenarioService Scenarios
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<PageTransitionLoader Visible="_navigating" Blocking="true" Message="Returning to portfolio…" />
+
+<div class="workspace-header">
+    <a href="/" class="back-link" @onclick="GoHome" @onclick:preventDefault>← Portfolio</a>
+    <PageMasthead Kicker="Querying"
+                  Title="@(_sessionTitle ?? SessionId)"
+                  Subtitle="Search & Chat (interactive) → Curate on demand → Compliance Reviewer" />
+</div>
+
+@if (WorkspaceState.IsBusy && WorkspaceState.Session is null)
+{
+    <LoadingBlock Message="Loading query workspace…" />
+}
+else if (!string.IsNullOrWhiteSpace(WorkspaceState.Error))
+{
+    <ErrorState Message="@WorkspaceState.Error" OnRetry="ReloadAsync" />
+}
+else
+{
+    <WorkflowStatusBanner Session="WorkspaceState.Session"
+                          CurationProgress="WorkspaceState.CurationProgress"
+                          IsPolling="WorkspaceState.IsCurationPolling" />
+
+    <div class="workspace-grid">
+        <div class="workspace-main">
+            <CollapsiblePageSection SectionId="@WorkspaceSections.StageSearchChat"
+                                    Title="Search & Chat"
+                                    StatusLabel="@GetChatStatus()"
+                                    StatusCssClass="@GetChatStatusCss()">
+                <div class="search-chat-layout">
+                    <div class="transcript-zone">
+                        <p class="zone-label">Conversation</p>
+                        <div class="chat-transcript-scroll" @ref="_chatScrollRef">
+                            <ChatTranscript Messages="WorkspaceState.Session?.Messages ?? []" />
+                        </div>
+                    </div>
+                    <div class="compose-zone">
+                        <p class="zone-label">New question</p>
+                        <div class="query-input-card">
+                            <label for="research-question" class="form-label visually-hidden">Research question</label>
+                            <div class="compose-row">
+                                <textarea id="research-question" class="form-control" rows="3"
+                                          value="@WorkspaceState.Question"
+                                          @oninput="OnQuestionChanged"
+                                          disabled="@(!WorkspaceState.CanSendMessage)"
+                                          placeholder="Ask a research question…"></textarea>
+                                <div class="compose-actions">
+                                    <LoadingButton IsLoading="WorkspaceState.IsBusy"
+                                                   Disabled="!WorkspaceState.CanSendMessage || string.IsNullOrWhiteSpace(WorkspaceState.Question)"
+                                                   OnClick="SendMessageAsync">
+                                        Send
+                                    </LoadingButton>
+                                </div>
+                            </div>
+                            <p class="meta-line muted">Queries run against knowledge in the Vector DB — no fresh ingestion required. Ask follow-up questions; responses accumulate for curation.</p>
+                        </div>
+                    </div>
+                    <div class="curate-zone">
+                        <div class="curate-action-bar">
+                            <p class="meta-line muted">
+                                When you're satisfied with the conversation, Curate sends all responses above to Curation &amp; Compliance for review.
+                            </p>
+                            <div class="form-actions">
+                                <LoadingButton IsLoading="WorkspaceState.IsBusy"
+                                               Disabled="!WorkspaceState.CanStartCuration"
+                                               OnClick="StartCurationAsync">
+                                    Curate
+                                </LoadingButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </CollapsiblePageSection>
+
+            <CollapsiblePageSection SectionId="@WorkspaceSections.StageCurationCompliance"
+                                    Title="Curation & Compliance"
+                                    StatusLabel="@GetCurationStatus()"
+                                    StatusCssClass="@GetCurationStatusCss()">
+                @if (!string.IsNullOrWhiteSpace(WorkspaceState.CurationMessage))
+                {
+                    <div class="error-state" role="alert">
+                        <h3 class="error-state-title">Curation unavailable</h3>
+                        <p class="error-state-message">@WorkspaceState.CurationMessage</p>
+                    </div>
+                }
+                <CurationCompliancePanel Result="@(WorkspaceState.CurationProgress?.CurationCompliance ?? WorkspaceState.Session?.CurationCompliance)" />
+            </CollapsiblePageSection>
+
+            @if (WorkspaceState.CurationProgress?.CurationCompliance is not null ||
+                 WorkspaceState.CurationProgress?.Status == WorkflowStatus.AwaitingHumanApproval ||
+                 WorkspaceState.CurationProgress?.HumanDecision is not null)
+            {
+                <CollapsiblePageSection SectionId="@WorkspaceSections.StageQueryHitl"
+                                        Title="Compliance Reviewer"
+                                        StatusLabel="@GetHitlStatus()"
+                                        StatusCssClass="@GetHitlStatusCss()">
+                    <HumanReviewPanel Title="Compliance Reviewer — approve curation result"
+                                      Description="Review curation flags and captured decisions from all Search & Chat responses before finalization."
+                                      Decision="@(WorkspaceState.CurationProgress?.HumanDecision ?? WorkspaceState.Session?.HumanDecision)"
+                                      CanSubmit="WorkspaceState.CanSubmitDecision"
+                                      IsBusy="WorkspaceState.IsBusy"
+                                      OnSubmit="SubmitDecisionAsync" />
+                </CollapsiblePageSection>
+            }
+        </div>
+
+        <aside class="workspace-side">
+            <CollapsiblePageSection SectionId="@WorkspaceSections.SidebarStudySummary"
+                                    Title="Study summary">
+                <StudySummaryCard Study="_studySummary" Nested="true" />
+            </CollapsiblePageSection>
+            <div class="card vector-db-note">
+                <p>Reading from <strong>Vector DB</strong> — curated, embedded knowledge from approved ingestion workflows.</p>
+            </div>
+            <CollapsiblePageSection SectionId="@WorkspaceSections.SidebarWorkflowProgress"
+                                    Title="Workflow progress">
+                <WorkflowTimeline Steps="BackendWorkflowMapper.BuildQueryTimeline(WorkspaceState.Session, WorkspaceState.CurationProgress)"
+                                  Nested="true" />
+            </CollapsiblePageSection>
+            @if (!string.IsNullOrWhiteSpace(WorkspaceState.StudyScope))
+            {
+                <div class="card">
+                    <h3 class="card-title">Study scope</h3>
+                    <p>@WorkspaceState.StudyScope</p>
+                </div>
+            }
+        </aside>
+    </div>
+}
+
+@code {
+    [Parameter] public string SessionId { get; set; } = string.Empty;
+    [Parameter] public string? ExecutionId { get; set; }
+
+    private bool _navigating;
+    private string? _sessionTitle;
+    private StudySummary? _studySummary;
+    private ElementReference _chatScrollRef;
+    private int _lastMessageCount = -1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        WorkspaceState.OnChange += OnWorkspaceChanged;
+        await Scenarios.EnsureLoadedAsync();
+        SectionState.ResetForResource(GetResourceKey(), WorkspaceSections.StageSearchChat);
+        ResolveSessionMeta();
+        await ReloadAsync();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Scenarios.EnsureLoadedAsync();
+        if (WorkspaceState.SessionId != SessionId || WorkspaceState.CurationExecutionId != ExecutionId)
+        {
+            _lastMessageCount = -1;
+            SectionState.ResetForResource(GetResourceKey(), WorkspaceSections.StageSearchChat);
+            ResolveSessionMeta();
+            await ReloadAsync();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var messageCount = WorkspaceState.Session?.Messages.Count ?? 0;
+        if (messageCount != _lastMessageCount)
+        {
+            _lastMessageCount = messageCount;
+            await JS.InvokeVoidAsync("scrollElementToBottom", _chatScrollRef);
+        }
+    }
+
+    private string GetResourceKey() =>
+        string.IsNullOrWhiteSpace(ExecutionId) ? SessionId : $"{SessionId}/{ExecutionId}";
+
+    private void ResolveSessionMeta()
+    {
+        var session = SessionStore.GetQuerySession(SessionId);
+        _sessionTitle = session?.Title ?? SessionId;
+        if (session is not null)
+        {
+            _studySummary = Scenarios.GetScenarioByStudyId(session.StudyId, WorkflowBlock.Query)?.Study
+                ?? new StudySummary(session.StudyId, session.Title, "—", "—", "—", ["Vector DB"]);
+        }
+    }
+
+    private async Task ReloadAsync() => await WorkspaceState.LoadAsync(SessionId, ExecutionId);
+
+    private async Task SendMessageAsync() => await WorkspaceState.SendMessageAsync();
+
+    private async Task StartCurationAsync()
+    {
+        await WorkspaceState.StartCurationAsync();
+        if (!string.IsNullOrWhiteSpace(WorkspaceState.CurationMessage))
+        {
+            SectionState.SetExpanded(WorkspaceSections.StageCurationCompliance, true);
+            return;
+        }
+
+        if (!string.IsNullOrWhiteSpace(WorkspaceState.CurationExecutionId))
+        {
+            Navigation.NavigateTo($"/query/{SessionId}/{WorkspaceState.CurationExecutionId}", replace: true);
+        }
+    }
+
+    private async Task SubmitDecisionAsync((bool Approved, string? Notes) decision) =>
+        await WorkspaceState.SubmitDecisionAsync(decision.Approved, decision.Notes);
+
+    private void OnQuestionChanged(ChangeEventArgs e) =>
+        WorkspaceState.SetQuestion(e.Value?.ToString() ?? string.Empty);
+
+    private string? GetChatStatus()
+    {
+        if (WorkspaceState.Session?.IsChatRunning == true) return "In progress";
+        if (WorkspaceState.Session?.Messages.Count > 0) return "Active";
+        return null;
+    }
+
+    private string GetChatStatusCss()
+    {
+        var label = GetChatStatus();
+        return label switch
+        {
+            "Active" => "status-success",
+            "In progress" => "status-info",
+            _ => "status-neutral"
+        };
+    }
+
+    private string? GetCurationStatus()
+    {
+        if (!string.IsNullOrWhiteSpace(WorkspaceState.CurationMessage)) return "Unavailable";
+        var stage = WorkspaceState.CurationProgress?.CurrentStage;
+        if (stage is null) return WorkspaceState.Session?.Messages.Count > 0 ? "Ready" : null;
+        if (stage == QueryStage.CurationRunning) return "In progress";
+        if (stage == QueryStage.AwaitingComplianceReview) return "Action required";
+        if (stage == QueryStage.Completed) return "Completed";
+        if (stage == QueryStage.Failed) return "Failed";
+        return null;
+    }
+
+    private string GetCurationStatusCss()
+    {
+        var label = GetCurationStatus();
+        return label switch
+        {
+            "Completed" => "status-success",
+            "In progress" => "status-info",
+            "Action required" => "status-warning",
+            "Failed" => "status-danger",
+            "Unavailable" => "status-warning",
+            "Ready" => "status-neutral",
+            _ => "status-neutral"
+        };
+    }
+
+    private string? GetHitlStatus()
+    {
+        if (WorkspaceState.CurationProgress?.HumanDecision is not null
+            || WorkspaceState.Session?.HumanDecision is not null)
+        {
+            return "Completed";
+        }
+
+        if (WorkspaceState.CanSubmitDecision)
+        {
+            return "Action required";
+        }
+
+        return null;
+    }
+
+    private string GetHitlStatusCss() => GetHitlStatus() switch
+    {
+        "Completed" => "status-success",
+        "Action required" => "status-warning",
+        _ => "status-neutral"
+    };
+
+    private async void OnWorkspaceChanged() => await InvokeAsync(StateHasChanged);
+
+    private async Task GoHome()
+    {
+        _navigating = true;
+        Navigation.NavigateTo("/");
+        await Task.Delay(300);
+        _navigating = false;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        WorkspaceState.OnChange -= OnWorkspaceChanged;
+        await WorkspaceState.DisposeAsync();
+    }
+}

@@ -1,0 +1,442 @@
+{
+  "compound_anchor": {
+    "aliases": [
+      "Tagrisso",
+      "AZD9291"
+    ],
+    "chembl_id": "CHEMBL3353410",
+    "fda_application_number": "NDA208065",
+    "preferred_name": "Osimertinib"
+  },
+  "privacy_posture": {
+    "patient_level_data": "excluded",
+    "patient_names": "excluded",
+    "selected_geo_records": "cell-line or assay-level records only",
+    "synthetic_people": "fictional lab/reviewer names only"
+  },
+  "raw_file_count": 84,
+  "raw_files": [
+    {
+      "bytes": 699,
+      "path": "00_raw/_corpus/csv/partner_vendor_repositories/partner_vendor_repository_index.csv",
+      "sha256": "de13ca69924b5ba3f388d7562b43fe597e64a30f321efb29f7663cf6dd2c8dca"
+    },
+    {
+      "bytes": 1108,
+      "path": "00_raw/_corpus/csv/synthetic_eln_lims/lims_sample_manifest.csv",
+      "sha256": "ac252b4cb295cd96fa611359a0338b92b756750e885dbae2350b6b2eef514e28"
+    },
+    {
+      "bytes": 12308,
+      "path": "00_raw/_corpus/html/policies/AACT_HOME/AACT_HOME.html",
+      "sha256": "01994f8bb32206127c6cee71fcad0973812c9d9639226993273cf41bdecdacc8"
+    },
+    {
+      "bytes": 94295,
+      "path": "00_raw/_corpus/html/policies/CLINICALTRIALS_GOV_DATA_API/CLINICALTRIALS_GOV_DATA_API.html",
+      "sha256": "50dbe77660c083f11b319e1bc5e959c24ab11007a4d4221f884d0425c2c8f676"
+    },
+    {
+      "bytes": 84305,
+      "path": "00_raw/_corpus/html/policies/EU_CLINICAL_TRIALS_REGULATION_536_2014/EU_CLINICAL_TRIALS_REGULATION_536_2014.html",
+      "sha256": "fd4488f287dc59b3e51eb6f99d83c3672c5dc241bd722656a147a813778fd3c5"
+    },
+    {
+      "bytes": 44342,
+      "path": "00_raw/_corpus/html/policies/FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION/FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION.html",
+      "sha256": "13dc85f213c9ad073a1dc3b02397cbf87cc62c79093a6c3d8bdcf289cacd26c0"
+    },
+    {
+      "bytes": 58837,
+      "path": "00_raw/_corpus/html/regulatory/DRUGSATFDA_NDA208065_OVERVIEW/DRUGSATFDA_NDA208065_OVERVIEW.html",
+      "sha256": "07a9d3c140b3b9f937322a05e20328915867019bbcdd8082c6d5f19b84a6c2ed"
+    },
+    {
+      "bytes": 251108,
+      "path": "00_raw/_corpus/html/regulatory/EMA_TAGRISSO_EPAR/EMA_TAGRISSO_EPAR.html",
+      "sha256": "de10a1feed1ad21dc70d9031a5760b8e5fd259a874e0b64981e617797c5b679a"
+    },
+    {
+      "bytes": 1445,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13070087/europe_pmc_metadata.json",
+      "sha256": "d91c17495f0dffed89c8abf969e805d47f6cd3999234987bc581c961d4a2fbc8"
+    },
+    {
+      "bytes": 772,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13070087/source_record.json",
+      "sha256": "2852de9b77b3afe852fb6778d36cd3ce8e5c20859c63070a3b929c5a3344c4a7"
+    },
+    {
+      "bytes": 1475,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13129538/europe_pmc_metadata.json",
+      "sha256": "d91c8bf372d67d1e08955abd02d75de63ad71269de3adef37141750d305d6ab6"
+    },
+    {
+      "bytes": 779,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13129538/source_record.json",
+      "sha256": "b4b9490110020ff6b3ca51f1dcc9fe42570b9d9db5ac10cc2bdad3ba59d0e951"
+    },
+    {
+      "bytes": 1415,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13143971/europe_pmc_metadata.json",
+      "sha256": "3c9634a4a2af195cda990ea9754e2ad98426452487a9bccd295d7ca6cad8d336"
+    },
+    {
+      "bytes": 808,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC13143971/source_record.json",
+      "sha256": "e2f9049a6b1984b444b99d762f7df7f3bfd4de75d3f8393758a4639f35e6fb25"
+    },
+    {
+      "bytes": 1472,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC5447962/europe_pmc_metadata.json",
+      "sha256": "359af8aa73e0d8de6b9a1984c692dfaea6aad0d8e204e52d9a87511eff120fc7"
+    },
+    {
+      "bytes": 759,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC5447962/source_record.json",
+      "sha256": "e2b8b3e379565f9b22fd8a28c886b2f8f6d5d4753f08525ee9964183bc91a7e2"
+    },
+    {
+      "bytes": 1584,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC6889286/europe_pmc_metadata.json",
+      "sha256": "01df65e32fda21dccba0c715a134772a92eb8086296c5cf944e9574fd627ff30"
+    },
+    {
+      "bytes": 768,
+      "path": "00_raw/_corpus/json/articles/pmc_oa/PMC6889286/source_record.json",
+      "sha256": "513432920ad212b38602601c5de0b62a70d9ad582593233845ecf87c77e99f1b"
+    },
+    {
+      "bytes": 428,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE272182/geo_esearch.json",
+      "sha256": "d521fcf1868e0c9723c7717130638344c6b2ba36ee3ceba59d7b4cabd6717acb"
+    },
+    {
+      "bytes": 3499,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE272182/geo_esummary.json",
+      "sha256": "21f37333f33b1b53f0af2ae6f43850d026c12396c9a8feac4b1ab319d71c9b25"
+    },
+    {
+      "bytes": 845,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE272182/source_record.json",
+      "sha256": "fb51bb30a06594f1f275cf6ae02dafc609414b729bd9410171ca54bcd0a62a24"
+    },
+    {
+      "bytes": 428,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE298111/geo_esearch.json",
+      "sha256": "0a1956ecda2966a5911699da111a82228cfe542a62e9b7b43c0f63e08428dae4"
+    },
+    {
+      "bytes": 2236,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE298111/geo_esummary.json",
+      "sha256": "8db02cc9fbdae8f679f63ae9c21b2cb2be58e7cd0b73b1189696883d59636930"
+    },
+    {
+      "bytes": 831,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE298111/source_record.json",
+      "sha256": "e392209be1351bb7fee73d6753ac3b5d9badb6f254fb46e52f1e64d065f316b8"
+    },
+    {
+      "bytes": 430,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE300311/geo_esearch.json",
+      "sha256": "92262a459db3c23295d0989273669fce718c17153d4e0a575d2cfcedb061f1ef"
+    },
+    {
+      "bytes": 4322,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE300311/geo_esummary.json",
+      "sha256": "1e12eb07942eeeae06f103b22ffffc26f9d45b603fe4f0e3effd41698a1d8563"
+    },
+    {
+      "bytes": 871,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE300311/source_record.json",
+      "sha256": "33287e2fbc923a334edef9158e634455211c136f2aed9ffe38ce411acebb35be"
+    },
+    {
+      "bytes": 430,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323365/geo_esearch.json",
+      "sha256": "b78fd334c727eece88f72228bfe1e49629e75ee3b9efe565d9b97547ab81f441"
+    },
+    {
+      "bytes": 3052,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323365/geo_esummary.json",
+      "sha256": "a2156dfef6567f40bc021d1c8861d732770fca0409ce481b5b9f7731418a6c0a"
+    },
+    {
+      "bytes": 866,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323365/source_record.json",
+      "sha256": "dbaf575bad67fb41530f212fa41c294e417c68f6fa146821d2ff3a0fcf2421c3"
+    },
+    {
+      "bytes": 430,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323366/geo_esearch.json",
+      "sha256": "411e5793cdac4b8cf4cfcac3273eba26ceef55a6226619c798eafb89a8ab9ad8"
+    },
+    {
+      "bytes": 3612,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323366/geo_esummary.json",
+      "sha256": "54a3090a547db52b3818cc3cb269dc992a61b5d14e43121373e23c7105f61fd7"
+    },
+    {
+      "bytes": 858,
+      "path": "00_raw/_corpus/json/datasets/geo/GSE323366/source_record.json",
+      "sha256": "667279ac453ac54f203e672023457e33d5a2a56547cfbbfd57b62159fd38fda0"
+    },
+    {
+      "bytes": 241,
+      "path": "00_raw/_corpus/json/policies/AACT_HOME/source_record.json",
+      "sha256": "2a00866c7e0b341237cec2fb6957183a5f4a9fb2f00458cda1c46f40b5996b6a"
+    },
+    {
+      "bytes": 297,
+      "path": "00_raw/_corpus/json/policies/CLINICALTRIALS_GOV_DATA_API/source_record.json",
+      "sha256": "fb79be315940a5deff1d72d37fb311f1aa7041f22560f26049bb392c1bde12f1"
+    },
+    {
+      "bytes": 397,
+      "path": "00_raw/_corpus/json/policies/EU_CLINICAL_TRIALS_REGULATION_536_2014/source_record.json",
+      "sha256": "4f4864cb79c745d212717670dafc827c280c702378f1cc1269b9440bb0857cb7"
+    },
+    {
+      "bytes": 426,
+      "path": "00_raw/_corpus/json/policies/FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION/source_record.json",
+      "sha256": "38b0ec12911c02390d305c8491efa1b25c364c1017986d402ae01d2ff1a86fc0"
+    },
+    {
+      "bytes": 2788,
+      "path": "00_raw/_corpus/json/registries/chembl/CHEMBL3353410/mechanism.json",
+      "sha256": "83682d062a1c0a844e75c6b637d0d57d80c4ca5373468e7d3ac8eae23d2dbbb7"
+    },
+    {
+      "bytes": 6539,
+      "path": "00_raw/_corpus/json/registries/chembl/CHEMBL3353410/molecule.json",
+      "sha256": "172508d31d6dd0a54e7d0cd753e77acc6b92f887a05a79f5081f61a8c776845c"
+    },
+    {
+      "bytes": 719,
+      "path": "00_raw/_corpus/json/registries/chembl/CHEMBL3353410/source_record.json",
+      "sha256": "f75b39b6c2bc230ec7980e9df79786651b5b1e0386382efb91e134c193451af1"
+    },
+    {
+      "bytes": 112393,
+      "path": "00_raw/_corpus/json/registries/chembl/CHEMBL3353410/target_CHEMBL203.json",
+      "sha256": "d675225458c2c5b3051cff533f680bb0fe322c342fcafe58ac63664604fcfbb7"
+    },
+    {
+      "bytes": 368,
+      "path": "00_raw/_corpus/json/regulatory/DRUGSATFDA_NDA208065_APPROVAL_LETTER/source_record.json",
+      "sha256": "1eed2133370bb512bd868ca20c7269f4cab3779ebdf8011651e302362dd481b9"
+    },
+    {
+      "bytes": 360,
+      "path": "00_raw/_corpus/json/regulatory/DRUGSATFDA_NDA208065_OVERVIEW/source_record.json",
+      "sha256": "aa8aa9ae10c3f2c7c51a40c2ea5a182f2d11c939071cf096965d7141b0fee7a7"
+    },
+    {
+      "bytes": 360,
+      "path": "00_raw/_corpus/json/regulatory/DRUGSATFDA_NDA208065_SUMMARY_REVIEW/source_record.json",
+      "sha256": "0f50aea22c5641884c9c865beb49199cbfac0d5abe92a544ea31c139f342909e"
+    },
+    {
+      "bytes": 288,
+      "path": "00_raw/_corpus/json/regulatory/EMA_TAGRISSO_EPAR/source_record.json",
+      "sha256": "582ca2afeecbad38993e82e60adebbdd90b686f46f25515da706d531b58f5be4"
+    },
+    {
+      "bytes": 24044,
+      "path": "00_raw/_corpus/json/regulatory/OPENFDA_DRUGSFDA_NDA208065/OPENFDA_DRUGSFDA_NDA208065.json",
+      "sha256": "a48d216d2fb08ce9ad705d6eff304e5784c0c1051471a28f1dd0477ce1323923"
+    },
+    {
+      "bytes": 345,
+      "path": "00_raw/_corpus/json/regulatory/OPENFDA_DRUGSFDA_NDA208065/source_record.json",
+      "sha256": "fd7a31251c63d7760d2498c9c5c2bfaa4bb8adcce5ac55ac09f0cce6d63d2ede"
+    },
+    {
+      "bytes": 321623,
+      "path": "00_raw/_corpus/json/regulatory/OPENFDA_LABEL_TAGRISSO/OPENFDA_LABEL_TAGRISSO.json",
+      "sha256": "66fbf8b6db346f412c45be9005778be146a0519a82b55ab62f8d49a3b3fb23cd"
+    },
+    {
+      "bytes": 329,
+      "path": "00_raw/_corpus/json/regulatory/OPENFDA_LABEL_TAGRISSO/source_record.json",
+      "sha256": "27c565bef11cd2d00dd3c14c804adbd87c8692628ecc640dee4055d561b0b8eb"
+    },
+    {
+      "bytes": 1280,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02151981/source_record.json",
+      "sha256": "d6385bf607bb0322e27e85ed7ee082251de6a7c5d472b25a9deb4ee841164384"
+    },
+    {
+      "bytes": 187022,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02151981/study.json",
+      "sha256": "da1bf77d0a09d57749683f36a0262c2b2c1e065723e4d9f446de65c1f9c55d53"
+    },
+    {
+      "bytes": 1277,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02296125/source_record.json",
+      "sha256": "2ac20ba1e11a66d9b300167309be21b1f8cc92e0e83d0f2501b1cbf78db55a46"
+    },
+    {
+      "bytes": 507810,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02296125/study.json",
+      "sha256": "ee13f46039b3a210538dfb45fa3f1b3464b969052c4609821ef555d855dd412c"
+    },
+    {
+      "bytes": 1235,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02511106/source_record.json",
+      "sha256": "06a0d7b6b34a738da25a949eedcfe41b10cb7fa819b89e8fea5bd851d6f23068"
+    },
+    {
+      "bytes": 345433,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT02511106/study.json",
+      "sha256": "7d3af25b75e7c2bc9a52aec9542bbfc74ab1ac1a5beecaaf028739343fb0c4df"
+    },
+    {
+      "bytes": 1249,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT04035486/source_record.json",
+      "sha256": "8a590f10d63263418c3681145ecbb0d30157c3ec890b3aaeb98d8f6d92339223"
+    },
+    {
+      "bytes": 536430,
+      "path": "00_raw/_corpus/json/trials/clinicaltrials_gov/NCT04035486/study.json",
+      "sha256": "fe3267fa1a0fdb3826e413689dd0839ddbe5247b5b6f432d094c75445c5f305d"
+    },
+    {
+      "bytes": 805332,
+      "path": "00_raw/_corpus/pdf/regulatory/DRUGSATFDA_NDA208065_APPROVAL_LETTER/DRUGSATFDA_NDA208065_APPROVAL_LETTER.pdf",
+      "sha256": "d1133631136f3db598230eedf3b4dcc698369d03cb4ea34e2cca736672fa0ee0"
+    },
+    {
+      "bytes": 1269438,
+      "path": "00_raw/_corpus/pdf/regulatory/DRUGSATFDA_NDA208065_SUMMARY_REVIEW/DRUGSATFDA_NDA208065_SUMMARY_REVIEW.pdf",
+      "sha256": "2491da919bdffac1c3bc31321845b96d2b362596ddf98a28b84b3075c544755a"
+    },
+    {
+      "bytes": 1533258,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02151981/Prot_000.pdf",
+      "sha256": "af014a1e8fe74d99f04dca6a47daa9725d5fc868ac47fa2e8f2b8e3649ba8df2"
+    },
+    {
+      "bytes": 1554114,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02151981/SAP_001.pdf",
+      "sha256": "8b6e64b8d758221fdfbaeb4c4569e33e1dfb1833baceeed8f3aea6dcb4aa21e4"
+    },
+    {
+      "bytes": 3422547,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02296125/Prot_000.pdf",
+      "sha256": "135417c917e5bf07f13507e3f389ea129d3d5d716d5254af31c6b682798a4cc1"
+    },
+    {
+      "bytes": 1373130,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02296125/SAP_001.pdf",
+      "sha256": "54ad011a0c57a985f8f59b7867367712ef4da548a895628fc817fcd09464da0b"
+    },
+    {
+      "bytes": 3564575,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02511106/Prot_002.pdf",
+      "sha256": "1cbe40cd63f4e2d72dbaa703dccba8993deea86d27941b69d58d543712a088f4"
+    },
+    {
+      "bytes": 3620937,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT02511106/SAP_001.pdf",
+      "sha256": "57666eebd452301a37e01358131dc187c006cc553bb4e0f34470969d4439dd6c"
+    },
+    {
+      "bytes": 1695323,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT04035486/Prot_000.pdf",
+      "sha256": "315d612a87b275359acfed906f9547a4d9b2d1db4450e3de70d19a1da23544f2"
+    },
+    {
+      "bytes": 1191302,
+      "path": "00_raw/_corpus/pdf/trials/clinicaltrials_gov/NCT04035486/SAP_002.pdf",
+      "sha256": "e6d63370ae6a5bcd176871513231dd671b44df0fcb247785e886335548ac4893"
+    },
+    {
+      "bytes": 3333,
+      "path": "00_raw/_corpus/txt/datasets/geo/GSE272182/series_soft.txt",
+      "sha256": "d0fdf217e526f5b15c8e9fbe77818ec2f6737d76b4d21e0f9c0da5b5b469d153"
+    },
+    {
+      "bytes": 2103,
+      "path": "00_raw/_corpus/txt/datasets/geo/GSE298111/series_soft.txt",
+      "sha256": "2a70495d87a234eca0ad6024b51c62a76e91f1e1f4507185e534c25a12d641f2"
+    },
+    {
+      "bytes": 3395,
+      "path": "00_raw/_corpus/txt/datasets/geo/GSE300311/series_soft.txt",
+      "sha256": "30dbb327cb034c76091fafd8e2707119fb5ca27500d304d06c57730b17f0c502"
+    },
+    {
+      "bytes": 2978,
+      "path": "00_raw/_corpus/txt/datasets/geo/GSE323365/series_soft.txt",
+      "sha256": "79248e8a7cdccef48e9c0bea22d72aaa91b9451c6478d6d8a5085fbfdac34d02"
+    },
+    {
+      "bytes": 3133,
+      "path": "00_raw/_corpus/txt/datasets/geo/GSE323366/series_soft.txt",
+      "sha256": "2405c40559f516f331473ef3de36a96e1c48490d32fedebfdda5c01630129544"
+    },
+    {
+      "bytes": 1641,
+      "path": "00_raw/_corpus/txt/synthetic_eln_lims/eln_experiment_notebook.txt",
+      "sha256": "dca18cde0712cb0095d50bf31cfdbab5e42216512ccc98dcc76ea453f71a08aa"
+    },
+    {
+      "bytes": 582,
+      "path": "00_raw/_corpus/txt/synthetic_eln_lims/lims_quality_control_report.txt",
+      "sha256": "9479eb1ab3dbfb3e62c78c259a660810f3eb67fc166afae4fd6c2e7236de35b5"
+    },
+    {
+      "bytes": 171998,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13070087/article.xml",
+      "sha256": "9ec5f51eb5a40e9eb1c37ed79691ba6f67a06ffac3bccbce54590b437a1e2b55"
+    },
+    {
+      "bytes": 455,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13070087/pmc_oa_license.xml",
+      "sha256": "b5054fa60482acdc02f274a1590626eae715a48585c4e2b9a4e2b569409356b2"
+    },
+    {
+      "bytes": 83028,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13129538/article.xml",
+      "sha256": "0fc7c5719f3a4c7d8fb9f66a32a1c692585e7005fdf9373e9cb7fc7c1235b986"
+    },
+    {
+      "bytes": 470,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13129538/pmc_oa_license.xml",
+      "sha256": "5af8d88241fa09e09235add3e6c54efbe3124153aacd65bc9a159f2812a316f5"
+    },
+    {
+      "bytes": 265081,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13143971/article.xml",
+      "sha256": "5cea45b3f7d97b1494079d432475e6107651ee69567b6439292a2188e626bd33"
+    },
+    {
+      "bytes": 446,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC13143971/pmc_oa_license.xml",
+      "sha256": "a001e7531e95526d2a13eb5f280bbd15c5cc54701444be04f822f2aea3b63655"
+    },
+    {
+      "bytes": 641276,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC5447962/article.xml",
+      "sha256": "c2a1d171f0497ea377c95eeb5afc2fc8ac5f4afaf9ba9c9392a2bd53fa7f6664"
+    },
+    {
+      "bytes": 451,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC5447962/pmc_oa_license.xml",
+      "sha256": "0cea6e7d7ada339e1e0d04ad335bde94bc83cdf52d3dadc90f520c75a49b48f8"
+    },
+    {
+      "bytes": 208212,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC6889286/article.xml",
+      "sha256": "cd7798a32101d4433e37af2a2057bba75cfe8fe7bacf5043f5a203c1eeed2bb6"
+    },
+    {
+      "bytes": 454,
+      "path": "00_raw/_corpus/xml/articles/pmc_oa/PMC6889286/pmc_oa_license.xml",
+      "sha256": "319cf54b2ba94f2a7fe6d1bb6b188e090d0d256bb471f5b118c5a8187ce44a24"
+    }
+  ],
+  "scenario": "HLS Agentic R&D Knowledge Mining",
+  "therapeutic_area": "EGFR-mutated non-small cell lung cancer"
+}

@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "summary": {
+      "type": "string",
+      "description": "User-facing grounded answer. Write in clear prose suitable for a researcher."
+    },
+    "decision": {
+      "type": "string",
+      "description": "How completely the question was answered from retrieved knowledge."
+    },
+    "evidence": {
+      "type": "string",
+      "description": "Brief rationale describing which retrieved passages or entity IDs support the answer. Use knowledge_base_empty when the KB has no grounded material."
+    },
+    "citations": {
+      "type": "array",
+      "description": "Persisted entity IDs or other citation strings referencing source documents, trials, datasets, or labels.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lineage": {
+      "type": "string",
+      "description": "Document-to-dataset-to-study lineage narrative when traceability is relevant; otherwise an empty string."
+    },
+    "raw_source_trace": {
+      "type": "boolean",
+      "description": "True when the answer is grounded in persisted knowledge-base entities with traceable source IDs; false when the KB is empty or nothing was grounded."
+    }
+  },
+  "required": [
+    "summary",
+    "decision",
+    "evidence",
+    "citations",
+    "lineage",
+    "raw_source_trace"
+  ]
+}

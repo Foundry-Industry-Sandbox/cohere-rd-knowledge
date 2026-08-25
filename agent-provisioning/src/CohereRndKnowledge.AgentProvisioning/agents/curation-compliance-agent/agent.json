@@ -1,0 +1,13 @@
+{
+  "name": "curation-compliance-agent",
+  "description": "Reviews Search and Chat responses for gaps, sensitive content, and policy alignment before compliance approval.",
+  "instructionsFile": "instructions.md",
+  "outputSchemaFile": "../../shared/curation-compliance-structured-output.schema.json",
+  "allowedDecisions": [
+    "Approve Response",
+    "Flag for Review",
+    "Insufficient Information"
+  ],
+  "governancePolicyFile": "governance.yaml",
+  "governanceRogueFile": "rogue.yaml"
+}

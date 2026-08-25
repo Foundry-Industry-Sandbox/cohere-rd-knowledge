@@ -1,0 +1,44 @@
+<div class="hitl-panel">
+    <h3 class="hitl-title">@Title</h3>
+    <p class="hitl-desc">@Description</p>
+
+    @if (Decision is not null)
+    {
+        <div class="decision-record @(Decision.Approved ? "approved" : "denied")">
+            <p><strong>@(Decision.Approved ? "Approved" : "Denied")</strong> at @Decision.DecidedAt.ToLocalTime().ToString("g")</p>
+            @if (!string.IsNullOrWhiteSpace(Decision.Notes))
+            {
+                <p class="meta-line">Notes: @Decision.Notes</p>
+            }
+        </div>
+    }
+    else if (CanSubmit)
+    {
+        <div class="form-group">
+            <label for="reviewer-notes">Reviewer notes (optional)</label>
+            <textarea id="reviewer-notes" class="form-control" rows="3" @bind="_notes"></textarea>
+        </div>
+        <div class="hitl-actions">
+            <LoadingButton CssClass="btn btn-success" IsLoading="IsBusy" OnClick="Approve">Approve</LoadingButton>
+            <LoadingButton CssClass="btn btn-danger" IsLoading="IsBusy" OnClick="Deny">Deny</LoadingButton>
+        </div>
+    }
+    else
+    {
+        <EmptyState Title="Not yet available" Description="Human approval will be required once agent stages complete." />
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string Title { get; set; } = "Human approval";
+    [Parameter] public string Description { get; set; } = string.Empty;
+    [Parameter] public HumanDecisionRecord? Decision { get; set; }
+    [Parameter] public bool CanSubmit { get; set; }
+    [Parameter] public bool IsBusy { get; set; }
+    [Parameter] public EventCallback<(bool Approved, string? Notes)> OnSubmit { get; set; }
+
+    private string? _notes;
+
+    private async Task Approve() => await OnSubmit.InvokeAsync((true, _notes));
+    private async Task Deny() => await OnSubmit.InvokeAsync((false, _notes));
+}

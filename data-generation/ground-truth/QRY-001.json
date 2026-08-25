@@ -1,0 +1,116 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "no_grounded_answer",
+  "flow": "search",
+  "kb_state": "empty",
+  "path": "no_data",
+  "phase": 2,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-04-demo",
+  "scenario_id": "QRY-001",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+        "retrieval_scope_entities": [],
+        "task": "answer_grounded_query"
+      },
+      "decision": "no_grounded_answer",
+      "expected_output": {
+        "citation_count": 0,
+        "decision": "no_grounded_answer",
+        "reason": "knowledge_base_empty"
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat"
+    },
+    {
+      "actor": null,
+      "agent": "curation_compliance_agent",
+      "agent_input": {
+        "draft_decision": "no_grounded_answer",
+        "task": "review_answer_before_return"
+      },
+      "decision": "confirm_no_data_response",
+      "expected_output": {
+        "decision": "confirm_no_data_response",
+        "required_human_review": false,
+        "sensitive_content_found": false
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curation_compliance"
+    },
+    {
+      "actor": "Daniel Okafor, Compliance Owner (fictional)",
+      "agent": null,
+      "decision": "approve",
+      "expected_output": null,
+      "gate": "approved",
+      "gate_record": {
+        "decision": "approve",
+        "request": "approve_response_before_return",
+        "reviewer": "Daniel Okafor, Compliance Owner (fictional)",
+        "reviews_joint_output_of": [
+          "search_chat",
+          "curation_compliance"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "compliance_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "output",
+      "materialized": true,
+      "order": 4,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "response": {
+        "citations": [],
+        "raw_source_trace": false,
+        "returned": "No grounded information is available yet — ingest knowledge first."
+      },
+      "stage": "response"
+    }
+  ],
+  "title": "Query an empty knowledge base — no grounded answer (demo step 1)",
+  "trigger": {
+    "action": "run_query",
+    "kb_state": "empty",
+    "note": "controlled preset query — not a free-form chatbot",
+    "query": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+    "request_id": "QRY-001-REQ",
+    "surface": "search_console",
+    "type": "ui_action"
+  }
+}

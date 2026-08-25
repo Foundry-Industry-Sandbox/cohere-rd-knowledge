@@ -1,0 +1,11 @@
+SAMPLE_ID,SOURCE_GEO_SERIES,SOURCE_GEO_SAMPLE,MODEL,CONDITION,TIMEPOINT,REPLICATE,ASSAY,INTENDED_SIGNAL
+SYN-LIMS-001,GSE323366,GSM9564408,PC9,DMSO,0 hour,1,RNA-seq,baseline control
+SYN-LIMS-002,GSE323366,GSM9564414,PC9,DMSO,0 hour,2,RNA-seq,baseline control
+SYN-LIMS-003,GSE323366,GSM9564412,PC9,osimertinib 0.1 uM,36 hours,1,RNA-seq,EGFR inhibition response
+SYN-LIMS-004,GSE323366,GSM9564418,PC9,osimertinib 0.1 uM,36 hours,2,RNA-seq,EGFR inhibition response
+SYN-LIMS-005,GSE323366,GSM9564413,H1650,osimertinib 0.1 uM,36 hours,1,RNA-seq,EGFR inhibition response
+SYN-LIMS-006,GSE323365,GSM9564404,PC9-Cas9,osimertinib 0.1 uM,endpoint,1,CRISPR dependency screen,drug lethality dependency
+SYN-LIMS-007,GSE272182,GSM8395370,PC9,sensitive,endpoint,1,RNA-seq,osimertinib-sensitive model
+SYN-LIMS-008,GSE272182,GSM8395373,PC9,resistant,endpoint,1,RNA-seq,osimertinib-resistant model
+SYN-LIMS-009,GSE300311,GSM9058173,PC9 sgCtrl,osimertinib,endpoint,1,chromatin/profile assay,control under treatment
+SYN-LIMS-010,GSE298111,GSM9008621,PC9OR si-GLMP,si-GLMP,endpoint,1,RNA-seq,resistance pathway knockdown

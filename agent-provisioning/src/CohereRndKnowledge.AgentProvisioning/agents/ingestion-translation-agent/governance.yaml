@@ -1,0 +1,37 @@
+apiVersion: governance.toolkit/v1
+version: "1.0"
+name: ingestion-translation-agent-governance
+default_action: allow
+rules:
+  - name: deny-search-rd-knowledge
+    condition: "tool_name == 'search_rd_knowledge'"
+    action: deny
+    priority: 100
+  - name: deny-get-knowledge-lineage
+    condition: "tool_name == 'get_knowledge_lineage'"
+    action: deny
+    priority: 100
+  - name: deny-curate-session-responses
+    condition: "tool_name == 'curate_session_responses'"
+    action: deny
+    priority: 100
+  - name: deny-index-rd-knowledge
+    condition: "tool_name == 'index_rd_knowledge'"
+    action: deny
+    priority: 100
+  - name: deny-link-rd-metadata
+    condition: "tool_name == 'link_rd_metadata'"
+    action: deny
+    priority: 100
+  - name: deny-flag-sensitive-content
+    condition: "tool_name == 'flag_sensitive_content'"
+    action: deny
+    priority: 100
+  - name: deny-get-relevant-policies
+    condition: "tool_name == 'get_relevant_policies'"
+    action: deny
+    priority: 100
+  - name: deny-get-policies-by-refs
+    condition: "tool_name == 'get_policies_by_refs'"
+    action: deny
+    priority: 100

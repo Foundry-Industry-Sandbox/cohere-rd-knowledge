@@ -1,0 +1,20 @@
+@if (Events is not null && Events.Count > 0)
+{
+    <div class="card retrieval-summary">
+        <h4 class="card-title-sm">RAG retrieval trace</h4>
+        <ol class="trace-list">
+            @foreach (var evt in Events)
+            {
+                <li>
+                    <span class="trace-stage">@evt.Stage</span>
+                    <span class="trace-desc">@evt.Description</span>
+                    <span class="trace-count">@evt.ItemCount items</span>
+                </li>
+            }
+        </ol>
+    </div>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<RetrievalTraceEvent>? Events { get; set; }
+}

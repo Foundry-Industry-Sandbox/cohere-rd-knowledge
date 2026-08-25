@@ -1,0 +1,158 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "flagged_for_compliance_review",
+  "flow": "search",
+  "kb_state": "populated",
+  "path": "eu_policy_gap",
+  "phase": 2,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": true,
+  "scenario_folder": "dataset-seed/cases/case-07-eu-policy-query",
+  "scenario_id": "QRY-003",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "What is the EU/EMA approved first-line indication for osimertinib in EGFR-mutated NSCLC?",
+        "retrieval_scope_entities": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "DATASET-GSE323366",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "task": "answer_grounded_query"
+      },
+      "decision": "answer_with_citations",
+      "expected_output": {
+        "decision": "answer_with_citations",
+        "expected_citations": [
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "minimum_citation_count": 2,
+        "missing_regional_context": "EU/EMA EPAR not cited",
+        "must_include_raw_source_trace": true
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "TRIAL-NCT02296125",
+        "DATASET-GSE323366",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat"
+    },
+    {
+      "actor": null,
+      "agent": "curation_compliance_agent",
+      "agent_input": {
+        "draft_answer_citations": [
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "enforced_policy_refs": [
+          "HLS-REGION-EU-400",
+          "HLS-LIC-200",
+          "HLS-TRIAL-300"
+        ],
+        "task": "review_answer_before_return"
+      },
+      "decision": "flag_for_review",
+      "expected_output": {
+        "decision": "flag_for_review",
+        "flags": [
+          "missing_eu_regional_policy_reference"
+        ],
+        "policy_refs": [
+          "HLS-REGION-EU-400"
+        ],
+        "required_human_review": true,
+        "sensitive_content_found": false
+      },
+      "gate": null,
+      "input_entities": [
+        "TRIAL-NCT02296125",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curation_compliance"
+    },
+    {
+      "actor": "Daniel Okafor, Compliance Owner (fictional)",
+      "agent": null,
+      "decision": "approve_with_flags",
+      "expected_output": null,
+      "gate": "approved_with_flags",
+      "gate_record": {
+        "decision": "approve_with_flags",
+        "flags": [
+          "missing_eu_regional_policy_reference"
+        ],
+        "request": "review_flagged_response_before_return",
+        "reviewer": "Daniel Okafor, Compliance Owner (fictional)",
+        "reviews_joint_output_of": [
+          "search_chat",
+          "curation_compliance"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "compliance_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "output",
+      "materialized": true,
+      "order": 4,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "response": {
+        "citations": [
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "compliance_flags": [
+          "missing_eu_regional_policy_reference"
+        ],
+        "raw_source_trace": true,
+        "returned": "Grounded answer returned with compliance flag for missing EU regional policy context."
+      },
+      "stage": "response"
+    }
+  ],
+  "title": "EU-scoped query — grounded answer missing regional policy context",
+  "trigger": {
+    "action": "run_query",
+    "depends_on_ingestion": "ING-001 (entities must already be persisted)",
+    "kb_state": "populated",
+    "note": "controlled preset query — not a free-form chatbot",
+    "query": "What is the EU/EMA approved first-line indication for osimertinib in EGFR-mutated NSCLC?",
+    "request_id": "QRY-003-REQ",
+    "surface": "search_console",
+    "type": "ui_action"
+  }
+}

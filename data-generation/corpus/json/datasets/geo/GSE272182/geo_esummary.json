@@ -1,0 +1,69 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "200272182": {
+      "accession": "GSE272182",
+      "bioproject": "PRJNA1135461",
+      "entrytype": "GSE",
+      "extrelations": [],
+      "ftplink": "ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE272nnn/GSE272182/",
+      "gds": "",
+      "gdstype": "Methylation profiling by high throughput sequencing",
+      "geo2r": "no",
+      "gpl": "24676",
+      "gse": "272182",
+      "n_samples": 6,
+      "pdat": "2025/12/04",
+      "platformtaxa": "",
+      "platformtitle": "",
+      "projects": [],
+      "ptechtype": "",
+      "pubmedids": [
+        "41213916"
+      ],
+      "relations": [],
+      "samples": [
+        {
+          "accession": "GSM8395373",
+          "title": "PC9RESISTANT-1"
+        },
+        {
+          "accession": "GSM8395374",
+          "title": "PC9RESISTANT-2"
+        },
+        {
+          "accession": "GSM8395370",
+          "title": "PC9SENSITIVE-1"
+        },
+        {
+          "accession": "GSM8395371",
+          "title": "PC9SENSITIVE-2"
+        },
+        {
+          "accession": "GSM8395372",
+          "title": "PC9SENSITIVE-3"
+        },
+        {
+          "accession": "GSM8395375",
+          "title": "PC9RESISTANT-3"
+        }
+      ],
+      "samplestaxa": "",
+      "seriestitle": "",
+      "ssinfo": "",
+      "subsetinfo": "",
+      "summary": "Background: Osimertinib resistance is the main challenge of the treatment in EGFR mutant lung adenocarcinoma (LUAD). The role of N6-methyladenosine (m6A) modification of circular RNAs (circRNAs) in osimertinib-resistant LUAD remains largely unknown. Methods: Parental and resistant cell lines, as well as human and mouse lung tissue samples were implemented. We used MeRIP-seq and circRNA-seq to screen the potential circRNA candidate that influenced osimertinib resistance. The sensitivity of LUAD cells was detected by Cell Counting Kit-8 (CCK-8) assay. The interaction between circRNA and proteins was validated by RNA immunoprecipitation and RNA pulldown. We generated circRNA encapsulated in lipid nanoparticle (LNP). Bioluminescence imaging assay was used for the monitoring of orthotopic transplantation model. Results: It was observed that circRNA LMNB1 (cLMNB1) exhibited elevated levels of m6A modification and diminished expression in osimertinib-resistant LUAD. cLMNB1 increased the sensitivity of LUAD to osimertinib in vitro and in vivo. METTL3 increased the m6A modification of cLMNB1 and inhibited its expression through the reading protein YTHDF2. cLMNB1 acted as a scaffold between Fibroblast growth factor receptor 4 (FGFR4) and E3 ubiquitin-protein ligase CBL (c-Cbl), enhancing the ubiquitin-dependent degradation of FGFR4. cLMNB1 with mutation of m6A modification site (cLMNB1-mut) encapsulated in LNP increased the efficacy of osimertinib in resistant LUAD. Conclusions: Our findings demonstrated that METTL3 and YTHDF2 mediated cLMNB1 degradation in m6A-dependent manner, and cLMNB1 destabilized FGFR4 protein in a ubiquitin-dependent way. We propose cLMNB1-mut as a nucleic acid drug that can overcome osimertinib resistance for its efficacy in osimertinib-resistant pre-clinical models in LUAD.",
+      "suppfile": "XLSX",
+      "taxon": "Homo sapiens",
+      "title": "N6-methyladenosine modification of cLMNB1 overcomes osimertinib resistance by destabilizing FGFR4 in non-small cell lung cancer",
+      "uid": "200272182",
+      "valtype": ""
+    },
+    "uids": [
+      "200272182"
+    ]
+  }
+}

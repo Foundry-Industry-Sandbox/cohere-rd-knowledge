@@ -1,0 +1,29 @@
+Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer
+===============================================================================
+Research article evidence card
+
+Document ID: RDOC-PMC6889286
+Category: research_documents
+Source entity: entity/RDOC-PMC6889286.json
+
+Article Identity
+----------------
+Document ID: RDOC-PMC6889286
+PMCID: PMC6889286
+PMID: 31564718
+Title: Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer
+Journal: British Journal of Cancer
+Publication date: 2019-09-30
+License: Note: This work is published under the standard license to publish agreement. After 12 months the work will become freely available and the license terms will switch to a Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+Extractable Content
+-------------------
+Primary entities: osimertinib; EGFR; NSCLC
+Keywords: 
+Abstract: AbstractOsimertinib is an irreversible, third-generation epidermal growth factor receptor (EGFR) tyrosine kinase inhibitor that is highly selective for EGFR-activating mutations as well as the EGFR T790M mutation in patients with advanced non-small cell lung cancer (NSCLC) with EGFR oncogene addiction. Despite the documented efficacy of osimertinib in first- and second-line settings, patients inevitably develop resistance, with no further clear-cut therapeutic options to date other than chemotherapy and locally ablative therapy for selected individuals. On account of the high degree of tumour heterogeneity and adaptive cellular signalling pathways in NSCLC, the acquired osimertinib resistance is highly heterogeneous, encompassing EGFR-dependent as well as EGFR-independent mechanisms. Furthermore, data from repeat plasma genotyping analyses have highlighted differences in the frequency and preponderance of resistance mechanisms when osimertinib is administered in a front-line versus second-line setting, underlying the discrepancies in selection pressure and clonal evolution. This review summarises the molecular mechanisms of resistance to osimertinib in patients with advanced EGF...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: no patient-level source selected for normalized entity
+Raw source trace: corpus/xml/articles/pmc_oa/PMC6889286/article.xml

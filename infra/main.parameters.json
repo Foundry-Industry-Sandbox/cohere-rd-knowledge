@@ -1,0 +1,90 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseName": {
+      "value": "coherernd"
+    },
+    "modelDeploymentName": {
+      "value": "cohere-command-a-plus"
+    },
+    "modelDeploymentSkuName": {
+      "value": "GlobalStandard"
+    },
+    "modelDeploymentCapacity": {
+      "value": 20
+    },
+    "cohereModelName": {
+      "value": "Cohere-command-a-plus-05-2026"
+    },
+    "cohereModelVersion": {
+      "value": "1"
+    },
+    "metadataModelDeploymentName": {
+      "value": "cohere-command-a"
+    },
+    "metadataModelDeploymentSkuName": {
+      "value": "GlobalStandard"
+    },
+    "metadataModelDeploymentCapacity": {
+      "value": 100
+    },
+    "metadataCohereModelName": {
+      "value": "cohere-command-a"
+    },
+    "metadataCohereModelVersion": {
+      "value": "1"
+    },
+    "embedDeploymentName": {
+      "value": "cohere-embed-v4"
+    },
+    "embedModelName": {
+      "value": "embed-v-4-0"
+    },
+    "embedModelVersion": {
+      "value": "1"
+    },
+    "embedDeploymentSkuName": {
+      "value": "GlobalStandard"
+    },
+    "rerankDeploymentName": {
+      "value": "cohere-rerank-v4-pro"
+    },
+    "rerankModelName": {
+      "value": "Cohere-rerank-v4.0-pro"
+    },
+    "rerankModelVersion": {
+      "value": "1"
+    },
+    "rerankDeploymentSkuName": {
+      "value": "GlobalStandard"
+    },
+    "enableFabric": {
+      "value": false
+    },
+    "fabricWorkspaceName": {
+      "value": ""
+    },
+    "fabricLakehouseName": {
+      "value": "RDKnowledgeLakehouse"
+    },
+    "fabricIdentityName": {
+      "value": "fabric-identity"
+    },
+    "fabricRepositoryArchiveUrl": {
+      "value": "https://github.com/foundry-industry-sandbox/cohere-rd-knowledge/archive/refs/heads/main.zip"
+    },
+    "apiContainerImage": {
+      "value": "ghcr.io/foundry-industry-sandbox/coherernd-api:demo"
+    },
+    "mcpContainerImage": {
+      "value": "ghcr.io/foundry-industry-sandbox/coherernd-mcp:demo"
+    },
+    "frontendContainerImage": {
+      "value": "ghcr.io/foundry-industry-sandbox/coherernd-web:demo"
+    },
+    "provisioningContainerImage": {
+      "value": "ghcr.io/foundry-industry-sandbox/coherernd-provisioning:demo"
+    }
+  }
+}

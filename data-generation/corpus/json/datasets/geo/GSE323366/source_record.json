@@ -1,0 +1,14 @@
+{
+  "accession": "GSE323366",
+  "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gds&term=GSE323366%5BACCN%5D&retmode=json&retmax=1",
+  "esummary_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200323366&retmode=json",
+  "local_paths": [
+    "00_raw/json/datasets/geo/GSE323366/geo_esearch.json",
+    "00_raw/json/datasets/geo/GSE323366/geo_esummary.json",
+    "00_raw/txt/datasets/geo/GSE323366/series_soft.txt"
+  ],
+  "public_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE323366",
+  "raw_layer_policy": "Selected because samples are cell-line or assay-level records, not patient specimens.",
+  "role": "PC9/H1650 RNA-seq with DMSO, erlotinib, and osimertinib conditions",
+  "soft_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE323366&targ=self&form=text&view=quick"
+}

@@ -1,0 +1,31 @@
+{
+  "acronym": "FLAURA2",
+  "documents": [
+    {
+      "date": "2021-08-26",
+      "filename": "Prot_000.pdf",
+      "label": "Study Protocol",
+      "local_path": "00_raw/pdf/trials/clinicaltrials_gov/NCT04035486/Prot_000.pdf",
+      "size_from_api": 1695323,
+      "url": "https://cdn.clinicaltrials.gov/large-docs/86/NCT04035486/Prot_000.pdf"
+    },
+    {
+      "date": "2023-01-09",
+      "filename": "SAP_002.pdf",
+      "label": "Statistical Analysis Plan",
+      "local_path": "00_raw/pdf/trials/clinicaltrials_gov/NCT04035486/SAP_002.pdf",
+      "size_from_api": 1191302,
+      "url": "https://cdn.clinicaltrials.gov/large-docs/86/NCT04035486/SAP_002.pdf"
+    }
+  ],
+  "local_paths": [
+    "00_raw/json/trials/clinicaltrials_gov/NCT04035486/study.json",
+    "00_raw/pdf/trials/clinicaltrials_gov/NCT04035486/Prot_000.pdf",
+    "00_raw/pdf/trials/clinicaltrials_gov/NCT04035486/SAP_002.pdf"
+  ],
+  "nct_id": "NCT04035486",
+  "public_page": "https://clinicaltrials.gov/study/NCT04035486",
+  "raw_layer_policy": "Aggregate trial registration/results plus public protocol/SAP documents only.",
+  "role": "Osimertinib with or without chemotherapy as first-line treatment",
+  "study_url": "https://clinicaltrials.gov/api/v2/studies/NCT04035486"
+}

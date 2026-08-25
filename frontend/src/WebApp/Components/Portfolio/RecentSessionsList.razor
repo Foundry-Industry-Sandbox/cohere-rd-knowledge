@@ -1,0 +1,30 @@
+@if (Sessions.Count == 0)
+{
+    <EmptyState Title="No active sessions" Description="Run an ingestion or query scenario to open a workspace session." />
+}
+else
+{
+    <ul class="session-list">
+        @foreach (var session in Sessions)
+        {
+            <li class="session-row">
+                <div>
+                    <span class="block-badge block-@session.Block.ToString().ToLowerInvariant()">@session.Block</span>
+                    <strong>@session.Title</strong>
+                    <span class="meta-line">@(session.ExecutionId ?? session.SessionId)</span>
+                </div>
+                <div class="session-actions">
+                    <StatusBadge Label="@WorkflowStageUi.ToBusinessStatusLabel(session.Status)" CssClass="@WorkflowStageUi.ToStatusBadgeClass(session.Status)" />
+                    <button type="button" class="btn btn-secondary btn-sm" @onclick="() => Open(session)">Open</button>
+                </div>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<KnowledgeSessionSummary> Sessions { get; set; } = [];
+    [Parameter] public EventCallback<KnowledgeSessionSummary> OnOpen { get; set; }
+
+    private async Task Open(KnowledgeSessionSummary session) => await OnOpen.InvokeAsync(session);
+}

@@ -1,0 +1,30 @@
+LBL-TAGRISSO-OPENFDA
+====================
+Regulatory evidence card
+
+Document ID: LBL-TAGRISSO-OPENFDA
+Category: regulatory_submissions
+Source entity: entity/LBL-TAGRISSO-OPENFDA.json
+
+Regulatory Identity
+-------------------
+Document ID: LBL-TAGRISSO-OPENFDA
+Document type: product_label
+Source system: openfda_label
+Application number: NDA208065
+Brand name: TAGRISSO
+Generic name: OSIMERTINIB
+Sponsor/manufacturer: AstraZeneca Pharmaceuticals LP
+
+Label Extract
+-------------
+Effective time: 20240925
+Route: ORAL
+Indications: 1 INDICATIONS AND USAGE TAGRISSO is a kinase inhibitor indicated for: • adjuvant therapy after tumor resection in adult patients with non-small cell lung cancer (NSCLC) whose tumors have epidermal growth factor receptor (EGFR) exon 19 deletions or exon 21 L858R mutations, as detected by an FDA-approved test. ( 1.1 , 2.2 ) • the treatment of adult patients with locally advanced, unresectable (stage III) NSCLC whose disease has not progressed during or following concurrent or sequential platinum-based chemoradiation therapy and whose tumors have EGFR exon 19 deletions or exon 21 L858R mutations, as detected by an FDA-approved test. ( 1.2 , 2.2 ) • the first-line treatment of adult patients with metastatic NSCLC whose tumors have EGFR exon 19 deletions or exon 21 L858R mutations, as detected by an FDA-approved test. ( 1.3 , 2.2 ) • in combination with pemetrexed and platinum-based chemotherapy, the first-line treatment of adult patients with locally advanced or metastatic NSCLC whose tumors have EGFR exon 19 deletions or exon 21 L858R mutations, as detected by an FDA-approved test. ( 1.4 , 2.2 ) • the treatment of adult patients with metastatic EGFR T790M mutation-positive NSCLC, a...
+Warnings: 5 WARNINGS AND PRECAUTIONS • Interstitial Lung Disease (ILD)/Pneumonitis : Monitor for new or worsening pulmonary symptoms indicative of ILD/pneumonitis. For patients receiving TAGRISSO who have not received recent definite platinum-based chemoradiation therapy, permanently discontinue TAGRISSO in patients diagnosed with ILD/Pneumonitis. For patients who received recent definitive platinum-based chemoradiation therapy with Grade 1 ILD/pneumonitis continue TAGRISSO or interrupt and restart, as appropriate. Permanently discontinue TAGRISSO in patients diagnosed with Grade ≥2 ILD/pneumonitis. ( 2.5 , 5.1 ) • QTc Interval Prolongation : Monitor electrocardiograms and electrolytes in patients who have a history or predisposition for QTc prolongation, or those who are taking medications that are known to prolong the QTc interval. Withhold, then restart at a reduced dose or permanently disco...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: 
+Raw source trace: corpus/json/regulatory/OPENFDA_LABEL_TAGRISSO/OPENFDA_LABEL_TAGRISSO.json

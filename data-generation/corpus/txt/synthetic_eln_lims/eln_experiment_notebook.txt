@@ -1,0 +1,38 @@
+
+SYNTHETIC ELN NOTEBOOK EXPORT
+System: HelixBench ELN (synthetic)
+Project: EGFRm NSCLC osimertinib knowledge-mining baseline
+Provenance: synthetic_from_public_structure
+
+IMPORTANT: This file is generated for the dataset seed. It does not contain
+real patient data, real patient names, or real clinical trajectories.
+
+Entry ELN-OSM-001
+Date: 2026-02-03
+Scientist: Dr. Elena Mora (fictional)
+Objective: Align public PC9/H1650 EGFR-inhibition RNA-seq source records to
+the research knowledge hub ingestion model.
+Linked public sources: GSE323366, PMC6889286, CHEMBL3353410.
+Materials: PC9 and H1650 cell-line metadata; DMSO, erlotinib, osimertinib.
+Observation: Osimertinib-treated PC9 and H1650 samples should be linked to
+EGFR inhibition, resistance-mechanism literature, and FLAURA/AURA3 trial context.
+
+Entry ELN-OSM-002
+Date: 2026-02-10
+Scientist: Dr. Noah Ibarra (fictional)
+Objective: Prepare resistant/sensitive model mapping for downstream entity
+extraction.
+Linked public sources: GSE272182, GSE298111, PMC13143971.
+Materials: PC9 sensitive, PC9 resistant, PC9OR si-GLMP metadata.
+Observation: Resistance-linked records should preserve the distinction between
+cell-line models and clinical trial populations.
+
+Entry ELN-OSM-003
+Date: 2026-02-17
+Scientist: Dr. Priya Nandakumar (fictional)
+Objective: Curate compliance notes for public regulatory and regional policy
+documents.
+Linked public sources: NDA208065, EMA Tagrisso EPAR, FDA clinical trial policy,
+EU Clinical Trials Regulation 536/2014.
+Observation: Clinical trial results are aggregate. Any generated reviewer or
+owner names are fictional. No patient identifiers are used.

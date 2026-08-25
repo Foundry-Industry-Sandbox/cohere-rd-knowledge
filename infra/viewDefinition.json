@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#",
+  "contentVersion": "0.0.0.2",
+  "views": [
+    {
+      "kind": "Overview",
+      "properties": {
+        "displayName": "Overview",
+        "version": "1.0.0",
+        "header": "Cohere R&D Knowledge Mining",
+        "description": "Your Cohere-powered R&D knowledge mining workflow is deployed.<br/><br/><em>Launch the application</em><br/>In the managed application menu, open <em>Settings > Parameters and Outputs</em>, then select <strong><code>frontendUrl</code></strong>. This is the primary application URL. Service endpoints are available as <code>apiUrl</code> and <code>mcpUrl</code>.<br/><br/><em>Microsoft Foundry</em><br/>Use <code>foundryProjectEndpoint</code> to connect to the project and <code>foundryProjectResourceId</code> to open or automate against its Azure resource. The deployed resources and models are identified by <code>foundryAccountName</code>, <code>foundryProjectName</code>, <code>modelDeploymentName</code>, <code>embedDeploymentName</code>, <code>embedModelName</code>, <code>rerankDeploymentName</code>, and <code>rerankModelName</code>.<br/><br/><em>Retrieval and document storage</em><br/>Azure AI Search details are available as <code>searchServiceName</code> and <code>searchServiceEndpoint</code>. Azure Storage details are available as <code>storageAccountName</code>, <code>blobServiceUri</code>, and <code>documentsContainerName</code>.<br/><br/><em>Provisioning jobs</em><br/>Use <code>policySeedJobName</code> and <code>provisioningJobName</code> to monitor post-deployment initialization.<br/><br/><em>Optional Fabric integration</em><br/>When Fabric integration is enabled, use <code>fabricWorkspaceName</code> and <code>fabricWorkspaceId</code> to identify the workspace, and <code>fabricLakehouseName</code> and <code>fabricLakehouseId</code> to identify the lakehouse.<br/><br/><em>Deployment readiness</em><br/>Post-deployment policy seeding and Foundry agent provisioning can take 15-30 minutes. If the application is not ready immediately, wait for those jobs to finish and try again."
+      }
+    }
+  ]
+}

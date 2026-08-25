@@ -1,0 +1,60 @@
+<div class="scenario-picker">
+    <div class="picker-toolbar">
+        <input type="search" class="form-control" placeholder="Search scenarios…" @bind="_search" @bind:event="oninput" aria-label="Search scenarios" />
+        <div class="filter-chips">
+            @foreach (var filter in _filters)
+            {
+                <button type="button" class="chip-btn @(filter == _outcomeFilter ? "active" : "")" @onclick="() => SetFilter(filter)">@filter</button>
+            }
+        </div>
+    </div>
+    <ul class="scenario-list" role="listbox">
+        @foreach (var scenario in FilteredScenarios)
+        {
+            <li role="option"
+                aria-selected="@IsSelected(scenario.ScenarioId)"
+                class="scenario-item @(IsSelected(scenario.ScenarioId) ? "selected" : "")"
+                @onclick="() => SelectAsync(scenario.ScenarioId)">
+                <span class="scenario-title">@scenario.Title</span>
+                <span class="scenario-meta">@FormatMeta(scenario)</span>
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    [Parameter, EditorRequired] public IReadOnlyList<SeedScenarioDefinition> Scenarios { get; set; } = [];
+    [Parameter] public string? SelectedScenarioId { get; set; }
+    [Parameter] public EventCallback<string> SelectedScenarioIdChanged { get; set; }
+
+    private string _search = string.Empty;
+    private string? _outcomeFilter;
+    private static readonly string[] _filters = ["Approve", "Review", "Deny"];
+
+    private IEnumerable<SeedScenarioDefinition> FilteredScenarios =>
+        ScenarioPickerFilter.Apply(Scenarios, _search, _outcomeFilter);
+
+    private static string FormatMeta(SeedScenarioDefinition scenario) =>
+        $"{scenario.StudyId} · {scenario.OutcomeHint}";
+
+    private void SetFilter(string filter)
+    {
+        _outcomeFilter = string.Equals(_outcomeFilter, filter, StringComparison.OrdinalIgnoreCase)
+            ? null
+            : filter;
+    }
+
+    private async Task SelectAsync(string scenarioId)
+    {
+        if (IsSelected(scenarioId))
+        {
+            return;
+        }
+
+        await SelectedScenarioIdChanged.InvokeAsync(scenarioId);
+    }
+
+    private bool IsSelected(string scenarioId) =>
+        !string.IsNullOrWhiteSpace(SelectedScenarioId) &&
+        scenarioId.Equals(SelectedScenarioId, StringComparison.OrdinalIgnoreCase);
+}

@@ -1,0 +1,139 @@
+{
+  "scenario": "HLS Agentic R&D Knowledge Mining",
+  "therapeutic_area": "EGFR-mutated non-small cell lung cancer",
+  "compound_anchor": {
+    "preferred_name": "Osimertinib",
+    "aliases": ["Tagrisso", "AZD9291"],
+    "chembl_id": "CHEMBL3353410",
+    "fda_application_number": "NDA208065"
+  },
+  "clinical_trials": [
+    {
+      "nct_id": "NCT02296125",
+      "acronym": "FLAURA",
+      "role": "First-line osimertinib versus erlotinib/gefitinib in EGFRm+ locally advanced/metastatic NSCLC"
+    },
+    {
+      "nct_id": "NCT02151981",
+      "acronym": "AURA3",
+      "role": "Osimertinib versus platinum-based chemotherapy after EGFR TKI progression in T790M-positive NSCLC"
+    },
+    {
+      "nct_id": "NCT02511106",
+      "acronym": "ADAURA",
+      "role": "Adjuvant osimertinib after complete tumor resection"
+    },
+    {
+      "nct_id": "NCT04035486",
+      "acronym": "FLAURA2",
+      "role": "Osimertinib with or without chemotherapy as first-line treatment"
+    }
+  ],
+  "pmc_open_access_articles": [
+    {
+      "pmcid": "PMC6889286",
+      "title": "Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer",
+      "expected_license": "CC BY"
+    },
+    {
+      "pmcid": "PMC5447962",
+      "title": "Epidermal Growth Factor Receptor Cell Proliferation Signaling Pathways",
+      "expected_license": "CC BY"
+    },
+    {
+      "pmcid": "PMC13070087",
+      "title": "Updates in the Management of EGFR-Mutated Non-small Cell Lung Cancer (NSCLC)",
+      "expected_license": "CC BY"
+    },
+    {
+      "pmcid": "PMC13129538",
+      "title": "The evolving landscape of first-line and subsequent therapies in EGFR-mutated NSCLC",
+      "expected_license": "CC BY"
+    },
+    {
+      "pmcid": "PMC13143971",
+      "title": "Non-small cell lung cancer after EGFR-TKI resistance: from drug resistance mechanisms to precision interventions",
+      "expected_license": "CC BY"
+    }
+  ],
+  "geo_cell_line_datasets": [
+    {
+      "accession": "GSE323366",
+      "role": "PC9/H1650 RNA-seq with DMSO, erlotinib, and osimertinib conditions"
+    },
+    {
+      "accession": "GSE323365",
+      "role": "PC9-Cas9 dependency screen with untreated, erlotinib, and osimertinib arms"
+    },
+    {
+      "accession": "GSE272182",
+      "role": "PC9 sensitive versus osimertinib-resistant replicates"
+    },
+    {
+      "accession": "GSE300311",
+      "role": "PC9 PKM2-deficient/control samples with vehicle/osimertinib and chromatin marks"
+    },
+    {
+      "accession": "GSE298111",
+      "role": "PC9OR control versus si-GLMP replicates"
+    }
+  ],
+  "regulatory_sources": [
+    {
+      "source_id": "OPENFDA_LABEL_TAGRISSO",
+      "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:%22TAGRISSO%22&limit=1"
+    },
+    {
+      "source_id": "OPENFDA_DRUGSFDA_NDA208065",
+      "url": "https://api.fda.gov/drug/drugsfda.json?search=application_number:%22NDA208065%22&limit=1"
+    },
+    {
+      "source_id": "DRUGSATFDA_NDA208065_OVERVIEW",
+      "url": "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=208065"
+    },
+    {
+      "source_id": "DRUGSATFDA_NDA208065_APPROVAL_LETTER",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/2015/208065Orig1s000ltr.pdf"
+    },
+    {
+      "source_id": "DRUGSATFDA_NDA208065_SUMMARY_REVIEW",
+      "url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/208065Orig1s000SumR.pdf"
+    },
+    {
+      "source_id": "EMA_TAGRISSO_EPAR",
+      "url": "https://www.ema.europa.eu/en/medicines/human/EPAR/tagrisso"
+    }
+  ],
+  "policy_sources": [
+    {
+      "source_id": "FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION",
+      "url": "https://www.fda.gov/science-research/science-and-research-special-topics/clinical-trials-and-human-subject-protection"
+    },
+    {
+      "source_id": "EU_CLINICAL_TRIALS_REGULATION_536_2014",
+      "url": "https://health.ec.europa.eu/medicinal-products/clinical-trials/clinical-trials-regulation-eu-no-5362014_en"
+    },
+    {
+      "source_id": "CLINICALTRIALS_GOV_DATA_API",
+      "url": "https://clinicaltrials.gov/data-api/api"
+    },
+    {
+      "source_id": "AACT_HOME",
+      "url": "https://aact.ctti-clinicaltrials.org/"
+    }
+  ],
+  "excluded_sources": [
+    {
+      "source_id": "GSE297057",
+      "reason": "Sample titles reference patient FFPE specimens."
+    },
+    {
+      "source_id": "GSE301973",
+      "reason": "Sample titles reference before/after treatment specimens."
+    },
+    {
+      "source_id": "PMC4771182",
+      "reason": "Scientifically relevant but PMC OA API reports license none; use metadata only unless licensing is cleared."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+Genome-wide profiling identifies the genetic dependencies of cell death following EGFR inhibition
+================================================================================
+Experimental dataset evidence card
+
+Document ID: DATASET-GSE323365
+Category: experimental_datasets
+Source entity: entity/DATASET-GSE323365.json
+
+Dataset Identity
+----------------
+Dataset ID: GSE323365
+Title: Genome-wide profiling identifies the genetic dependencies of cell death following EGFR inhibition
+Taxon: Homo sapiens
+Sample count: 8
+Selected reason: PC9-Cas9 dependency screen with untreated, erlotinib, and osimertinib arms
+
+Experimental Context
+--------------------
+Assay context: EGFR inhibition
+Sample accessions: GSM9564400; GSM9564403; GSM9564406; GSM9564401; GSM9564407; GSM9564404; GSM9564402; GSM9564405
+Summary: EGFR is a proto-oncogene that is mutationally activated in a variety of cancers. Small molecule inhibitors targeting EGFR can effectively slow the progression of disease, and in some settings, these drugs even cause dramatic tumor regression. However, responses to EGFR inhibitors are rarely durable, and the mechanisms contributing to response variation remain unclear. In particular, several distinct mechanisms have been proposed to explain how EGFR inhibition activates cell death, and a consensus has yet to emerge. In this study, we use functional genomics with specialized analyses to infer how genetic perturbations affect the drug-induced death rate. Our data clarify that inhibition of PI3K signaling drives the lethality of EGFR inhibition. Inhibition of other pathways downstream of EGFR, including the RAS-MAPK pathway, promotes growth suppression but not the lethal effects of EGFR inhibitors. Taken together, our study provides a “reference map” for the genome-wide genetic dependencies of lethality in response to EGFR inhibitors.
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: cell-line or assay-level source selected
+Raw source trace: corpus/json/datasets/geo/GSE323365/geo_esummary.json; corpus/txt/datasets/geo/GSE323365/series_soft.txt; corpus/json/datasets/geo/GSE323365/source_record.json

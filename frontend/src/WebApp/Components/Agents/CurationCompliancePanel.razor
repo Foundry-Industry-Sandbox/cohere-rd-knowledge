@@ -1,0 +1,20 @@
+@if (Result is not null)
+{
+    <div class="agent-panel">
+        <p>@Result.Summary</p>
+        <h4 class="subsection-title">Compliance flags</h4>
+        <ComplianceFlagList Flags="@(Result.Flags ?? [])" />
+        @if (Result.PromptedOwners is { Count: > 0 })
+        {
+            <p class="meta-line"><strong>Prompted owners:</strong> @string.Join("; ", Result.PromptedOwners)</p>
+        }
+    </div>
+}
+else
+{
+    <EmptyState Title="Awaiting agent output" Description="Curation & Compliance will flag gaps and sensitive content." />
+}
+
+@code {
+    [Parameter] public CurationComplianceResult? Result { get; set; }
+}

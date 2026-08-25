@@ -1,0 +1,19 @@
+@if (Result is not null)
+{
+    <div class="agent-panel">
+        <p>@Result.Summary</p>
+        <p class="meta-line"><strong>Vectors indexed:</strong> @Result.VectorsIndexed</p>
+        <h4 class="subsection-title">Extracted entities</h4>
+        <EntityChipList Entities="Result.Entities" />
+        <h4 class="subsection-title">Document links</h4>
+        <LinkGraphSummary Links="Result.Links" />
+    </div>
+}
+else
+{
+    <EmptyState Title="Awaiting agent output" Description="Metadata & Linking will extract entities and link documents to datasets and studies." />
+}
+
+@code {
+    [Parameter] public MetadataLinkingResult? Result { get; set; }
+}

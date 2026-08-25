@@ -1,0 +1,40 @@
+@if (Messages.Count > 0)
+{
+    <div class="chat-transcript">
+        @foreach (var message in Messages)
+        {
+            <div class="chat-message chat-@message.Role">
+                <div class="chat-message-header">
+                    <strong>@(message.Role == "user" ? "You" : "Search & Chat")</strong>
+                    <span class="meta-line">@message.Timestamp.ToLocalTime().ToString("g")</span>
+                </div>
+                <div class="chat-message-body">@message.Content</div>
+                @if (message.Role == "assistant")
+                {
+                    @if (!string.IsNullOrWhiteSpace(message.LineageSummary))
+                    {
+                        <p class="meta-line"><strong>Lineage:</strong> @message.LineageSummary</p>
+                    }
+                    @if (message.Citations is { Count: > 0 })
+                    {
+                        <h4 class="subsection-title">Citations</h4>
+                        <CitationList Citations="message.Citations" />
+                    }
+                    @if (message.RetrievalTrace is { Count: > 0 })
+                    {
+                        <RetrievalSummaryCard Events="message.RetrievalTrace" />
+                    }
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <EmptyState Title="No messages yet"
+                Description="Ask a research question to start Search & Chat. Responses accumulate here for curation." />
+}
+
+@code {
+    [Parameter] public IReadOnlyList<ChatMessage> Messages { get; set; } = [];
+}

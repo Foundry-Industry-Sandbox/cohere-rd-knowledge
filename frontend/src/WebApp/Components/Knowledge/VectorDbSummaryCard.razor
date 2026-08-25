@@ -1,0 +1,28 @@
+@if (Summary is not null)
+{
+    <div class="card vector-db-summary">
+        <div class="card-header-row">
+            <h3 class="card-title">Vector DB</h3>
+            <span class="vector-db-badge">Bridge between blocks</span>
+        </div>
+        <p class="card-desc">Durable bridge between Block 1 (ingestion writes) and Block 2 (query reads). Block 2 operates against accumulated knowledge without requiring a fresh ingestion run.</p>
+        <dl class="detail-list grid-2">
+            <div><dt>Studies indexed</dt><dd>@Summary.TotalStudies</dd></div>
+            <div><dt>Documents</dt><dd>@Summary.TotalDocuments</dd></div>
+            <div><dt>Entities</dt><dd>@Summary.TotalEntities</dd></div>
+            <div><dt>Links</dt><dd>@Summary.TotalLinks</dd></div>
+        </dl>
+        @if (Summary.LastIngestionAt is not null)
+        {
+            <p class="meta-line">Last ingestion: @Summary.LastIngestionAt.Value.ToLocalTime().ToString("g") — @Summary.LastIngestedStudyId</p>
+        }
+        else
+        {
+            <p class="meta-line muted">No approved ingestions yet. Run Block 1 to populate the Vector DB.</p>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public VectorDbStoreSummary? Summary { get; set; }
+}

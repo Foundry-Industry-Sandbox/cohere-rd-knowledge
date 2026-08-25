@@ -1,0 +1,1381 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "version": "0.1.2-preview",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "parameters": {
+    "config": {
+      "basics": {
+        "description": "Deploy the Cohere-powered R&D knowledge solution with Microsoft Foundry, Azure AI Search, Container Apps, observability, and optional Microsoft Fabric integration.",
+        "location": {
+          "label": "Deployment region",
+          "resourceTypes": [
+            "Microsoft.CognitiveServices/accounts",
+            "Microsoft.ContainerInstance/containerGroups",
+            "Microsoft.Search/searchServices",
+            "Microsoft.Storage/storageAccounts",
+            "Microsoft.App/managedEnvironments",
+            "Microsoft.OperationalInsights/workspaces"
+          ],
+          "toolTip": "Choose a region that supports Microsoft Foundry, Azure AI Search, Azure Storage, and Azure Container Apps. Cohere model availability and capacity are validated for this region.",
+          "visible": true
+        },
+        "resourceGroup": {
+          "allowExisting": true
+        },
+        "subscription": {
+          "resourceProviders": [
+            "Microsoft.App",
+            "Microsoft.CognitiveServices",
+            "Microsoft.ContainerInstance",
+            "Microsoft.Insights",
+            "Microsoft.ManagedIdentity",
+            "Microsoft.OperationalInsights",
+            "Microsoft.Search",
+            "Microsoft.Storage"
+          ]
+        }
+      },
+      "isWizard": false
+    },
+    "resourceTypes": [
+      "Microsoft.App/containerApps",
+      "Microsoft.App/jobs",
+      "Microsoft.App/managedEnvironments",
+      "Microsoft.CognitiveServices/accounts",
+      "Microsoft.ContainerInstance/containerGroups",
+      "Microsoft.Insights/components",
+      "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "Microsoft.OperationalInsights/workspaces",
+      "Microsoft.Resources/deploymentScripts",
+      "Microsoft.Search/searchServices",
+      "Microsoft.Storage/storageAccounts"
+    ],
+    "basics": [
+      {
+        "name": "baseName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Application base name",
+        "constraints": {
+          "required": true,
+          "validations": [
+            {
+              "regex": "^[a-z](?:[a-z0-9-]{1,18}[a-z0-9])$",
+              "message": "Use 3-20 lowercase letters, numbers, or hyphens, starting with a letter and ending with a letter or number."
+            }
+          ]
+        },
+        "defaultValue": "[concat('coherernd-', substring(guid(), 0, 8))]",
+        "multiLine": false,
+        "toolTip": "Use a short lowercase prefix for the managed application and generated Azure resource names.",
+        "visible": true
+      },
+      {
+        "name": "getRegisterMicrosoftStorageArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Storage?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftStorageArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftStorageArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Storage/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftSearchArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Search?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftSearchArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftSearchArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Search/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftCognitiveServicesArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftCognitiveServicesArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftCognitiveServicesArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftOperationalInsightsArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.OperationalInsights?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftOperationalInsightsArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftOperationalInsightsArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.OperationalInsights/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftInsightsArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Insights?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftInsightsArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftInsightsArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.Insights/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftAppArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.App?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftAppArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftAppArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.App/register?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "getRegisterMicrosoftManagedIdentityArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "request": {
+          "method": "GET",
+          "path": "[concat(subscription().id, '/providers/Microsoft.ManagedIdentity?api-version=2021-04-01')]"
+        }
+      },
+      {
+        "name": "postRegisterMicrosoftManagedIdentityArmApiControl206918",
+        "type": "Microsoft.Solutions.ArmApiControl",
+        "condition": "[equals(steps('basics').getRegisterMicrosoftManagedIdentityArmApiControl206918.registrationState, 'Unregistered')]",
+        "request": {
+          "method": "POST",
+          "path": "[concat(subscription().id, '/providers/Microsoft.ManagedIdentity/register?api-version=2021-04-01')]"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "name": "aiConfiguration",
+        "label": "Microsoft Foundry and search",
+        "elements": [
+          {
+            "name": "modelAvailabilityInfo",
+            "type": "Microsoft.Common.InfoBox",
+            "options": {
+              "icon": "Info",
+              "text": "The Microsoft.CognitiveServices model catalog and regional model-capacity APIs validate every Cohere model, version, SKU, and requested capacity before deployment."
+            },
+            "visible": true
+          },
+          {
+            "name": "modelCatalogApi",
+            "type": "Microsoft.Solutions.ArmApiControl",
+            "request": {
+              "method": "GET",
+              "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/locations/', location(), '/models?api-version=2024-10-01')]"
+            }
+          },
+          {
+            "name": "foundryProjectName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Foundry project suffix",
+            "constraints": {
+              "required": true,
+              "validations": [
+                {
+                  "regex": "^[A-Za-z0-9][A-Za-z0-9._-]{1,63}$",
+                  "message": "Use 2-64 letters, numbers, periods, underscores, or hyphens, starting with a letter or number."
+                }
+              ]
+            },
+            "defaultValue": "project",
+            "multiLine": false,
+            "toolTip": "The deployed Foundry project name is the application base name followed by this suffix.",
+            "visible": true
+          },
+          {
+            "name": "commandSpacingSection",
+            "type": "Microsoft.Common.Section",
+            "label": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+            "elements": []
+          },
+          {
+            "name": "agentModel",
+            "type": "Microsoft.Common.Section",
+            "label": "Primary Command model deployment",
+            "elements": [
+              {
+                "name": "cohereModelName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Command model",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Cohere Command A+ (May 2026)",
+                      "value": "Cohere-command-a-plus-05-2026"
+                    },
+                    {
+                      "label": "Cohere Command A",
+                      "value": "cohere-command-a"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Cohere Command A+ (May 2026)",
+                "toolTip": "Cohere Command model used by the R&D knowledge agents except metadata linking.",
+                "visible": true
+              },
+              {
+                "name": "cohereModelVersion",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Command model version",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Version 1",
+                      "value": "1"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Version 1",
+                "toolTip": "Catalog version of the selected Cohere Command model.",
+                "visible": true
+              },
+              {
+                "name": "modelDeploymentName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Command deployment name",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[A-Za-z0-9][A-Za-z0-9._-]{1,63}$",
+                      "message": "Use 2-64 letters, numbers, periods, underscores, or hyphens, starting with a letter or number."
+                    },
+                    {
+                      "isValid": "[greater(length(filter(coalesce(steps('aiConfiguration').modelCatalogApi.value, parse('[]')), (item) => and(equals(toLower(item.model.format), 'cohere'), equals(item.model.name, steps('aiConfiguration').agentModel.cohereModelName), equals(item.model.version, steps('aiConfiguration').agentModel.cohereModelVersion)))), 0)]",
+                      "message": "The selected Cohere Command model version is not available in the selected subscription and region."
+                    }
+                  ]
+                },
+                "defaultValue": "cohere-command-a-plus",
+                "multiLine": false,
+                "toolTip": "Name assigned to the Cohere Command deployment in the new Foundry account.",
+                "visible": true
+              },
+              {
+                "name": "modelDeploymentSkuName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Command deployment SKU",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Global Standard",
+                      "value": "GlobalStandard"
+                    },
+                    {
+                      "label": "Data Zone Standard",
+                      "value": "DataZoneStandard"
+                    },
+                    {
+                      "label": "Regional Standard",
+                      "value": "Standard"
+                    },
+                    {
+                      "label": "Provisioned Managed",
+                      "value": "ProvisionedManaged"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Global Standard",
+                "toolTip": "Select a deployment SKU offered for the Cohere Command model in the target region.",
+                "visible": true
+              },
+              {
+                "name": "agentCapacityApi",
+                "type": "Microsoft.Solutions.ArmApiControl",
+                "request": {
+                  "method": "GET",
+                  "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/modelCapacities?api-version=2026-05-01&modelFormat=', encodeUriComponent('Cohere'), '&modelName=', encodeUriComponent(steps('aiConfiguration').agentModel.cohereModelName), '&modelVersion=', encodeUriComponent(steps('aiConfiguration').agentModel.cohereModelVersion))]",
+                  "transforms": {
+                    "sorted": "sort_by(value[?location != 'global'], &location)[*]"
+                  }
+                }
+              },
+              {
+                "name": "agentCapacityStatus",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Retrieving Cohere Command capacity for the selected deployment region."
+                },
+                "visible": "[empty(steps('aiConfiguration').agentModel.agentCapacityApi)]"
+              },
+              {
+                "name": "agentCapacityAvailability",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Command model regional capacity",
+                "constraints": {
+                  "allowedValues": "[if(empty(filter(coalesce(steps('aiConfiguration').agentModel.agentCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').agentModel.modelDeploymentSkuName)))), parse('[{\"label\":\"No capacity available\",\"description\":\"Choose another deployment region, SKU, or model version.\",\"value\":{\"location\":\"\",\"modelFormat\":\"\",\"modelName\":\"\",\"modelVersion\":\"\",\"skuName\":\"\",\"availableCapacity\":0}}]'), map(filter(coalesce(steps('aiConfiguration').agentModel.agentCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').agentModel.modelDeploymentSkuName))), (item) => parse(concat('{\"label\":\"', item.location, '\",\"description\":\"', item.properties.skuName, ' - Available capacity: ', string(item.properties.availableCapacity), '\",\"value\":{\"location\":\"', item.location, '\",\"modelFormat\":\"', item.properties.model.format, '\",\"modelName\":\"', item.properties.model.name, '\",\"modelVersion\":\"', item.properties.model.version, '\",\"skuName\":\"', item.properties.skuName, '\",\"availableCapacity\":', string(item.properties.availableCapacity), '}}'))))]",
+                  "required": true
+                },
+                "defaultValue": "[if(empty(filter(coalesce(steps('aiConfiguration').agentModel.agentCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').agentModel.modelDeploymentSkuName))))), '', first(map(filter(coalesce(steps('aiConfiguration').agentModel.agentCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').agentModel.modelDeploymentSkuName)))), (item) => item.location)))]",
+                "filter": true,
+                "filterPlaceholder": "Filter regions",
+                "multiLine": true,
+                "multiselect": false,
+                "placeholder": "Select regional capacity",
+                "toolTip": "Current available capacity for the selected Cohere Command model, SKU, and deployment region.",
+                "visible": true
+              },
+              {
+                "name": "modelDeploymentCapacity",
+                "type": "Microsoft.Common.Slider",
+                "label": "Command deployment capacity",
+                "constraints": {
+                  "required": true
+                },
+                "defaultValue": "[if(greaterOrEquals(coalesce(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0), 20), 20, coalesce(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0))]",
+                "max": "[coalesce(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0)]",
+                "min": 0,
+                "showStepMarkers": false,
+                "step": 1,
+                "subLabel": "capacity units",
+                "toolTip": "Select a positive capacity no greater than the currently available regional capacity.",
+                "visible": true
+              },
+              {
+                "name": "agentNoCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Error",
+                  "text": "No capacity is available for the selected Command model, version, SKU, and deployment region. Choose another region or SKU."
+                },
+                "visible": "[lessOrEquals(coalesce(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "agentAvailableCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Success",
+                  "text": "[concat('Cohere Command capacity up to ', string(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity), ' is available in ', location(), '.')]"
+                },
+                "visible": "[greater(coalesce(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "agentNoSelectedCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Warning",
+                  "text": "[concat('Select a positive deployment capacity from the ', string(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity), ' available in ', location(), '.')]"
+                },
+                "visible": "[and(lessOrEquals(steps('aiConfiguration').agentModel.modelDeploymentCapacity, 0), greater(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0))]"
+              },
+              {
+                "name": "agentCapacityValidation",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Validated command model capacity",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[1-9][0-9]*$",
+                      "message": "Capacity must be a positive integer."
+                    },
+                    {
+                      "isValid": "[and(equals(toLower(steps('aiConfiguration').agentModel.agentCapacityAvailability.location), toLower(location())), equals(toLower(steps('aiConfiguration').agentModel.agentCapacityAvailability.modelFormat), 'cohere'), equals(steps('aiConfiguration').agentModel.agentCapacityAvailability.modelName, steps('aiConfiguration').agentModel.cohereModelName), equals(steps('aiConfiguration').agentModel.agentCapacityAvailability.modelVersion, steps('aiConfiguration').agentModel.cohereModelVersion), equals(toLower(steps('aiConfiguration').agentModel.agentCapacityAvailability.skuName), toLower(steps('aiConfiguration').agentModel.modelDeploymentSkuName)), greater(steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity, 0), greater(int(steps('aiConfiguration').agentModel.agentCapacityValidation), 0), lessOrEquals(int(steps('aiConfiguration').agentModel.agentCapacityValidation), steps('aiConfiguration').agentModel.agentCapacityAvailability.availableCapacity))]",
+                      "message": "[concat('Select the Cohere Command availability row for the deployment region (', location(), ') and a capacity less than or equal to the available capacity for the selected SKU.')]"
+                    }
+                  ]
+                },
+                "defaultValue": "[steps('aiConfiguration').agentModel.modelDeploymentCapacity]",
+                "multiLine": false,
+                "placeholder": "0",
+                "readOnly": true,
+                "toolTip": "Validated Cohere Command deployment capacity passed to the ARM template.",
+                "visible": true
+              }
+            ],
+            "visible": true
+          },
+          {
+            "name": "metadataSpacingSection",
+            "type": "Microsoft.Common.Section",
+            "label": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+            "elements": []
+          },
+          {
+            "name": "metadataModel",
+            "type": "Microsoft.Common.Section",
+            "label": "Metadata-linking model deployment",
+            "elements": [
+              {
+                "name": "metadataCohereModelName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Metadata-linking model",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Cohere Command A+ (May 2026)",
+                      "value": "Cohere-command-a-plus-05-2026"
+                    },
+                    {
+                      "label": "Cohere Command A",
+                      "value": "cohere-command-a"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Cohere Command A",
+                "toolTip": "Cohere Command model used by the metadata-linking agent.",
+                "visible": true
+              },
+              {
+                "name": "metadataCohereModelVersion",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Metadata-linking model version",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Version 1",
+                      "value": "1"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Version 1",
+                "toolTip": "Catalog version of the selected Cohere metadata-linking model.",
+                "visible": true
+              },
+              {
+                "name": "metadataModelDeploymentName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Metadata-linking deployment name",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[A-Za-z0-9][A-Za-z0-9._-]{1,63}$",
+                      "message": "Use 2-64 letters, numbers, periods, underscores, or hyphens, starting with a letter or number."
+                    },
+                    {
+                      "isValid": "[greater(length(filter(coalesce(steps('aiConfiguration').modelCatalogApi.value, parse('[]')), (item) => and(equals(toLower(item.model.format), 'cohere'), equals(item.model.name, steps('aiConfiguration').metadataModel.metadataCohereModelName), equals(item.model.version, steps('aiConfiguration').metadataModel.metadataCohereModelVersion)))), 0)]",
+                      "message": "The selected Cohere metadata-linking model version is not available in the selected subscription and region."
+                    }
+                  ]
+                },
+                "defaultValue": "cohere-command-a",
+                "multiLine": false,
+                "toolTip": "Name assigned to the dedicated metadata-linking deployment in the new Foundry account.",
+                "visible": true
+              },
+              {
+                "name": "metadataModelDeploymentSkuName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Metadata-linking deployment SKU",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Global Standard",
+                      "value": "GlobalStandard"
+                    },
+                    {
+                      "label": "Data Zone Standard",
+                      "value": "DataZoneStandard"
+                    },
+                    {
+                      "label": "Regional Standard",
+                      "value": "Standard"
+                    },
+                    {
+                      "label": "Provisioned Managed",
+                      "value": "ProvisionedManaged"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Global Standard",
+                "toolTip": "Select a deployment SKU offered for the Cohere metadata-linking model in the target region.",
+                "visible": true
+              },
+              {
+                "name": "metadataCapacityApi",
+                "type": "Microsoft.Solutions.ArmApiControl",
+                "request": {
+                  "method": "GET",
+                  "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/modelCapacities?api-version=2026-05-01&modelFormat=', encodeUriComponent('Cohere'), '&modelName=', encodeUriComponent(steps('aiConfiguration').metadataModel.metadataCohereModelName), '&modelVersion=', encodeUriComponent(steps('aiConfiguration').metadataModel.metadataCohereModelVersion))]",
+                  "transforms": {
+                    "sorted": "sort_by(value[?location != 'global'], &location)[*]"
+                  }
+                }
+              },
+              {
+                "name": "metadataCapacityStatus",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Retrieving Cohere metadata-linking model capacity for the selected deployment region."
+                },
+                "visible": "[empty(steps('aiConfiguration').metadataModel.metadataCapacityApi)]"
+              },
+              {
+                "name": "metadataCapacityAvailability",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Metadata-linking model regional capacity",
+                "constraints": {
+                  "allowedValues": "[if(empty(filter(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName)))), parse('[{\"label\":\"No capacity available\",\"description\":\"Choose another deployment region, SKU, or model version.\",\"value\":{\"location\":\"\",\"modelFormat\":\"\",\"modelName\":\"\",\"modelVersion\":\"\",\"skuName\":\"\",\"availableCapacity\":0}}]'), map(filter(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName))), (item) => parse(concat('{\"label\":\"', item.location, '\",\"description\":\"', item.properties.skuName, ' - Available capacity: ', string(item.properties.availableCapacity), '\",\"value\":{\"location\":\"', item.location, '\",\"modelFormat\":\"', item.properties.model.format, '\",\"modelName\":\"', item.properties.model.name, '\",\"modelVersion\":\"', item.properties.model.version, '\",\"skuName\":\"', item.properties.skuName, '\",\"availableCapacity\":', string(item.properties.availableCapacity), '}}'))))]",
+                  "required": true
+                },
+                "defaultValue": "[if(empty(filter(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName))))), '', first(map(filter(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName)))), (item) => item.location)))]",
+                "filter": true,
+                "filterPlaceholder": "Filter regions",
+                "multiLine": true,
+                "multiselect": false,
+                "placeholder": "Select regional capacity",
+                "toolTip": "Current available capacity for the selected Cohere metadata-linking model, SKU, and deployment region.",
+                "visible": true
+              },
+              {
+                "name": "metadataModelDeploymentCapacity",
+                "type": "Microsoft.Common.Slider",
+                "label": "Metadata-linking deployment capacity",
+                "constraints": {
+                  "required": true
+                },
+                "defaultValue": "[if(greaterOrEquals(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0), 100), 100, coalesce(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0))]",
+                "max": "[coalesce(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0)]",
+                "min": 0,
+                "showStepMarkers": false,
+                "step": 1,
+                "subLabel": "capacity units",
+                "toolTip": "Select a positive capacity no greater than the currently available regional capacity.",
+                "visible": true
+              },
+              {
+                "name": "metadataNoCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Error",
+                  "text": "No capacity is available for the selected metadata-linking model, version, SKU, and deployment region. Choose another region or SKU."
+                },
+                "visible": "[lessOrEquals(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "metadataAvailableCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Success",
+                  "text": "[concat('Cohere metadata-linking model capacity up to ', string(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity), ' is available in ', location(), '.')]"
+                },
+                "visible": "[greater(coalesce(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "metadataNoSelectedCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Warning",
+                  "text": "[concat('Select a positive deployment capacity from the ', string(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity), ' available in ', location(), '.')]"
+                },
+                "visible": "[and(lessOrEquals(steps('aiConfiguration').metadataModel.metadataModelDeploymentCapacity, 0), greater(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0))]"
+              },
+              {
+                "name": "metadataCapacityValidation",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Validated metadata-linking model capacity",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[1-9][0-9]*$",
+                      "message": "Capacity must be a positive integer."
+                    },
+                    {
+                      "isValid": "[and(equals(toLower(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.location), toLower(location())), equals(toLower(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.modelFormat), 'cohere'), equals(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.modelName, steps('aiConfiguration').metadataModel.metadataCohereModelName), equals(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.modelVersion, steps('aiConfiguration').metadataModel.metadataCohereModelVersion), equals(toLower(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.skuName), toLower(steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName)), greater(steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity, 0), greater(int(steps('aiConfiguration').metadataModel.metadataCapacityValidation), 0), lessOrEquals(int(steps('aiConfiguration').metadataModel.metadataCapacityValidation), steps('aiConfiguration').metadataModel.metadataCapacityAvailability.availableCapacity))]",
+                      "message": "[concat('Select the Cohere metadata-linking availability row for the deployment region (', location(), ') and a capacity less than or equal to the available capacity for the selected SKU.')]"
+                    }
+                  ]
+                },
+                "defaultValue": "[steps('aiConfiguration').metadataModel.metadataModelDeploymentCapacity]",
+                "multiLine": false,
+                "placeholder": "0",
+                "readOnly": true,
+                "toolTip": "Validated Cohere metadata-linking deployment capacity passed to the ARM template.",
+                "visible": true
+              }
+            ],
+            "visible": true
+          },
+          {
+            "name": "embedSpacingSection",
+            "type": "Microsoft.Common.Section",
+            "label": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+            "elements": []
+          },
+          {
+            "name": "embeddingModel",
+            "type": "Microsoft.Common.Section",
+            "label": "Embedding model deployment",
+            "elements": [
+              {
+                "name": "embedModelName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Embedding model",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Cohere Embed v4",
+                      "value": "embed-v-4-0"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Cohere Embed v4",
+                "toolTip": "Cohere Embed v4 model used to index R&D knowledge for retrieval.",
+                "visible": true
+              },
+              {
+                "name": "embedModelVersion",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Embedding model version",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Version 1",
+                      "value": "1"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Version 1",
+                "toolTip": "Catalog version of the selected Cohere embedding model.",
+                "visible": true
+              },
+              {
+                "name": "embedDeploymentName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Embedding deployment name",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[A-Za-z0-9][A-Za-z0-9._-]{1,63}$",
+                      "message": "Use 2-64 letters, numbers, periods, underscores, or hyphens, starting with a letter or number."
+                    },
+                    {
+                      "isValid": "[greater(length(filter(coalesce(steps('aiConfiguration').modelCatalogApi.value, parse('[]')), (item) => and(equals(toLower(item.model.format), 'cohere'), equals(item.model.name, steps('aiConfiguration').embeddingModel.embedModelName), equals(item.model.version, steps('aiConfiguration').embeddingModel.embedModelVersion)))), 0)]",
+                      "message": "The selected Cohere embedding model version is not available in the selected subscription and region."
+                    }
+                  ]
+                },
+                "defaultValue": "cohere-embed-v4",
+                "multiLine": false,
+                "toolTip": "Name assigned to the Cohere embedding deployment in the new Foundry account.",
+                "visible": true
+              },
+              {
+                "name": "embedDeploymentSkuName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Embedding deployment SKU",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Global Standard",
+                      "value": "GlobalStandard"
+                    },
+                    {
+                      "label": "Data Zone Standard",
+                      "value": "DataZoneStandard"
+                    },
+                    {
+                      "label": "Regional Standard",
+                      "value": "Standard"
+                    },
+                    {
+                      "label": "Provisioned Managed",
+                      "value": "ProvisionedManaged"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Global Standard",
+                "toolTip": "Select a deployment SKU offered for the Cohere embedding model in the target region.",
+                "visible": true
+              },
+              {
+                "name": "embedCapacityApi",
+                "type": "Microsoft.Solutions.ArmApiControl",
+                "request": {
+                  "method": "GET",
+                  "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/modelCapacities?api-version=2026-05-01&modelFormat=', encodeUriComponent('Cohere'), '&modelName=', encodeUriComponent(steps('aiConfiguration').embeddingModel.embedModelName), '&modelVersion=', encodeUriComponent(steps('aiConfiguration').embeddingModel.embedModelVersion))]",
+                  "transforms": {
+                    "sorted": "sort_by(value[?location != 'global'], &location)[*]"
+                  }
+                }
+              },
+              {
+                "name": "embedCapacityStatus",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Retrieving Cohere embedding capacity for the selected deployment region."
+                },
+                "visible": "[empty(steps('aiConfiguration').embeddingModel.embedCapacityApi)]"
+              },
+              {
+                "name": "embedCapacityAvailability",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Embedding model regional capacity",
+                "constraints": {
+                  "allowedValues": "[if(empty(filter(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').embeddingModel.embedDeploymentSkuName)))), parse('[{\"label\":\"No capacity available\",\"description\":\"Choose another deployment region, SKU, or model version.\",\"value\":{\"location\":\"\",\"modelFormat\":\"\",\"modelName\":\"\",\"modelVersion\":\"\",\"skuName\":\"\",\"availableCapacity\":0}}]'), map(filter(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').embeddingModel.embedDeploymentSkuName))), (item) => parse(concat('{\"label\":\"', item.location, '\",\"description\":\"', item.properties.skuName, ' - Available capacity: ', string(item.properties.availableCapacity), '\",\"value\":{\"location\":\"', item.location, '\",\"modelFormat\":\"', item.properties.model.format, '\",\"modelName\":\"', item.properties.model.name, '\",\"modelVersion\":\"', item.properties.model.version, '\",\"skuName\":\"', item.properties.skuName, '\",\"availableCapacity\":', string(item.properties.availableCapacity), '}}'))))]",
+                  "required": true
+                },
+                "defaultValue": "[if(empty(filter(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').embeddingModel.embedDeploymentSkuName))))), '', first(map(filter(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').embeddingModel.embedDeploymentSkuName)))), (item) => item.location)))]",
+                "filter": true,
+                "filterPlaceholder": "Filter regions",
+                "multiLine": true,
+                "multiselect": false,
+                "placeholder": "Select regional capacity",
+                "toolTip": "Current available capacity for the selected Cohere embedding model, SKU, and deployment region.",
+                "visible": true
+              },
+              {
+                "name": "embedDeploymentCapacity",
+                "type": "Microsoft.Common.Slider",
+                "label": "Embedding deployment capacity",
+                "constraints": {
+                  "required": true
+                },
+                "defaultValue": "[if(greaterOrEquals(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0), 10), 10, coalesce(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0))]",
+                "max": "[coalesce(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0)]",
+                "min": 0,
+                "showStepMarkers": false,
+                "step": 1,
+                "subLabel": "capacity units",
+                "toolTip": "Select a positive capacity no greater than the currently available regional capacity.",
+                "visible": true
+              },
+              {
+                "name": "embedNoCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Error",
+                  "text": "No capacity is available for the selected embedding model, version, SKU, and deployment region. Choose another region or SKU."
+                },
+                "visible": "[lessOrEquals(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "embedAvailableCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Success",
+                  "text": "[concat('Cohere embedding capacity up to ', string(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity), ' is available in ', location(), '.')]"
+                },
+                "visible": "[greater(coalesce(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "embedNoSelectedCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Warning",
+                  "text": "[concat('Select a positive deployment capacity from the ', string(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity), ' available in ', location(), '.')]"
+                },
+                "visible": "[and(lessOrEquals(steps('aiConfiguration').embeddingModel.embedDeploymentCapacity, 0), greater(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0))]"
+              },
+              {
+                "name": "embedCapacityValidation",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Validated embedding model capacity",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[1-9][0-9]*$",
+                      "message": "Capacity must be a positive integer."
+                    },
+                    {
+                      "isValid": "[and(equals(toLower(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.location), toLower(location())), equals(toLower(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.modelFormat), 'cohere'), equals(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.modelName, steps('aiConfiguration').embeddingModel.embedModelName), equals(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.modelVersion, steps('aiConfiguration').embeddingModel.embedModelVersion), equals(toLower(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.skuName), toLower(steps('aiConfiguration').embeddingModel.embedDeploymentSkuName)), greater(steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity, 0), greater(int(steps('aiConfiguration').embeddingModel.embedCapacityValidation), 0), lessOrEquals(int(steps('aiConfiguration').embeddingModel.embedCapacityValidation), steps('aiConfiguration').embeddingModel.embedCapacityAvailability.availableCapacity))]",
+                      "message": "[concat('Select the Cohere embedding availability row for the deployment region (', location(), ') and a capacity less than or equal to the available capacity for the selected SKU.')]"
+                    }
+                  ]
+                },
+                "defaultValue": "[steps('aiConfiguration').embeddingModel.embedDeploymentCapacity]",
+                "multiLine": false,
+                "placeholder": "0",
+                "readOnly": true,
+                "toolTip": "Validated Cohere embedding deployment capacity passed to the ARM template.",
+                "visible": true
+              }
+            ],
+            "visible": true
+          },
+          {
+            "name": "rerankSpacingSection",
+            "type": "Microsoft.Common.Section",
+            "label": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+            "elements": []
+          },
+          {
+            "name": "rerankModel",
+            "type": "Microsoft.Common.Section",
+            "label": "Rerank model deployment",
+            "elements": [
+              {
+                "name": "rerankModelName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Rerank model",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Cohere Rerank v4 Pro",
+                      "value": "Cohere-rerank-v4.0-pro"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Cohere Rerank v4 Pro",
+                "toolTip": "Cohere Rerank v4 Pro model used to improve retrieval result ordering.",
+                "visible": true
+              },
+              {
+                "name": "rerankModelVersion",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Rerank model version",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Version 1",
+                      "value": "1"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Version 1",
+                "toolTip": "Catalog version of the selected Cohere rerank model.",
+                "visible": true
+              },
+              {
+                "name": "rerankDeploymentName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Rerank deployment name",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[A-Za-z0-9][A-Za-z0-9._-]{1,63}$",
+                      "message": "Use 2-64 letters, numbers, periods, underscores, or hyphens, starting with a letter or number."
+                    },
+                    {
+                      "isValid": "[greater(length(filter(coalesce(steps('aiConfiguration').modelCatalogApi.value, parse('[]')), (item) => and(equals(toLower(item.model.format), 'cohere'), equals(item.model.name, steps('aiConfiguration').rerankModel.rerankModelName), equals(item.model.version, steps('aiConfiguration').rerankModel.rerankModelVersion)))), 0)]",
+                      "message": "The selected Cohere rerank model version is not available in the selected subscription and region."
+                    }
+                  ]
+                },
+                "defaultValue": "cohere-rerank-v4-pro",
+                "multiLine": false,
+                "toolTip": "Name assigned to the Cohere rerank deployment in the new Foundry account.",
+                "visible": true
+              },
+              {
+                "name": "rerankDeploymentSkuName",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Rerank deployment SKU",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Global Standard",
+                      "value": "GlobalStandard"
+                    },
+                    {
+                      "label": "Data Zone Standard",
+                      "value": "DataZoneStandard"
+                    },
+                    {
+                      "label": "Regional Standard",
+                      "value": "Standard"
+                    },
+                    {
+                      "label": "Provisioned Managed",
+                      "value": "ProvisionedManaged"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Global Standard",
+                "toolTip": "Select a deployment SKU offered for the Cohere rerank model in the target region.",
+                "visible": true
+              },
+              {
+                "name": "rerankCapacityApi",
+                "type": "Microsoft.Solutions.ArmApiControl",
+                "request": {
+                  "method": "GET",
+                  "path": "[concat(subscription().id, '/providers/Microsoft.CognitiveServices/modelCapacities?api-version=2026-05-01&modelFormat=', encodeUriComponent('Cohere'), '&modelName=', encodeUriComponent(steps('aiConfiguration').rerankModel.rerankModelName), '&modelVersion=', encodeUriComponent(steps('aiConfiguration').rerankModel.rerankModelVersion))]",
+                  "transforms": {
+                    "sorted": "sort_by(value[?location != 'global'], &location)[*]"
+                  }
+                }
+              },
+              {
+                "name": "rerankCapacityStatus",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Retrieving Cohere rerank capacity for the selected deployment region."
+                },
+                "visible": "[empty(steps('aiConfiguration').rerankModel.rerankCapacityApi)]"
+              },
+              {
+                "name": "rerankCapacityAvailability",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Rerank model regional capacity",
+                "constraints": {
+                  "allowedValues": "[if(empty(filter(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').rerankModel.rerankDeploymentSkuName)))), parse('[{\"label\":\"No capacity available\",\"description\":\"Choose another deployment region, SKU, or model version.\",\"value\":{\"location\":\"\",\"modelFormat\":\"\",\"modelName\":\"\",\"modelVersion\":\"\",\"skuName\":\"\",\"availableCapacity\":0}}]'), map(filter(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityApi.transformed.sorted, parse('[]')), (item) => equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').rerankModel.rerankDeploymentSkuName))), (item) => parse(concat('{\"label\":\"', item.location, '\",\"description\":\"', item.properties.skuName, ' - Available capacity: ', string(item.properties.availableCapacity), '\",\"value\":{\"location\":\"', item.location, '\",\"modelFormat\":\"', item.properties.model.format, '\",\"modelName\":\"', item.properties.model.name, '\",\"modelVersion\":\"', item.properties.model.version, '\",\"skuName\":\"', item.properties.skuName, '\",\"availableCapacity\":', string(item.properties.availableCapacity), '}}'))))]",
+                  "required": true
+                },
+                "defaultValue": "[if(empty(filter(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').rerankModel.rerankDeploymentSkuName))))), '', first(map(filter(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityApi.value, parse('[]')), (item) => and(equals(toLower(item.location), toLower(location())), equals(toLower(item.properties.skuName), toLower(steps('aiConfiguration').rerankModel.rerankDeploymentSkuName)))), (item) => item.location)))]",
+                "filter": true,
+                "filterPlaceholder": "Filter regions",
+                "multiLine": true,
+                "multiselect": false,
+                "placeholder": "Select regional capacity",
+                "toolTip": "Current available capacity for the selected Cohere rerank model, SKU, and deployment region.",
+                "visible": true
+              },
+              {
+                "name": "rerankDeploymentCapacity",
+                "type": "Microsoft.Common.Slider",
+                "label": "Rerank deployment capacity",
+                "constraints": {
+                  "required": true
+                },
+                "defaultValue": "[if(greaterOrEquals(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0), 5), 5, coalesce(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0))]",
+                "max": "[coalesce(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0)]",
+                "min": 0,
+                "showStepMarkers": false,
+                "step": 1,
+                "subLabel": "capacity units",
+                "toolTip": "Select a positive capacity no greater than the currently available regional capacity.",
+                "visible": true
+              },
+              {
+                "name": "rerankNoCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Error",
+                  "text": "No capacity is available for the selected rerank model, version, SKU, and deployment region. Choose another region or SKU."
+                },
+                "visible": "[lessOrEquals(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "rerankAvailableCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Success",
+                  "text": "[concat('Cohere rerank capacity up to ', string(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity), ' is available in ', location(), '.')]"
+                },
+                "visible": "[greater(coalesce(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0), 0)]"
+              },
+              {
+                "name": "rerankNoSelectedCapacityInfo",
+                "type": "Microsoft.Common.InfoBox",
+                "options": {
+                  "icon": "Warning",
+                  "text": "[concat('Select a positive deployment capacity from the ', string(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity), ' available in ', location(), '.')]"
+                },
+                "visible": "[and(lessOrEquals(steps('aiConfiguration').rerankModel.rerankDeploymentCapacity, 0), greater(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0))]"
+              },
+              {
+                "name": "rerankCapacityValidation",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Validated rerank model capacity",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^[1-9][0-9]*$",
+                      "message": "Capacity must be a positive integer."
+                    },
+                    {
+                      "isValid": "[and(equals(toLower(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.location), toLower(location())), equals(toLower(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.modelFormat), 'cohere'), equals(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.modelName, steps('aiConfiguration').rerankModel.rerankModelName), equals(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.modelVersion, steps('aiConfiguration').rerankModel.rerankModelVersion), equals(toLower(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.skuName), toLower(steps('aiConfiguration').rerankModel.rerankDeploymentSkuName)), greater(steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity, 0), greater(int(steps('aiConfiguration').rerankModel.rerankCapacityValidation), 0), lessOrEquals(int(steps('aiConfiguration').rerankModel.rerankCapacityValidation), steps('aiConfiguration').rerankModel.rerankCapacityAvailability.availableCapacity))]",
+                      "message": "[concat('Select the Cohere rerank availability row for the deployment region (', location(), ') and a capacity less than or equal to the available capacity for the selected SKU.')]"
+                    }
+                  ]
+                },
+                "defaultValue": "[steps('aiConfiguration').rerankModel.rerankDeploymentCapacity]",
+                "multiLine": false,
+                "placeholder": "0",
+                "readOnly": true,
+                "toolTip": "Validated Cohere rerank deployment capacity passed to the ARM template.",
+                "visible": true
+              }
+            ],
+            "visible": true
+          },
+          {
+            "name": "searchSpacingSection",
+            "type": "Microsoft.Common.Section",
+            "label": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+            "elements": []
+          },
+          {
+            "name": "dataConfiguration",
+            "type": "Microsoft.Common.Section",
+            "label": "Knowledge storage and search",
+            "elements": [
+              {
+                "name": "documentsContainerName",
+                "type": "Microsoft.Common.TextBox",
+                "label": "Knowledge documents container",
+                "constraints": {
+                  "required": true,
+                  "validations": [
+                    {
+                      "regex": "^(?!.*--)[a-z0-9](?:[a-z0-9-]{1,61}[a-z0-9])$",
+                      "message": "Use 3-63 lowercase letters, numbers, or single hyphens, starting and ending with a letter or number."
+                    }
+                  ]
+                },
+                "defaultValue": "rd-knowledge-documents",
+                "multiLine": false,
+                "toolTip": "Name of the private blob container that stores normalized R&D knowledge documents.",
+                "visible": true
+              },
+              {
+                "name": "searchSku",
+                "type": "Microsoft.Common.DropDown",
+                "label": "Azure AI Search SKU",
+                "constraints": {
+                  "allowedValues": [
+                    {
+                      "label": "Free",
+                      "value": "free"
+                    },
+                    {
+                      "label": "Basic",
+                      "value": "basic"
+                    },
+                    {
+                      "label": "Standard S1",
+                      "value": "standard"
+                    },
+                    {
+                      "label": "Standard S2",
+                      "value": "standard2"
+                    },
+                    {
+                      "label": "Standard S3",
+                      "value": "standard3"
+                    },
+                    {
+                      "label": "Storage Optimized L1",
+                      "value": "storage_optimized_l1"
+                    },
+                    {
+                      "label": "Storage Optimized L2",
+                      "value": "storage_optimized_l2"
+                    }
+                  ],
+                  "required": true
+                },
+                "defaultValue": "Basic",
+                "toolTip": "Select the Azure AI Search pricing tier for R&D knowledge and policy retrieval indexes.",
+                "visible": true
+              }
+            ],
+            "visible": true
+          }
+        ]
+      },
+      {
+        "name": "containerConfiguration",
+        "label": "Container images",
+        "elements": [
+          {
+            "name": "containerImageInfo",
+            "type": "Microsoft.Common.InfoBox",
+            "options": {
+              "icon": "Info",
+              "text": "The defaults deploy the published demo images from Docker Hub. Change them only when deploying a tested custom image set."
+            },
+            "visible": true
+          },
+          {
+            "name": "apiContainerImage",
+            "type": "Microsoft.Common.TextBox",
+            "label": "API container image",
+            "constraints": {
+              "required": true,
+              "validations": [
+                {
+                  "regex": "^([a-z0-9]+(?:[._-][a-z0-9]+)*(?::[0-9]+)?/)+[a-z0-9]+(?:[._-][a-z0-9]+)*(?::[A-Za-z0-9][A-Za-z0-9._-]{0,127}|@sha256:[A-Fa-f0-9]{64})$",
+                  "message": "Enter a full OCI image reference with a tag or sha256 digest."
+                }
+              ]
+            },
+            "defaultValue": "ghcr.io/foundry-industry-sandbox/coherernd-api:demo",
+            "multiLine": false,
+            "toolTip": "Full OCI image reference for the backend API Container App.",
+            "visible": true
+          },
+          {
+            "name": "mcpContainerImage",
+            "type": "Microsoft.Common.TextBox",
+            "label": "MCP container image",
+            "constraints": {
+              "required": true,
+              "validations": [
+                {
+                  "regex": "^([a-z0-9]+(?:[._-][a-z0-9]+)*(?::[0-9]+)?/)+[a-z0-9]+(?:[._-][a-z0-9]+)*(?::[A-Za-z0-9][A-Za-z0-9._-]{0,127}|@sha256:[A-Fa-f0-9]{64})$",
+                  "message": "Enter a full OCI image reference with a tag or sha256 digest."
+                }
+              ]
+            },
+            "defaultValue": "ghcr.io/foundry-industry-sandbox/coherernd-mcp:demo",
+            "multiLine": false,
+            "toolTip": "Full OCI image reference for the MCP host Container App and policy seed job.",
+            "visible": true
+          },
+          {
+            "name": "frontendContainerImage",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Frontend container image",
+            "constraints": {
+              "required": true,
+              "validations": [
+                {
+                  "regex": "^([a-z0-9]+(?:[._-][a-z0-9]+)*(?::[0-9]+)?/)+[a-z0-9]+(?:[._-][a-z0-9]+)*(?::[A-Za-z0-9][A-Za-z0-9._-]{0,127}|@sha256:[A-Fa-f0-9]{64})$",
+                  "message": "Enter a full OCI image reference with a tag or sha256 digest."
+                }
+              ]
+            },
+            "defaultValue": "ghcr.io/foundry-industry-sandbox/coherernd-web:demo",
+            "multiLine": false,
+            "toolTip": "Full OCI image reference for the web frontend Container App.",
+            "visible": true
+          },
+          {
+            "name": "provisioningContainerImage",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Agent provisioning container image",
+            "constraints": {
+              "required": true,
+              "validations": [
+                {
+                  "regex": "^([a-z0-9]+(?:[._-][a-z0-9]+)*(?::[0-9]+)?/)+[a-z0-9]+(?:[._-][a-z0-9]+)*(?::[A-Za-z0-9][A-Za-z0-9._-]{0,127}|@sha256:[A-Fa-f0-9]{64})$",
+                  "message": "Enter a full OCI image reference with a tag or sha256 digest."
+                }
+              ]
+            },
+            "defaultValue": "ghcr.io/foundry-industry-sandbox/coherernd-provisioning:demo",
+            "multiLine": false,
+            "toolTip": "Full OCI image reference for the Container Apps job that provisions Microsoft Foundry agents.",
+            "visible": true
+          }
+        ]
+      },
+      {
+        "name": "fabricConfiguration",
+        "label": "Microsoft Fabric",
+        "elements": [
+          {
+            "name": "enableFabric",
+            "type": "Microsoft.Common.CheckBox",
+            "label": "Enable Microsoft Fabric integration",
+            "defaultValue": false,
+            "toolTip": "Provision and seed a Fabric lakehouse, then configure the API and MCP hosts to use Fabric instead of the bundled local dataset.",
+            "visible": true
+          },
+          {
+            "name": "fabricPrerequisiteInfo",
+            "type": "Microsoft.Common.InfoBox",
+            "options": {
+              "icon": "Warning",
+              "text": "Before enabling Fabric, run infra/scripts/setup-fabric-provision-identity.ps1 for this deployment resource group. Select that user-assigned identity below and ensure the target workspace is backed by Fabric capacity. Fabric support in this demo is not production-ready."
+            },
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          },
+          {
+            "name": "fabricIdentity",
+            "type": "Microsoft.Solutions.ResourceSelector",
+            "label": "Fabric deployment identity",
+            "constraints": {
+              "required": "[steps('fabricConfiguration').enableFabric]"
+            },
+            "options": {
+              "filter": {
+                "location": "onBasics",
+                "subscription": "onBasics"
+              }
+            },
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "toolTip": "Select the pre-provisioned user-assigned managed identity from the deployment resource group.",
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          },
+          {
+            "name": "fabricIdentityValidation",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Validated Fabric identity resource",
+            "constraints": {
+              "required": "[steps('fabricConfiguration').enableFabric]",
+              "validations": [
+                {
+                  "regex": "^/subscriptions/[^/]+/resourceGroups/[^/]+/providers/Microsoft\\.ManagedIdentity/userAssignedIdentities/[^/]+$",
+                  "message": "Select a valid user-assigned managed identity."
+                },
+                {
+                  "isValid": "[if(steps('fabricConfiguration').enableFabric, startsWith(toLower(coalesce(steps('fabricConfiguration').fabricIdentity.id, '')), concat(toLower(subscription().id), '/resourcegroups/', toLower(resourceGroup().name), '/providers/microsoft.managedidentity/userassignedidentities/')), true)]",
+                  "message": "Select a user-assigned managed identity from the deployment resource group."
+                }
+              ]
+            },
+            "defaultValue": "[if(steps('fabricConfiguration').enableFabric, coalesce(steps('fabricConfiguration').fabricIdentity.id, ''), '')]",
+            "multiLine": false,
+            "readOnly": true,
+            "toolTip": "Validates that the selected Fabric managed identity belongs to the deployment resource group.",
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          },
+          {
+            "name": "fabricWorkspaceName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Fabric workspace name",
+            "constraints": {
+              "required": "[steps('fabricConfiguration').enableFabric]",
+              "validations": [
+                {
+                  "regex": "^[A-Za-z0-9_ -]{1,256}$",
+                  "message": "Use 1-256 letters, numbers, spaces, underscores, or hyphens."
+                }
+              ]
+            },
+            "defaultValue": "",
+            "multiLine": false,
+            "toolTip": "Name of an existing capacity-backed Fabric workspace accessible to the deployment operator.",
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          },
+          {
+            "name": "fabricLakehouseName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Fabric lakehouse name",
+            "constraints": {
+              "required": "[steps('fabricConfiguration').enableFabric]",
+              "validations": [
+                {
+                  "regex": "^[A-Za-z][A-Za-z0-9_]{0,254}$",
+                  "message": "Use 1-255 letters, numbers, or underscores, starting with a letter."
+                }
+              ]
+            },
+            "defaultValue": "RDKnowledgeLakehouse",
+            "multiLine": false,
+            "toolTip": "Lakehouse to create or reuse in the selected Fabric workspace.",
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          },
+          {
+            "name": "fabricRepositoryArchiveUrl",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Fabric seed repository archive",
+            "constraints": {
+              "required": "[steps('fabricConfiguration').enableFabric]",
+              "validations": [
+                {
+                  "regex": "^https://[^\\s]{1,2048}\\.zip(?:\\?[^\\s]{1,2048})?$",
+                  "message": "Enter a valid HTTPS URL that points to a ZIP archive."
+                }
+              ]
+            },
+            "defaultValue": "https://github.com/foundry-industry-sandbox/cohere-rd-knowledge/archive/refs/heads/main.zip",
+            "multiLine": false,
+            "toolTip": "HTTPS URL of the repository ZIP archive containing the Fabric provisioning scripts and dataset seed.",
+            "visible": "[steps('fabricConfiguration').enableFabric]"
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "location": "[location()]",
+      "baseName": "[basics('baseName')]",
+      "foundryProjectName": "[steps('aiConfiguration').foundryProjectName]",
+      "modelDeploymentName": "[steps('aiConfiguration').agentModel.modelDeploymentName]",
+      "modelDeploymentSkuName": "[steps('aiConfiguration').agentModel.modelDeploymentSkuName]",
+      "modelDeploymentCapacity": "[int(steps('aiConfiguration').agentModel.agentCapacityValidation)]",
+      "cohereModelName": "[steps('aiConfiguration').agentModel.cohereModelName]",
+      "cohereModelVersion": "[steps('aiConfiguration').agentModel.cohereModelVersion]",
+      "metadataModelDeploymentName": "[steps('aiConfiguration').metadataModel.metadataModelDeploymentName]",
+      "metadataModelDeploymentSkuName": "[steps('aiConfiguration').metadataModel.metadataModelDeploymentSkuName]",
+      "metadataModelDeploymentCapacity": "[int(steps('aiConfiguration').metadataModel.metadataCapacityValidation)]",
+      "metadataCohereModelName": "[steps('aiConfiguration').metadataModel.metadataCohereModelName]",
+      "metadataCohereModelVersion": "[steps('aiConfiguration').metadataModel.metadataCohereModelVersion]",
+      "embedDeploymentName": "[steps('aiConfiguration').embeddingModel.embedDeploymentName]",
+      "embedDeploymentSkuName": "[steps('aiConfiguration').embeddingModel.embedDeploymentSkuName]",
+      "embedModelName": "[steps('aiConfiguration').embeddingModel.embedModelName]",
+      "embedModelVersion": "[steps('aiConfiguration').embeddingModel.embedModelVersion]",
+      "embedDeploymentCapacity": "[int(steps('aiConfiguration').embeddingModel.embedCapacityValidation)]",
+      "rerankDeploymentName": "[steps('aiConfiguration').rerankModel.rerankDeploymentName]",
+      "rerankDeploymentSkuName": "[steps('aiConfiguration').rerankModel.rerankDeploymentSkuName]",
+      "rerankModelName": "[steps('aiConfiguration').rerankModel.rerankModelName]",
+      "rerankModelVersion": "[steps('aiConfiguration').rerankModel.rerankModelVersion]",
+      "rerankDeploymentCapacity": "[int(steps('aiConfiguration').rerankModel.rerankCapacityValidation)]",
+      "documentsContainerName": "[steps('aiConfiguration').dataConfiguration.documentsContainerName]",
+      "searchSku": "[steps('aiConfiguration').dataConfiguration.searchSku]",
+      "apiContainerImage": "[steps('containerConfiguration').apiContainerImage]",
+      "mcpContainerImage": "[steps('containerConfiguration').mcpContainerImage]",
+      "frontendContainerImage": "[steps('containerConfiguration').frontendContainerImage]",
+      "provisioningContainerImage": "[steps('containerConfiguration').provisioningContainerImage]",
+      "enableFabric": "[steps('fabricConfiguration').enableFabric]",
+      "fabricWorkspaceName": "[if(steps('fabricConfiguration').enableFabric, steps('fabricConfiguration').fabricWorkspaceName, '')]",
+      "fabricLakehouseName": "[if(steps('fabricConfiguration').enableFabric, steps('fabricConfiguration').fabricLakehouseName, 'RDKnowledgeLakehouse')]",
+      "fabricIdentityName": "[if(steps('fabricConfiguration').enableFabric, steps('fabricConfiguration').fabricIdentity.name, 'fabric-identity')]",
+      "fabricRepositoryArchiveUrl": "[if(steps('fabricConfiguration').enableFabric, steps('fabricConfiguration').fabricRepositoryArchiveUrl, 'https://github.com/foundry-industry-sandbox/cohere-rd-knowledge/archive/refs/heads/main.zip')]",
+      "applicationResourceName": "[basics('baseName')]"
+    }
+  },
+  "metadata": {
+    "_generator": {
+      "name": "MaestroStudio",
+      "sku": "Ensemble",
+      "version": "0.9.0.4657+Retail-PR (ENSEMBLE)"
+    },
+    "_sync": {
+      "offer": {
+        "displayName": "My Offer"
+      },
+      "plan": {
+        "displayName": "Plan"
+      }
+    }
+  }
+}

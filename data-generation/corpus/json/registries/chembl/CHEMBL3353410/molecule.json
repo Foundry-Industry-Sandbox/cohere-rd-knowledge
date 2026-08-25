@@ -1,0 +1,124 @@
+{
+  "atc_classifications": [
+    "L01EB04"
+  ],
+  "availability_type": 1,
+  "biotherapeutic": null,
+  "black_box_warning": 0,
+  "chemical_probe": 0,
+  "chirality": 2,
+  "cross_references": [],
+  "dosed_ingredient": false,
+  "first_approval": 2015,
+  "first_in_class": 0,
+  "helm_notation": null,
+  "inorganic_flag": 0,
+  "max_phase": "4.0",
+  "molecule_chembl_id": "CHEMBL3353410",
+  "molecule_hierarchy": {
+    "active_chembl_id": "CHEMBL3353410",
+    "molecule_chembl_id": "CHEMBL3353410",
+    "parent_chembl_id": "CHEMBL3353410"
+  },
+  "molecule_properties": {
+    "alogp": "4.51",
+    "aromatic_rings": 4,
+    "full_molformula": "C28H33N7O2",
+    "full_mwt": "499.62",
+    "hba": 8,
+    "hbd": 2,
+    "heavy_atoms": 37,
+    "mw_freebase": "499.62",
+    "np_likeness_score": "-1.11",
+    "num_ro5_violations": 0,
+    "psa": "87.55",
+    "qed_weighted": "0.31",
+    "ro3_pass": "N",
+    "rtb": 10
+  },
+  "molecule_structures": {
+    "canonical_smiles": "C=CC(=O)Nc1cc(Nc2nccc(-c3cn(C)c4ccccc34)n2)c(OC)cc1N(C)CCN(C)C",
+    "molfile": "\n     RDKit          2D\n\n 37 40  0  0  0  0  0  0  0  0999 V2000\n    1.3427   12.6915    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.8276   13.3589    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    2.6122   13.1040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.6122   12.2790    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.8276   12.0240    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.3267   13.5165    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    4.0412   13.1040    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    4.0412   12.2790    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.3267   11.8665    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5727   11.2394    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.1247   10.6263    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    1.8697    9.8417    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.0628    9.6702    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    0.5107   10.2833    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7657   11.0679    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.4218    9.2286    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    2.1668    8.4440    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.7189    7.8309    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    2.4639    7.0463    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.6570    6.8747    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.1049    7.4878    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.3599    8.2725    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.5258    8.0024    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    4.0779    7.3893    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.2980    7.3163    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.2541    7.9294    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.0009    8.7140    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.0610    7.7579    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.6131    8.3710    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.4020    6.0901    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n    1.9541    5.4770    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.5950    5.9186    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.3401    5.1340    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.4669    4.9624    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7218    4.1778    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.0189    5.5755    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5727   14.1435    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\n  4  5  1  0\n  1  5  2  0\n  3  6  1  0\n  4  3  2  0\n  9  4  1  0\n  6  7  2  0\n  7  8  1  0\n  8  9  2  0\n  5 10  1  0\n 10 11  1  0\n 10 15  2  0\n 11 12  2  0\n 12 13  1  0\n 13 14  2  0\n 14 15  1  0\n 12 16  1  0\n 16 17  1  0\n 17 18  1  0\n 17 22  2  0\n 18 19  2  0\n 19 20  1  0\n 20 21  2  0\n 21 22  1  0\n 18 23  1  0\n 23 24  1  0\n 21 25  1  0\n 25 26  1  0\n 26 27  2  0\n 26 28  1  0\n 28 29  2  0\n 20 30  1  0\n 30 31  1  0\n 30 32  1  0\n 32 33  1  0\n 33 34  1  0\n 34 35  1  0\n 34 36  1  0\n  2 37  1  0\nM  END\n> <chembl_id>\nCHEMBL3353410\n\n> <chembl_pref_name>\nOSIMERTINIB",
+    "standard_inchi": "InChI=1S/C28H33N7O2/c1-7-27(36)30-22-16-23(26(37-6)17-25(22)34(4)15-14-33(2)3)32-28-29-13-12-21(31-28)20-18-35(5)24-11-9-8-10-19(20)24/h7-13,16-18H,1,14-15H2,2-6H3,(H,30,36)(H,29,31,32)",
+    "standard_inchi_key": "DUYJMQONPNNFPI-UHFFFAOYSA-N"
+  },
+  "molecule_synonyms": [
+    {
+      "molecule_synonym": "Azd-9291",
+      "syn_type": "OTHER",
+      "synonyms": "AZD-9291"
+    },
+    {
+      "molecule_synonym": "AZD-9291",
+      "syn_type": "RESEARCH_CODE",
+      "synonyms": "AZD-9291"
+    },
+    {
+      "molecule_synonym": "AZD9291",
+      "syn_type": "RESEARCH_CODE",
+      "synonyms": "AZD9291"
+    },
+    {
+      "molecule_synonym": "AZD-9291 FREE BASE",
+      "syn_type": "RESEARCH_CODE",
+      "synonyms": "AZD-9291 FREE BASE"
+    },
+    {
+      "molecule_synonym": "Mereletinib",
+      "syn_type": "OTHER",
+      "synonyms": "MERELETINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "ATC",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "BNF",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "INN",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "MERCK_INDEX",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "OTHER",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Osimertinib",
+      "syn_type": "USAN",
+      "synonyms": "OSIMERTINIB"
+    },
+    {
+      "molecule_synonym": "Tagrisso",
+      "syn_type": "TRADE_NAME",
+      "synonyms": "TAGRISSO"
+    }
+  ],
+  "molecule_type": "Small molecule",
+  "natural_product": 1,
+  "oral": true,
+  "orphan": 0,
+  "parenteral": false,
+  "polymer_flag": 0,
+  "pref_name": "OSIMERTINIB",
+  "prodrug": 0,
+  "structure_type": "MOL",
+  "therapeutic_flag": true,
+  "topical": false,
+  "usan_stem": "-tinib",
+  "usan_stem_definition": "tyrosine kinase inhibitors: epidermal growth factor receptor (EGFR) inhibitors",
+  "usan_substem": "-tinib (-ertinib)",
+  "usan_year": 2015,
+  "veterinary": 0,
+  "withdrawn_flag": false
+}

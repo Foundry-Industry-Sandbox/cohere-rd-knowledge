@@ -1,0 +1,33 @@
+@if (Study is not null)
+{
+    @if (Nested)
+    {
+        <dl class="detail-list">
+            <div><dt>Study ID</dt><dd>@Study.StudyId</dd></div>
+            <div><dt>Title</dt><dd>@Study.Title</dd></div>
+            <div><dt>Compound</dt><dd>@Study.Compound</dd></div>
+            <div><dt>Phase</dt><dd>@Study.Phase</dd></div>
+            <div><dt>Primary endpoint</dt><dd>@Study.PrimaryEndpoint</dd></div>
+            <div><dt>Source systems</dt><dd>@string.Join(", ", Study.SourceSystems)</dd></div>
+        </dl>
+    }
+    else
+    {
+        <div class="card">
+            <h3 class="card-title">Study summary</h3>
+            <dl class="detail-list">
+                <div><dt>Study ID</dt><dd>@Study.StudyId</dd></div>
+                <div><dt>Title</dt><dd>@Study.Title</dd></div>
+                <div><dt>Compound</dt><dd>@Study.Compound</dd></div>
+                <div><dt>Phase</dt><dd>@Study.Phase</dd></div>
+                <div><dt>Primary endpoint</dt><dd>@Study.PrimaryEndpoint</dd></div>
+                <div><dt>Source systems</dt><dd>@string.Join(", ", Study.SourceSystems)</dd></div>
+            </dl>
+        </div>
+    }
+}
+
+@code {
+    [Parameter] public StudySummary? Study { get; set; }
+    [Parameter] public bool Nested { get; set; }
+}

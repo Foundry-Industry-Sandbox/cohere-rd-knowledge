@@ -1,0 +1,14 @@
+{
+  "full_text_xml_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13143971/fullTextXML",
+  "license": "CC BY",
+  "local_paths": [
+    "00_raw/xml/articles/pmc_oa/PMC13143971/article.xml",
+    "00_raw/xml/articles/pmc_oa/PMC13143971/pmc_oa_license.xml",
+    "00_raw/json/articles/pmc_oa/PMC13143971/europe_pmc_metadata.json"
+  ],
+  "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC13143971&format=json&pageSize=1",
+  "oa_license_url": "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC13143971",
+  "pmcid": "PMC13143971",
+  "raw_layer_policy": "Full text allowed only because PMC OA API license matched expected license.",
+  "title": "Non-small cell lung cancer after EGFR-TKI resistance: from drug resistance mechanisms to precision interventions"
+}

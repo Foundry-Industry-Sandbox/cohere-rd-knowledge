@@ -1,0 +1,13 @@
+{
+  "name": "ingestion-translation-agent",
+  "description": "Reads raw R&D knowledge from Fabric, de-duplicates across source types, normalizes content, and extracts key facts for metadata linking.",
+  "instructionsFile": "instructions.md",
+  "outputFormat": "instructions_only",
+  "allowedDecisions": [
+    "Ingestion Complete",
+    "Human Review Needed",
+    "Insufficient Data"
+  ],
+  "governancePolicyFile": "governance.yaml",
+  "governanceRogueFile": "rogue.yaml"
+}

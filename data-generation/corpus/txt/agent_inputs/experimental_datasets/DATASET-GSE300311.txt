@@ -1,0 +1,27 @@
+PKM2-deficiency induced fatty acid biosynthesis activation limits the response of non-small cell lung cancer to Osimertinib
+================================================================================
+Experimental dataset evidence card
+
+Document ID: DATASET-GSE300311
+Category: experimental_datasets
+Source entity: entity/DATASET-GSE300311.json
+
+Dataset Identity
+----------------
+Dataset ID: GSE300311
+Title: PKM2-deficiency induced fatty acid biosynthesis activation limits the response of non-small cell lung cancer to Osimertinib
+Taxon: Homo sapiens
+Sample count: 16
+Selected reason: PC9 PKM2-deficient/control samples with vehicle/osimertinib and chromatin marks
+
+Experimental Context
+--------------------
+Assay context: resistance model; EGFR inhibition; osimertinib response
+Sample accessions: GSM9058183; GSM9058175; GSM9058172; GSM9058178; GSM9058184; GSM9058181; GSM9058170; GSM9058176; GSM9058173; GSM9058179; GSM9058174; GSM9058171; GSM9058185; GSM9058177; GSM9058182; GSM9058180
+Summary: Non-small cell lung cancer (NSCLC) - the most common form of lung cancer - is an aggressive malignancy with limited effective therapeutic options1. Osimertinib, a third-generation epidermal growth factor receptor tyrosine kinase inhibitor (EGFR-TKI), has revolutionized treatment for EGFR-mutant NSCLC, yet resistance significantly limits its clinical benefit to patients2. Here, using a genome-wide genetic screen, we discover that pyruvate kinase M2 (PKM2) is a novel regulator of Osimertinib resistance. Loss of PKM2 triggers fatty acid biosynthesis activation in a glycolysis-independent manner. We have shown that PKM2 interacts with KDM1A in cytosol and nuclear translocation of KDM1A is increased in both PKM2-KO and Osimertinib-persister cells. Mechanistically, KDM1A demethylates H3K9me3 in the promoter region of the key lipid synthesis enzyme, fatty acid synthase (FASN), and cooperates with transcription factor AP-2 to activate FASN transcription, thereby conferring Osimertinib resistance. Pharmacological inhibition of FASN by Orlistat induces synthetic lethality with Osimertinib in vitro and vivo Osimertinib-resistant models. Treatment of 9 NSCLC patients who were unresponsive t...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: cell-line or assay-level source selected
+Raw source trace: corpus/json/datasets/geo/GSE300311/geo_esummary.json; corpus/txt/datasets/geo/GSE300311/series_soft.txt; corpus/json/datasets/geo/GSE300311/source_record.json

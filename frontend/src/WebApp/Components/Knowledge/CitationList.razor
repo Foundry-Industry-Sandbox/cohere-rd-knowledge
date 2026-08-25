@@ -1,0 +1,20 @@
+@if (Citations.Count > 0)
+{
+    <ul class="citation-list">
+        @foreach (var citation in Citations)
+        {
+            <li class="citation-item card card-nested">
+                <div class="citation-header">
+                    <strong>@citation.Title</strong>
+                    <span class="citation-score">@citation.RelevanceScore.ToString("P0")</span>
+                </div>
+                <p class="citation-excerpt">"@citation.Excerpt"</p>
+                <p class="meta-line">@citation.SourceSystem · @citation.DocumentId</p>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<Citation> Citations { get; set; } = [];
+}

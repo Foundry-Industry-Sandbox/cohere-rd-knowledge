@@ -1,0 +1,71 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "clarification_needed",
+  "flow": "search",
+  "kb_state": "populated",
+  "path": "clarification_needed",
+  "phase": 2,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-08-clarification-query",
+  "scenario_id": "QRY-004",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "What does the evidence say about osimertinib resistance?",
+        "retrieval_scope_entities": [],
+        "task": "answer_grounded_query"
+      },
+      "decision": "clarification_needed",
+      "expected_output": {
+        "citation_count": 0,
+        "decision": "clarification_needed",
+        "reason": "missing_scope_study_region_or_time_window"
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "output",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "response": {
+        "citations": [],
+        "raw_source_trace": false,
+        "returned": "Clarification needed: specify study, region, or time window for osimertinib resistance evidence."
+      },
+      "stage": "response"
+    }
+  ],
+  "title": "Ambiguous resistance query — clarification needed before retrieval",
+  "trigger": {
+    "action": "run_query",
+    "kb_state": "populated",
+    "note": "controlled preset query — not a free-form chatbot",
+    "query": "What does the evidence say about osimertinib resistance?",
+    "request_id": "QRY-004-REQ",
+    "surface": "search_console",
+    "type": "ui_action"
+  }
+}

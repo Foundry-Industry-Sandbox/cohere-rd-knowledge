@@ -1,0 +1,182 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "approved_persisted",
+  "flow": "ingestion",
+  "path": "full_approval",
+  "phase": 1,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-04-demo",
+  "scenario_id": "ING-001",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "ingestion_translation_agent",
+      "agent_input": {
+        "portal_source_manifest": "corpus/csv/partner_vendor_repositories/partner_vendor_repository_index.csv",
+        "task": "ingest_and_license_check_uploaded_articles",
+        "uploaded_pmcids": [
+          "PMC6889286",
+          "PMC5447962",
+          "PMC13070087",
+          "PMC13129538",
+          "PMC13143971"
+        ]
+      },
+      "decision": "approve",
+      "expected_output": {
+        "accepted_article_count": 5,
+        "denied_article_count": 0
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [
+        "RDOC-PMC6889286",
+        "RDOC-PMC5447962",
+        "RDOC-PMC13070087",
+        "RDOC-PMC13129538",
+        "RDOC-PMC13143971"
+      ],
+      "raw_layer_folder": null,
+      "stage": "ingestion_translation"
+    },
+    {
+      "actor": null,
+      "agent": "metadata_linking_agent",
+      "agent_input": {
+        "retrieved_via_rag": [
+          "TRIAL-NCT02296125",
+          "TRIAL-NCT02151981",
+          "REG-NDA208065",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "shared_identifiers": [
+          "osimertinib",
+          "Tagrisso",
+          "AZD9291",
+          "NDA208065"
+        ],
+        "task": "extract_entities_and_link_trial_to_regulatory"
+      },
+      "decision": "approve",
+      "expected_output": {
+        "extracted_entities": [
+          "CMP-CHEMBL3353410",
+          "TGT-CHEMBL203"
+        ],
+        "required_links": [
+          "LINK-FLAURA-REG-NDA208065",
+          "LINK-REG-NDA208065-LBL-TAGRISSO-OPENFDA"
+        ]
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "RDOC-PMC5447962",
+        "RDOC-PMC13070087",
+        "RDOC-PMC13129538",
+        "RDOC-PMC13143971"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [
+        "LINK-FLAURA-REG-NDA208065",
+        "LINK-REG-NDA208065-LBL-TAGRISSO-OPENFDA",
+        "CMP-CHEMBL3353410",
+        "TGT-CHEMBL203"
+      ],
+      "raw_layer_folder": null,
+      "stage": "metadata_linking"
+    },
+    {
+      "actor": "Marisol Vega, Knowledge Curator (fictional)",
+      "agent": null,
+      "decision": "approve",
+      "expected_output": null,
+      "gate": "approved",
+      "gate_record": {
+        "decision": "approve",
+        "request": "approve_ingested_batch_for_persistence",
+        "reviewer": "Marisol Vega, Knowledge Curator (fictional)",
+        "reviews_joint_output_of": [
+          "ingestion_translation",
+          "metadata_linking"
+        ],
+        "submitted_entities": [
+          "RDOC-PMC6889286",
+          "RDOC-PMC5447962",
+          "RDOC-PMC13070087",
+          "RDOC-PMC13129538",
+          "RDOC-PMC13143971",
+          "LINK-FLAURA-REG-NDA208065",
+          "LINK-REG-NDA208065-LBL-TAGRISSO-OPENFDA",
+          "CMP-CHEMBL3353410",
+          "TGT-CHEMBL203"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curator_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "sink",
+      "materialized": false,
+      "order": 4,
+      "output_entities": [],
+      "persisted": {
+        "persisted_entities": [
+          "RDOC-PMC6889286",
+          "RDOC-PMC5447962",
+          "RDOC-PMC13070087",
+          "RDOC-PMC13129538",
+          "RDOC-PMC13143971",
+          "LINK-FLAURA-REG-NDA208065",
+          "LINK-REG-NDA208065-LBL-TAGRISSO-OPENFDA",
+          "CMP-CHEMBL3353410",
+          "TGT-CHEMBL203"
+        ],
+        "persisted_entity_count": 9,
+        "status": "persisted",
+        "target": "cms_knowledge_base"
+      },
+      "raw_layer_folder": null,
+      "stage": "persistence"
+    }
+  ],
+  "title": "Load first-line osimertinib evidence — clean upload, curator approves, persisted",
+  "trigger": {
+    "action": "upload_and_ingest",
+    "external_connector_conceptual": "Connect Portals — uploaded files stand in for data that could come from external medical portals",
+    "note": "controlled button/process trigger — not a free-form chatbot",
+    "portal_source_manifest": "corpus/csv/partner_vendor_repositories/partner_vendor_repository_index.csv",
+    "request_id": "ING-001-REQ",
+    "surface": "ingestion_console",
+    "type": "ui_action",
+    "uploaded_pmcids": [
+      "PMC6889286",
+      "PMC5447962",
+      "PMC13070087",
+      "PMC13129538",
+      "PMC13143971"
+    ]
+  }
+}

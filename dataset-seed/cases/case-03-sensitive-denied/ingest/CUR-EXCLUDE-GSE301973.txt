@@ -1,0 +1,25 @@
+CUR-EXCLUDE-GSE301973
+=====================
+Curation and compliance decision card
+
+Document ID: CUR-EXCLUDE-GSE301973
+Category: curation_decisions
+Source entity: 07_curation_decisions/CUR-EXCLUDE-GSE301973.json
+
+Curation Decision
+-----------------
+Decision ID: CUR-EXCLUDE-GSE301973
+Source ID: GSE301973
+Source type: excluded_candidate
+Decision: deny
+Reason: Sample titles reference before/after treatment specimens.
+Required human review: False
+Policy refs: HLS-DATA-100; HLS-GEO-400
+Curator: Marisol Vega, Research Data Steward (fictional)
+Decision date: 2026-06-17
+
+Provenance
+----------
+Provenance: curated_from_raw_layer_evidence
+Privacy posture: 
+Raw source trace: _source/source_catalog.json

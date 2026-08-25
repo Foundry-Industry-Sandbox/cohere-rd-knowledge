@@ -1,0 +1,28 @@
+<header class="top-bar">
+    <div class="top-bar-inner">
+        <a href="/" class="brand-link" @onclick="NavigateHome" @onclick:preventDefault>
+            <span class="brand-mark" aria-hidden="true">CR</span>
+            <span class="brand-text">
+                <span class="brand-name">Cohere Agentic R&amp;D Knowledge Hub</span>
+                <span class="brand-tagline">Grounded research knowledge, governed by design</span>
+            </span>
+        </a>
+        <nav class="top-nav">
+            <a href="/" class="nav-link">Portfolio</a>
+        </nav>
+    </div>
+</header>
+
+@code {
+    [Inject] private NavigationManager Navigation { get; set; } = default!;
+    [Parameter] public EventCallback OnNavigate { get; set; }
+
+    private async Task NavigateHome()
+    {
+        if (OnNavigate.HasDelegate)
+        {
+            await OnNavigate.InvokeAsync();
+        }
+        Navigation.NavigateTo("/");
+    }
+}

@@ -1,0 +1,25 @@
+apiVersion: governance.toolkit/v1
+version: "1.0"
+name: curation-compliance-agent-governance
+default_action: allow
+rules:
+  - name: deny-search-rd-knowledge
+    condition: "tool_name == 'search_rd_knowledge'"
+    action: deny
+    priority: 100
+  - name: deny-get-knowledge-lineage
+    condition: "tool_name == 'get_knowledge_lineage'"
+    action: deny
+    priority: 100
+  - name: deny-index-rd-knowledge
+    condition: "tool_name == 'index_rd_knowledge'"
+    action: deny
+    priority: 100
+  - name: deny-link-rd-metadata
+    condition: "tool_name == 'link_rd_metadata'"
+    action: deny
+    priority: 100
+  - name: deny-read-fabric-raw-source
+    condition: "tool_name == 'read_fabric_raw_source'"
+    action: deny
+    priority: 100

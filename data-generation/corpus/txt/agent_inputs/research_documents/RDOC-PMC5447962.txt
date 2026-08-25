@@ -1,0 +1,29 @@
+Epidermal Growth Factor Receptor Cell Proliferation Signaling Pathways
+======================================================================
+Research article evidence card
+
+Document ID: RDOC-PMC5447962
+Category: research_documents
+Source entity: entity/RDOC-PMC5447962.json
+
+Article Identity
+----------------
+Document ID: RDOC-PMC5447962
+PMCID: PMC5447962
+PMID: 28513565
+Title: Epidermal Growth Factor Receptor Cell Proliferation Signaling Pathways
+Journal: Cancers
+Publication date: 2017-05-17
+License: CC BY
+
+Extractable Content
+-------------------
+Primary entities: osimertinib; EGFR; NSCLC
+Keywords: 
+Abstract: AbstractThe epidermal growth factor receptor (EGFR) is a receptor tyrosine kinase that is commonly upregulated in cancers such as in non-small-cell lung cancer, metastatic colorectal cancer, glioblastoma, head and neck cancer, pancreatic cancer, and breast cancer. Various mechanisms mediate the upregulation of EGFR activity, including common mutations and truncations to its extracellular domain, such as in the EGFRvIII truncations, as well as to its kinase domain, such as the L858R and T790M mutations, or the exon 19 truncation. These EGFR aberrations over-activate downstream pro-oncogenic signaling pathways, including the RAS-RAF-MEK-ERK MAPK and AKT-PI3K-mTOR pathways. These pathways then activate many biological outputs that are beneficial to cancer cell proliferation, including their chronic initiation and progression through the cell cycle. Here, we review the molecular mechanisms that regulate EGFR signal transduction, including the EGFR structure and its mutations, ligand binding and EGFR dimerization, as well as the signaling pathways that lead to G1 cell cycle progression. We focus on the induction of CYCLIN D expression, CDK4/6 activation, and the repression of cyclin-...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: no patient-level source selected for normalized entity
+Raw source trace: corpus/xml/articles/pmc_oa/PMC5447962/article.xml

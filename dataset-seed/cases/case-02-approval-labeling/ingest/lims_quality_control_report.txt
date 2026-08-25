@@ -1,0 +1,18 @@
+
+SYNTHETIC LIMS QUALITY CONTROL REPORT
+System: HelixBench LIMS (synthetic)
+Report ID: QC-OSM-RAW-001
+Provenance: synthetic_from_public_structure
+
+Scope:
+- Confirm selected GEO records are cell-line or assay-level records.
+- Confirm selected ClinicalTrials.gov records are aggregate protocol/results records.
+- Confirm article full text is restricted to PMC OA records with expected license.
+- Confirm no patient-level records, case reports, or before/after patient specimens
+  are selected for the Raw Layer.
+
+Result:
+PASS
+
+Reviewer:
+Marisol Vega, Research Data Steward (fictional)

@@ -1,0 +1,14 @@
+{
+  "accession": "GSE323365",
+  "esearch_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=gds&term=GSE323365%5BACCN%5D&retmode=json&retmax=1",
+  "esummary_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gds&id=200323365&retmode=json",
+  "local_paths": [
+    "00_raw/json/datasets/geo/GSE323365/geo_esearch.json",
+    "00_raw/json/datasets/geo/GSE323365/geo_esummary.json",
+    "00_raw/txt/datasets/geo/GSE323365/series_soft.txt"
+  ],
+  "public_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE323365",
+  "raw_layer_policy": "Selected because samples are cell-line or assay-level records, not patient specimens.",
+  "role": "PC9-Cas9 dependency screen with untreated, erlotinib, and osimertinib arms",
+  "soft_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE323365&targ=self&form=text&view=quick"
+}

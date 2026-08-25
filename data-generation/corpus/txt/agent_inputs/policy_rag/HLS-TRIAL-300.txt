@@ -1,0 +1,23 @@
+Aggregate trial record use
+==========================
+Policy RAG evidence card
+
+Document ID: HLS-TRIAL-300
+Category: policy_rag
+Source entity: entity/HLS-TRIAL-300.json
+
+Policy Rule
+-----------
+Policy ID: HLS-TRIAL-300
+Policy ref: HLS-TRIAL-300
+Title: Aggregate trial record use
+Rule: ClinicalTrials.gov records may be used only as aggregate public registry/results documents.
+Threshold: Use protocol, SAP, eligibility, arms, outcomes, and aggregate results; do not generate patient-level rows.
+Action: allow_aggregate_trial_documents
+Source refs: CLINICALTRIALS_GOV_DATA_API; AACT_HOME
+
+Provenance
+----------
+Provenance: curated_from_raw_layer_policy_sources
+Privacy posture: 
+Raw source trace: corpus/json/policies/CLINICALTRIALS_GOV_DATA_API/source_record.json; corpus/json/policies/AACT_HOME/source_record.json

@@ -1,0 +1,51 @@
+{
+  "hitCount": 1,
+  "request": {
+    "cursorMark": "*",
+    "internalQuery": "PMCID:PMC13129538",
+    "pageSize": 1,
+    "queryString": "PMCID:PMC13129538",
+    "resultType": "LITE",
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "authorString": "Della Corte CM, De Rosa C, Ul Haq F, Morgillo F.",
+        "citedByCount": 0,
+        "doi": "10.37349/etat.2026.1002370",
+        "firstIndexDate": "2026-05-13",
+        "firstPublicationDate": "2026-04-27",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC13129538"
+          ]
+        },
+        "hasBook": "N",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasPDF": "Y",
+        "hasReferences": "N",
+        "hasSuppl": "N",
+        "hasTMAccessionNumbers": "N",
+        "hasTextMinedTerms": "Y",
+        "id": "42079860",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "isOpenAccess": "Y",
+        "journalIssn": "2692-3114",
+        "journalTitle": "Explor Target Antitumor Ther",
+        "journalVolume": "7",
+        "pageInfo": "1002370",
+        "pmcid": "PMC13129538",
+        "pmid": "42079860",
+        "pubType": "review-article; review; journal article",
+        "pubYear": "2026",
+        "source": "MED",
+        "title": "The evolving landscape of first-line and subsequent therapies in &lt;i&gt;EGFR&lt;/i&gt;-mutated NSCLC: efficacy, resistance, and tolerability."
+      }
+    ]
+  },
+  "version": "6.9"
+}

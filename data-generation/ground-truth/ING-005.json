@@ -1,0 +1,123 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "insufficient_data_not_persisted",
+  "flow": "ingestion",
+  "path": "insufficient_data",
+  "phase": 1,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-05-insufficient-data",
+  "scenario_id": "ING-005",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "ingestion_translation_agent",
+      "agent_input": {
+        "task": "ingest_uploaded_batch",
+        "uploaded_files": [
+          "corpus/txt/agent_inputs/quality_issues/empty_upload_stub.txt",
+          "corpus/txt/agent_inputs/quality_issues/truncated_protocol_fragment.txt"
+        ]
+      },
+      "decision": "insufficient_data",
+      "expected_output": {
+        "extractable_content_count": 0,
+        "processed_item_count": 2,
+        "quality_issues": [
+          "empty_file",
+          "truncated_content"
+        ]
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "ingestion_translation"
+    },
+    {
+      "actor": null,
+      "agent": "metadata_linking_agent",
+      "agent_input": {
+        "admitted_entities": [],
+        "task": "link_admitted_entities"
+      },
+      "decision": "insufficient_data",
+      "expected_output": {
+        "link_count": 0,
+        "reason": "no_extractable_content"
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "metadata_linking"
+    },
+    {
+      "actor": "Marisol Vega, Knowledge Curator (fictional)",
+      "agent": null,
+      "decision": "deny",
+      "expected_output": null,
+      "gate": "denied",
+      "gate_record": {
+        "decision": "deny",
+        "reason": "insufficient_extractable_content",
+        "request": "review_insufficient_batch",
+        "reviewer": "Marisol Vega, Knowledge Curator (fictional)",
+        "reviews_joint_output_of": [
+          "ingestion_translation",
+          "metadata_linking"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curator_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "sink",
+      "materialized": false,
+      "order": 4,
+      "output_entities": [],
+      "persisted": {
+        "persisted_entities": [],
+        "status": "denied_not_persisted",
+        "target": "cms_knowledge_base"
+      },
+      "raw_layer_folder": null,
+      "stage": "persistence"
+    }
+  ],
+  "title": "Load an empty and truncated batch — insufficient data, nothing persisted",
+  "trigger": {
+    "action": "upload_and_ingest",
+    "external_connector_conceptual": "Connect Portals — uploaded files stand in for data that could come from external medical portals",
+    "note": "batch contains an empty file and a truncated protocol fragment",
+    "request_id": "ING-005-REQ",
+    "surface": "ingestion_console",
+    "type": "ui_action",
+    "uploaded_files": [
+      "corpus/txt/agent_inputs/quality_issues/empty_upload_stub.txt",
+      "corpus/txt/agent_inputs/quality_issues/truncated_protocol_fragment.txt"
+    ]
+  }
+}

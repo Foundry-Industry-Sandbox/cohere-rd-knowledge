@@ -1,0 +1,14 @@
+{
+  "full_text_xml_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13070087/fullTextXML",
+  "license": "CC BY",
+  "local_paths": [
+    "00_raw/xml/articles/pmc_oa/PMC13070087/article.xml",
+    "00_raw/xml/articles/pmc_oa/PMC13070087/pmc_oa_license.xml",
+    "00_raw/json/articles/pmc_oa/PMC13070087/europe_pmc_metadata.json"
+  ],
+  "metadata_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID:PMC13070087&format=json&pageSize=1",
+  "oa_license_url": "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC13070087",
+  "pmcid": "PMC13070087",
+  "raw_layer_policy": "Full text allowed only because PMC OA API license matched expected license.",
+  "title": "Updates in the Management of EGFR-Mutated Non-small Cell Lung Cancer (NSCLC)"
+}

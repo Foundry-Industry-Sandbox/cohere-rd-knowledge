@@ -1,0 +1,26 @@
+@if (Result is not null)
+{
+    <div class="agent-panel">
+        <p>@Result.Summary</p>
+        <dl class="detail-list grid-2">
+            <div><dt>Documents processed</dt><dd>@Result.DocumentsProcessed</dd></div>
+            <div><dt>Duplicates removed</dt><dd>@Result.DuplicatesRemoved</dd></div>
+        </dl>
+        @if ((Result.ConnectedPortals?.Count ?? 0) > 0)
+        {
+            <p class="meta-line"><strong>Connected:</strong> @string.Join(", ", Result.ConnectedPortals!)</p>
+        }
+        @if ((Result.NormalizedFormats?.Count ?? 0) > 0)
+        {
+            <p class="meta-line"><strong>Formats:</strong> @string.Join(", ", Result.NormalizedFormats!)</p>
+        }
+    </div>
+}
+else
+{
+    <EmptyState Title="Awaiting agent output" Description="Ingestion & Translation will connect to portals and normalize source formats." />
+}
+
+@code {
+    [Parameter] public IngestionTranslationResult? Result { get; set; }
+}

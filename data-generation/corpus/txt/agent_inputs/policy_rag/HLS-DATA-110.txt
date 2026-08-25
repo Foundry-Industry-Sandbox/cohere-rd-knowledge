@@ -1,0 +1,23 @@
+Synthetic ELN/LIMS labeling
+===========================
+Policy RAG evidence card
+
+Document ID: HLS-DATA-110
+Category: policy_rag
+Source entity: entity/HLS-DATA-110.json
+
+Policy Rule
+-----------
+Policy ID: HLS-DATA-110
+Policy ref: HLS-DATA-110
+Title: Synthetic ELN/LIMS labeling
+Rule: Generated ELN, LIMS, reviewer, scientist, or repository records must be explicitly labeled synthetic.
+Threshold: All generated lab operations records must include provenance synthetic_from_public_structure.
+Action: require_synthetic_provenance
+Source refs: AACT_HOME; CLINICALTRIALS_GOV_DATA_API
+
+Provenance
+----------
+Provenance: curated_from_raw_layer_policy_sources
+Privacy posture: 
+Raw source trace: corpus/json/policies/AACT_HOME/source_record.json; corpus/json/policies/CLINICALTRIALS_GOV_DATA_API/source_record.json

@@ -1,0 +1,23 @@
+Patient-level data exclusion
+============================
+Policy RAG evidence card
+
+Document ID: HLS-DATA-100
+Category: policy_rag
+Source entity: entity/HLS-DATA-100.json
+
+Policy Rule
+-----------
+Policy ID: HLS-DATA-100
+Policy ref: HLS-DATA-100
+Title: Patient-level data exclusion
+Rule: Do not ingest patient-level records, case report narratives, or real patient trajectories into this dataset seed.
+Threshold: Any source that contains real patient identifiers or patient specimen labels is excluded.
+Action: deny_source_for_raw_layer
+Source refs: FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION; EU_CLINICAL_TRIALS_REGULATION_536_2014
+
+Provenance
+----------
+Provenance: curated_from_raw_layer_policy_sources
+Privacy posture: 
+Raw source trace: corpus/json/policies/FDA_CLINICAL_TRIALS_HUMAN_SUBJECT_PROTECTION/source_record.json; corpus/json/policies/EU_CLINICAL_TRIALS_REGULATION_536_2014/source_record.json

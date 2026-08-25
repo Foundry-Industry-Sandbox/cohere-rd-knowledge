@@ -1,0 +1,119 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "denied_not_persisted",
+  "flow": "ingestion",
+  "path": "sensitive_blocked",
+  "phase": 1,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": true,
+  "scenario_folder": "dataset-seed/cases/case-03-sensitive-denied",
+  "scenario_id": "ING-004",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "ingestion_translation_agent",
+      "agent_input": {
+        "candidate_dataset_ids": [
+          "GSE301973"
+        ],
+        "task": "ingest_candidate_dataset_metadata_only"
+      },
+      "decision": "defer_to_human_approval",
+      "expected_output": {
+        "flagged_candidate": "GSE301973",
+        "normalized_count": 0,
+        "note": "metadata only — deferred to the knowledge curator"
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "ingestion_translation"
+    },
+    {
+      "actor": null,
+      "agent": "metadata_linking_agent",
+      "agent_input": {
+        "admitted_entities": [],
+        "task": "link_admitted_entities"
+      },
+      "decision": "no_action",
+      "expected_output": {
+        "link_count": 0,
+        "reason": "candidate_not_admitted"
+      },
+      "gate": null,
+      "input_entities": [],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "metadata_linking"
+    },
+    {
+      "actor": "Marisol Vega, Knowledge Curator (fictional)",
+      "agent": null,
+      "decision": "deny",
+      "expected_output": null,
+      "gate": "denied",
+      "gate_record": {
+        "candidate": "GSE301973",
+        "decision": "deny",
+        "reason": "patient_derived_specimens",
+        "request": "approve_candidate_for_persistence",
+        "reviewer": "Marisol Vega, Knowledge Curator (fictional)",
+        "reviews_joint_output_of": [
+          "ingestion_translation",
+          "metadata_linking"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curator_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "sink",
+      "materialized": false,
+      "order": 4,
+      "output_entities": [],
+      "persisted": {
+        "persisted_entities": [],
+        "status": "denied_not_persisted",
+        "target": "cms_knowledge_base"
+      },
+      "raw_layer_folder": null,
+      "stage": "persistence"
+    }
+  ],
+  "title": "Load a patient-derived candidate — blocked by the curator, never persisted",
+  "trigger": {
+    "action": "upload_and_ingest",
+    "candidate_dataset_ids": [
+      "GSE301973"
+    ],
+    "external_connector_conceptual": "Connect Portals — uploaded files stand in for data that could come from external medical portals",
+    "note": "GSE301973 references before/after treatment specimens (patient-derived)",
+    "request_id": "ING-004-REQ",
+    "surface": "ingestion_console",
+    "type": "ui_action"
+  }
+}

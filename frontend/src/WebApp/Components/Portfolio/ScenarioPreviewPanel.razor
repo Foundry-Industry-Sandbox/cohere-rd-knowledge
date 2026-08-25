@@ -1,0 +1,36 @@
+@if (Scenario is not null)
+{
+    <div class="card scenario-preview @(IsSelected ? "selected" : "")">
+        <h3 class="card-title">@Scenario.Title</h3>
+        <p>@Scenario.Description</p>
+        <dl class="detail-list">
+            @if (!string.IsNullOrWhiteSpace(Scenario.CaseFolder))
+            {
+                <div><dt>Case folder</dt><dd><code>@Scenario.CaseFolder</code></dd></div>
+            }
+            <div><dt>Expected outcome</dt><dd>@Scenario.OutcomeHint</dd></div>
+            @if (!string.IsNullOrWhiteSpace(Scenario.FinalOutcome))
+            {
+                <div><dt>Final outcome</dt><dd>@ScenarioOutcomeUi.FormatFinalOutcome(Scenario.FinalOutcome)</dd></div>
+            }
+            @if (!string.IsNullOrWhiteSpace(Scenario.SampleQuestion))
+            {
+                <div><dt>Sample question</dt><dd>@Scenario.SampleQuestion</dd></div>
+            }
+        </dl>
+
+        <LoadingButton IsLoading="IsRunning" OnClick="OnRun">@RunButtonLabel</LoadingButton>
+    </div>
+}
+else
+{
+    <EmptyState Title="Select a scenario" Description="Choose a scenario from the list to preview details and run the workflow." />
+}
+
+@code {
+    [Parameter] public SeedScenarioDefinition? Scenario { get; set; }
+    [Parameter] public bool IsSelected { get; set; }
+    [Parameter] public bool IsRunning { get; set; }
+    [Parameter] public string RunButtonLabel { get; set; } = "Run";
+    [Parameter] public EventCallback OnRun { get; set; }
+}

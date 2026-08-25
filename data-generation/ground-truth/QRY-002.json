@@ -1,0 +1,159 @@
+{
+  "document_date": "2026-06-24",
+  "document_type": "decision_ground_truth",
+  "final_outcome": "answer_with_citations",
+  "flow": "search",
+  "kb_state": "populated",
+  "path": "grounded",
+  "phase": 2,
+  "raw_sources": [
+    "corpus/raw_manifest.json"
+  ],
+  "required_human_review": false,
+  "scenario_folder": "dataset-seed/cases/case-04-demo",
+  "scenario_id": "QRY-002",
+  "scenario_kind": "e2e_phase_path",
+  "source_system": "hls_knowledge_mining_ground_truth",
+  "stages": [
+    {
+      "actor": null,
+      "agent": "search_chat_agent",
+      "agent_input": {
+        "query": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+        "retrieval_scope_entities": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "DATASET-GSE323366",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "task": "answer_grounded_query"
+      },
+      "decision": "answer_with_citations",
+      "expected_output": {
+        "decision": "answer_with_citations",
+        "expected_answer_points": [
+          "osimertinib is a third-generation EGFR-TKI active against the EGFR T790M resistance mutation",
+          "acquired resistance is heterogeneous: MET/HER2 amplification, RAS-MAPK or RAS-PI3K pathway activation, novel fusion events, and histological/phenotypic transformation",
+          "FLAURA (NCT02296125) is the first-line trial context for osimertinib",
+          "the Tagrisso openFDA label is the regulatory anchor for the regimen"
+        ],
+        "expected_citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "minimum_citation_count": 2,
+        "must_include_raw_source_trace": true
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "TRIAL-NCT02296125",
+        "DATASET-GSE323366",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 1,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "search_chat"
+    },
+    {
+      "actor": null,
+      "agent": "curation_compliance_agent",
+      "agent_input": {
+        "draft_answer_citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "enforced_policy_refs": [
+          "HLS-TRIAL-300",
+          "HLS-LIC-200"
+        ],
+        "task": "review_answer_before_return"
+      },
+      "decision": "approve_response",
+      "expected_output": {
+        "decision": "approve_response",
+        "required_human_review": false,
+        "sensitive_content_found": false
+      },
+      "gate": null,
+      "input_entities": [
+        "RDOC-PMC6889286",
+        "TRIAL-NCT02296125",
+        "LBL-TAGRISSO-OPENFDA"
+      ],
+      "kind": "agent",
+      "materialized": true,
+      "order": 2,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "curation_compliance"
+    },
+    {
+      "actor": "Daniel Okafor, Compliance Owner (fictional)",
+      "agent": null,
+      "decision": "approve",
+      "expected_output": null,
+      "gate": "approved",
+      "gate_record": {
+        "approved_citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "decision": "approve",
+        "request": "approve_response_before_return",
+        "reviewer": "Daniel Okafor, Compliance Owner (fictional)",
+        "reviews_joint_output_of": [
+          "search_chat",
+          "curation_compliance"
+        ]
+      },
+      "input_entities": [],
+      "kind": "gate",
+      "materialized": false,
+      "order": 3,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "stage": "compliance_approval"
+    },
+    {
+      "actor": null,
+      "agent": null,
+      "decision": null,
+      "expected_output": null,
+      "gate": null,
+      "input_entities": [],
+      "kind": "output",
+      "materialized": true,
+      "order": 4,
+      "output_entities": [],
+      "raw_layer_folder": null,
+      "response": {
+        "citations": [
+          "RDOC-PMC6889286",
+          "TRIAL-NCT02296125",
+          "LBL-TAGRISSO-OPENFDA"
+        ],
+        "raw_source_trace": true,
+        "returned": "Grounded answer on osimertinib resistance mechanisms and first-line evidence."
+      },
+      "stage": "response"
+    }
+  ],
+  "title": "Query a populated knowledge base — grounded answer with citations (demo step 3)",
+  "trigger": {
+    "action": "run_query",
+    "depends_on_ingestion": "ING-001 (entities must already be persisted)",
+    "kb_state": "populated",
+    "note": "controlled preset query — not a free-form chatbot",
+    "query": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+    "request_id": "QRY-002-REQ",
+    "surface": "search_console",
+    "type": "ui_action"
+  }
+}

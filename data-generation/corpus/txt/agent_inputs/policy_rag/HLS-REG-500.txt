@@ -1,0 +1,23 @@
+Public regulatory source use
+============================
+Policy RAG evidence card
+
+Document ID: HLS-REG-500
+Category: policy_rag
+Source entity: entity/HLS-REG-500.json
+
+Policy Rule
+-----------
+Policy ID: HLS-REG-500
+Policy ref: HLS-REG-500
+Title: Public regulatory source use
+Rule: Use only public regulatory labels, approval letters, reviews, and EPAR pages for regulatory entities.
+Threshold: Source must be a public FDA/openFDA/Drugs@FDA/EMA document or API response.
+Action: allow_public_regulatory_documents
+Source refs: OPENFDA_LABEL_TAGRISSO; OPENFDA_DRUGSFDA_NDA208065; EMA_TAGRISSO_EPAR
+
+Provenance
+----------
+Provenance: curated_from_raw_layer_policy_sources
+Privacy posture: 
+Raw source trace: corpus/json/regulatory/OPENFDA_LABEL_TAGRISSO/source_record.json; corpus/json/regulatory/OPENFDA_DRUGSFDA_NDA208065/source_record.json; corpus/json/regulatory/EMA_TAGRISSO_EPAR/source_record.json

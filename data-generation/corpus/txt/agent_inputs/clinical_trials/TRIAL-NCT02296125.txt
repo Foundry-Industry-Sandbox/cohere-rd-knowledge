@@ -1,0 +1,35 @@
+AZD9291 Versus Gefitinib or Erlotinib in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
+================================================================================
+Clinical trial evidence card
+
+Document ID: TRIAL-NCT02296125
+Category: clinical_trials
+Source entity: entity/TRIAL-NCT02296125.json
+
+Trial Identity
+--------------
+Trial ID: NCT02296125
+Acronym: FLAURA
+Brief title: AZD9291 Versus Gefitinib or Erlotinib in Patients With Locally Advanced or Metastatic Non-small Cell Lung Cancer
+Overall status: COMPLETED
+Lead sponsor: AstraZeneca
+Collaborators: Parexel
+
+Design And Outcomes
+-------------------
+Phases: PHASE3
+Enrollment: {"count": 674, "type": "ACTUAL"}
+Conditions: Locally Advanced or Metastatic EGFR Sensitising Mutation Positive Non Small Cell Lung Cancer
+Interventions: AZD9291 80 mg/40 mg + placebo; Placebo Erlotinib 150/100mg; Placebo Gefitinib 250 mg; Erlotinib 150/100 mg; Gefitinib 250 mg; Placebo AZD9291 80 mg/ 40 mg
+Primary outcomes: Median Progression Free Survival (PFS) (Months); Percentage of Participants in Progression Free Survival at 6, 12, and 18 Months
+Has results: True
+
+Public Documents
+----------------
+Documents: Prot_000.pdf; SAP_001.pdf
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: aggregate clinical trial registration/results only
+Raw source trace: corpus/json/trials/clinicaltrials_gov/NCT02296125/study.json; corpus/pdf/trials/clinicaltrials_gov/NCT02296125/Prot_000.pdf; corpus/pdf/trials/clinicaltrials_gov/NCT02296125/SAP_001.pdf

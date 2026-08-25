@@ -1,0 +1,51 @@
+{
+  "hitCount": 1,
+  "request": {
+    "cursorMark": "*",
+    "internalQuery": "PMCID:PMC13143971",
+    "pageSize": 1,
+    "queryString": "PMCID:PMC13143971",
+    "resultType": "LITE",
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "authorString": "Wang Z, Song Y, Wang A, Liu B.",
+        "citedByCount": 0,
+        "doi": "10.3389/fphar.2026.1795614",
+        "firstIndexDate": "2026-05-13",
+        "firstPublicationDate": "2026-04-22",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC13143971"
+          ]
+        },
+        "hasBook": "N",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasPDF": "Y",
+        "hasReferences": "N",
+        "hasSuppl": "N",
+        "hasTMAccessionNumbers": "N",
+        "hasTextMinedTerms": "Y",
+        "id": "42100320",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "isOpenAccess": "Y",
+        "journalIssn": "1663-9812",
+        "journalTitle": "Front Pharmacol",
+        "journalVolume": "17",
+        "pageInfo": "1795614",
+        "pmcid": "PMC13143971",
+        "pmid": "42100320",
+        "pubType": "review-article; review; journal article",
+        "pubYear": "2026",
+        "source": "MED",
+        "title": "Non-small cell lung cancer after EGFR-TKI resistance: from drug resistance mechanisms to precision interventions."
+      }
+    ]
+  },
+  "version": "6.9"
+}

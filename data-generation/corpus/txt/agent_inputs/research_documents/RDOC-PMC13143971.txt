@@ -1,0 +1,29 @@
+Non-small cell lung cancer after EGFR-TKI resistance: from drug resistance mechanisms to precision interventions
+================================================================================
+Research article evidence card
+
+Document ID: RDOC-PMC13143971
+Category: research_documents
+Source entity: entity/RDOC-PMC13143971.json
+
+Article Identity
+----------------
+Document ID: RDOC-PMC13143971
+PMCID: PMC13143971
+PMID: 42100320
+Title: Non-small cell lung cancer after EGFR-TKI resistance: from drug resistance mechanisms to precision interventions
+Journal: Front Pharmacol
+Publication date: 2026-04-22
+License: CC BY
+
+Extractable Content
+-------------------
+Primary entities: osimertinib; EGFR; NSCLC
+Keywords: EGFR-TKIs; novel therapies; NSCLC; precision interventions; resistance mechanisms; therapeutic strategy
+Abstract: The emergence of epithelial growth factor receptor tyrosine kinase inhibitors (EGFR-TKIs) propelled EGFR-mutated patients of non-small cell lung cancer (NSCLC) into the era of precision medicine. Third-generation targeted therapies, such as osimertinib, can specifically target the T790M mutation and effectively overcome resistance to previous treatments, significantly prolonging progression-free survival in patients. Despite its remarkable clinical efficacy and manageable safety profile, it is still not immune to the development of resistance. Therefore, overcoming resistance and providing new treatment strategies for advanced NSCLC patients harboring EGFR mutations after osimertinib resistance are priorities that need to be considered. New-generation EGFR-TKIs or combination therapeutic strategies hold promise to address resistance. In addition, with the development of genomics and molecular diagnostic technologies, several drugs with novel mechanisms of action, such as antibody-drug conjugates and bispecific antibodies, have shown promising clinical response rates and favorable safety profiles in several clinical and experimental studies. This review aims to more systematicall...
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: no patient-level source selected for normalized entity
+Raw source trace: corpus/xml/articles/pmc_oa/PMC13143971/article.xml

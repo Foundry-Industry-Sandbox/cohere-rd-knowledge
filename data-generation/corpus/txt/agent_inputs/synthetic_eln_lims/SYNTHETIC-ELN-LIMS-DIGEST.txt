@@ -1,0 +1,25 @@
+Synthetic ELN/LIMS Digest
+=========================
+Synthetic operational evidence card
+
+Document ID: SYNTHETIC-ELN-LIMS-DIGEST
+Category: synthetic_eln_lims
+Source entity: entity/SYN-LIMS-*.json
+
+Synthetic ELN/LIMS Digest
+-------------------------
+Document ID: SYNTHETIC-ELN-LIMS-DIGEST
+Source system: synthetic_eln_lims
+Sample count: 2
+Purpose: Cross-format validation of lab-style operational records derived from public source structure.
+
+Sample Rows
+-----------
+SYN-LIMS-001: PC9 | DMSO | RNA-seq | GSE323366
+SYN-LIMS-010: PC9OR si-GLMP | si-GLMP | RNA-seq | GSE298111
+
+Provenance
+----------
+Provenance: synthetic_from_public_structure
+Privacy posture: fictional/synthetic operational record; no patient data
+Raw source trace: corpus/csv/synthetic_eln_lims/lims_sample_manifest.csv; corpus/txt/synthetic_eln_lims/eln_experiment_notebook.txt

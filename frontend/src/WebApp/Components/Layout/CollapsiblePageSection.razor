@@ -1,0 +1,28 @@
+@inject WorkspaceSectionState SectionState
+
+<section class="collapsible-section card">
+    <button type="button" class="collapsible-header" @onclick="Toggle" aria-expanded="@SectionState.IsExpanded(SectionId)">
+        <span class="collapsible-title">@Title</span>
+        <span class="collapsible-meta">
+            @if (!string.IsNullOrWhiteSpace(StatusLabel))
+            {
+                <StatusBadge Label="@StatusLabel" CssClass="@StatusCssClass" />
+            }
+            <span class="chevron @(SectionState.IsExpanded(SectionId) ? "expanded" : "")" aria-hidden="true">›</span>
+        </span>
+    </button>
+    @if (SectionState.IsExpanded(SectionId))
+    {
+        <div class="collapsible-body">@ChildContent</div>
+    }
+</section>
+
+@code {
+    [Parameter, EditorRequired] public string SectionId { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string? StatusLabel { get; set; }
+    [Parameter] public string StatusCssClass { get; set; } = "status-neutral";
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = default!;
+
+    private void Toggle() => SectionState.Toggle(SectionId);
+}

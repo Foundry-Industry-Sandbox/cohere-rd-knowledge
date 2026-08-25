@@ -1,0 +1,233 @@
+[
+  {
+    "scenarioId": "ingestion-ing-001",
+    "legacyScenarioId": "ING-001",
+    "block": "Ingestion",
+    "title": "Load first-line osimertinib evidence - clean upload, curator approves, persisted",
+    "description": "Upload and ingest five OA research articles via the ingestion console. Ingestion translation de-duplicates and normalizes content; metadata linking extracts entities and trial-to-regulatory links; after that it is persisted to the Vector DB.",
+    "studyId": "case-04-demo",
+    "sourceId": "case-04-demo",
+    "caseFolder": "case-04-demo",
+    "sampleQuestion": null,
+    "outcomeHint": "Approve",
+    "finalOutcome": "approved_persisted",
+    "study": {
+      "studyId": "case-04-demo",
+      "title": "Headline demo - osimertinib evidence package",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Phase III (FLAURA)",
+      "primaryEndpoint": "Progression-free survival in EGFR-mutated NSCLC",
+      "sourceSystems": ["Study portal", "Partner repository"]
+    }
+  },
+  {
+    "scenarioId": "ingestion-ing-002",
+    "legacyScenarioId": "ING-002",
+    "block": "Ingestion",
+    "title": "Load with a messy pool - license and PHI guardrails, routed to the curator",
+    "description": "Upload a mixed research package including articles and GEO dataset candidates. Ingestion flags exclusions and routes the batch to the Knowledge Curator for human review before anything is persisted.",
+    "studyId": "case-01-human-review",
+    "sourceId": "case-01-human-review",
+    "caseFolder": "case-01-human-review",
+    "sampleQuestion": null,
+    "outcomeHint": "Review",
+    "finalOutcome": "needs_human_review",
+    "study": {
+      "studyId": "case-01-human-review",
+      "title": "Human review needed - mixed article and dataset pool",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Multi-study evidence",
+      "primaryEndpoint": "Curator review of exclusions",
+      "sourceSystems": ["Study portal", "GEO datasets"]
+    }
+  },
+  {
+    "scenarioId": "ingestion-ing-003",
+    "legacyScenarioId": "ING-003",
+    "block": "Ingestion",
+    "title": "Load synthetic ELN/LIMS records - curator approves with required labeling, persisted",
+    "description": "Upload synthetic ELN and LIMS lab-operation records derived from public GEO structure. Metadata linking associates samples to GEO series; the curator approves with required synthetic provenance labeling.",
+    "studyId": "case-02-approval-labeling",
+    "sourceId": "case-02-approval-labeling",
+    "caseFolder": "case-02-approval-labeling",
+    "sampleQuestion": null,
+    "outcomeHint": "Approve",
+    "finalOutcome": "approved_with_required_labeling",
+    "study": {
+      "studyId": "case-02-approval-labeling",
+      "title": "Synthetic ELN/LIMS with required labeling",
+      "compound": "—",
+      "phase": "Lab operations",
+      "primaryEndpoint": "Sample-to-GEO series association",
+      "sourceSystems": ["ELN", "LIMS"]
+    }
+  },
+  {
+    "scenarioId": "ingestion-ing-004",
+    "legacyScenarioId": "ING-004",
+    "block": "Ingestion",
+    "title": "Load a patient-derived candidate - blocked by the curator, never persisted",
+    "description": "Upload a package containing a patient-derived GEO dataset candidate (GSE301973). The Knowledge Curator denies persistence; nothing is written to the Vector DB.",
+    "studyId": "case-03-sensitive-denied",
+    "sourceId": "case-03-sensitive-denied",
+    "caseFolder": "case-03-sensitive-denied",
+    "sampleQuestion": null,
+    "outcomeHint": "Deny",
+    "finalOutcome": "denied_not_persisted",
+    "study": {
+      "studyId": "case-03-sensitive-denied",
+      "title": "Sensitive patient-derived data - denied",
+      "compound": "—",
+      "phase": "—",
+      "primaryEndpoint": "Curator gate denial",
+      "sourceSystems": ["GEO candidate"]
+    }
+  },
+  {
+    "scenarioId": "query-qry-001",
+    "legacyScenarioId": "QRY-001",
+    "block": "Query",
+    "title": "Query an empty knowledge base - no grounded answer (demo step 1)",
+    "description": "Run the headline demo query against an empty Vector DB. Search & Chat should report that no grounded answer is available. Run before ING-001 to show the before/after narrative.",
+    "studyId": "query-qry-001",
+    "sourceId": "",
+    "caseFolder": "case-04-demo",
+    "sampleQuestion": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+    "outcomeHint": "Review",
+    "finalOutcome": "no_grounded_answer",
+    "study": {
+      "studyId": "query-qry-001",
+      "title": "Headline demo - empty KB query",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Search & Chat",
+      "primaryEndpoint": "Grounded evidence retrieval",
+      "sourceSystems": ["Vector DB"]
+    }
+  },
+  {
+    "scenarioId": "query-qry-002",
+    "legacyScenarioId": "QRY-002",
+    "block": "Query",
+    "title": "Same query after ingestion - grounded answer with citations (demo step 3)",
+    "description": "Run the same osimertinib resistance query after ING-001 completes. Search & Chat should return a grounded answer with citations from persisted knowledge.",
+    "studyId": "query-qry-002",
+    "sourceId": "",
+    "caseFolder": "case-04-demo",
+    "sampleQuestion": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC, and which clinical-trial and regulatory evidence support its first-line use?",
+    "outcomeHint": "Approve",
+    "finalOutcome": "answer_with_citations",
+    "study": {
+      "studyId": "query-qry-002",
+      "title": "Headline demo - grounded query",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Search & Chat",
+      "primaryEndpoint": "Grounded evidence retrieval",
+      "sourceSystems": ["Vector DB"]
+    }
+  },
+  {
+    "scenarioId": "ingestion-ing-005",
+    "legacyScenarioId": "ING-005",
+    "block": "Ingestion",
+    "title": "Load an empty and truncated batch - insufficient data, nothing persisted",
+    "description": "Upload a batch containing an empty file and a truncated protocol fragment. Ingestion translation should return Insufficient Data; nothing is persisted.",
+    "studyId": "case-05-insufficient-data",
+    "sourceId": "case-05-insufficient-data",
+    "caseFolder": "case-05-insufficient-data",
+    "sampleQuestion": null,
+    "outcomeHint": "Deny",
+    "finalOutcome": "insufficient_data_not_persisted",
+    "study": {
+      "studyId": "case-05-insufficient-data",
+      "title": "Insufficient extractable content",
+      "compound": "—",
+      "phase": "—",
+      "primaryEndpoint": "Ingestion quality gate",
+      "sourceSystems": ["Upload batch"]
+    }
+  },
+  {
+    "scenarioId": "ingestion-ing-007",
+    "legacyScenarioId": "ING-007",
+    "block": "Ingestion",
+    "title": "Messy pool reviewed by curator - exclusions accepted, admitted content persisted",
+    "description": "Same mixed article and GEO pool as ING-002, but the Knowledge Curator approves admitted content after exclusion review. Articles and accepted GEO datasets are persisted.",
+    "studyId": "case-06-approve-after-review",
+    "sourceId": "case-06-approve-after-review",
+    "caseFolder": "case-06-approve-after-review",
+    "sampleQuestion": null,
+    "outcomeHint": "Approve",
+    "finalOutcome": "approved_with_exclusions_persisted",
+    "study": {
+      "studyId": "case-06-approve-after-review",
+      "title": "Approve after exclusion review",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Multi-study evidence",
+      "primaryEndpoint": "Partial persistence after curator review",
+      "sourceSystems": ["Study portal", "GEO datasets"]
+    }
+  },
+  {
+    "scenarioId": "query-qry-003",
+    "legacyScenarioId": "QRY-003",
+    "block": "Query",
+    "title": "EU-scoped query - grounded answer missing regional policy context",
+    "description": "Query the EU/EMA approved first-line indication after ING-001. Search & Chat should answer with trial/label citations; Curate should flag missing EU regional policy context (HLS-REGION-EU-400).",
+    "studyId": "query-qry-003",
+    "sourceId": "",
+    "caseFolder": "case-07-eu-policy-query",
+    "sampleQuestion": "What is the EU/EMA approved first-line indication for osimertinib in EGFR-mutated NSCLC?",
+    "outcomeHint": "Review",
+    "finalOutcome": "flagged_for_compliance_review",
+    "study": {
+      "studyId": "query-qry-003",
+      "title": "EU policy gap - compliance flag",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Search & Chat + Curate",
+      "primaryEndpoint": "Regional policy compliance",
+      "sourceSystems": ["Vector DB"]
+    }
+  },
+  {
+    "scenarioId": "query-qry-004",
+    "legacyScenarioId": "QRY-004",
+    "block": "Query",
+    "title": "Ambiguous resistance query - clarification needed before retrieval",
+    "description": "Run a broad osimertinib resistance query without study, region, or time scope. Search & Chat should request clarification before grounding an answer.",
+    "studyId": "query-qry-004",
+    "sourceId": "",
+    "caseFolder": "case-08-clarification-query",
+    "sampleQuestion": "What does the evidence say about osimertinib resistance?",
+    "outcomeHint": "Review",
+    "finalOutcome": "clarification_needed",
+    "study": {
+      "studyId": "query-qry-004",
+      "title": "Clarification needed",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Search & Chat",
+      "primaryEndpoint": "Scope clarification",
+      "sourceSystems": ["Vector DB"]
+    }
+  },
+  {
+    "scenarioId": "query-qry-005",
+    "legacyScenarioId": "QRY-005",
+    "block": "Query",
+    "title": "Multi-turn grounded chat - Curate reviews accumulated responses",
+    "description": "Run two grounded queries in the same session (resistance mechanisms, then FLAURA context) after ING-001, then Curate. Curation should review the full chatResponses set.",
+    "studyId": "query-qry-005",
+    "sourceId": "",
+    "caseFolder": "case-09-multi-turn-query",
+    "sampleQuestion": "What are the known mechanisms of resistance to osimertinib in EGFR-mutated NSCLC?",
+    "outcomeHint": "Approve",
+    "finalOutcome": "answer_with_citations",
+    "study": {
+      "studyId": "query-qry-005",
+      "title": "Multi-turn grounded session",
+      "compound": "osimertinib (Tagrisso)",
+      "phase": "Search & Chat + Curate",
+      "primaryEndpoint": "Session-wide curation review",
+      "sourceSystems": ["Vector DB"]
+    }
+  }
+]

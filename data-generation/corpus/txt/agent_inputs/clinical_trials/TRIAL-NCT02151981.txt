@@ -1,0 +1,35 @@
+AZD9291 (Osimertinib) Versus Platinum-Based Doublet-Chemotherapy in Locally Advanced or Metastatic Non-Small Cell Lung Cancer
+================================================================================
+Clinical trial evidence card
+
+Document ID: TRIAL-NCT02151981
+Category: clinical_trials
+Source entity: entity/TRIAL-NCT02151981.json
+
+Trial Identity
+--------------
+Trial ID: NCT02151981
+Acronym: AURA3
+Brief title: AZD9291 (Osimertinib) Versus Platinum-Based Doublet-Chemotherapy in Locally Advanced or Metastatic Non-Small Cell Lung Cancer
+Overall status: COMPLETED
+Lead sponsor: AstraZeneca
+Collaborators: 
+
+Design And Outcomes
+-------------------
+Phases: PHASE3
+Enrollment: {"count": 421, "type": "ACTUAL"}
+Conditions: Anticancer Treatment
+Interventions: Chemotherapy; Cross-over to Osimertinib
+Primary outcomes: Progression Free Survival (PFS) by Investigator Assessment
+Has results: True
+
+Public Documents
+----------------
+Documents: Prot_000.pdf; SAP_001.pdf
+
+Provenance
+----------
+Provenance: derived_from_raw_layer
+Privacy posture: aggregate clinical trial registration/results only
+Raw source trace: corpus/json/trials/clinicaltrials_gov/NCT02151981/study.json; corpus/pdf/trials/clinicaltrials_gov/NCT02151981/Prot_000.pdf; corpus/pdf/trials/clinicaltrials_gov/NCT02151981/SAP_001.pdf

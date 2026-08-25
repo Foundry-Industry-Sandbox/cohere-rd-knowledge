@@ -1,0 +1,15 @@
+{
+  "compound_anchor": "osimertinib / Tagrisso / AZD9291",
+  "dataset_id": "hls-agentic-rd-knowledge-mining",
+  "entity_count": 29,
+  "ground_truth_count": 11,
+  "privacy_posture": {
+    "patient_level_data": "excluded",
+    "patient_names": "excluded",
+    "selected_geo_records": "cell-line or assay-level records only",
+    "synthetic_people": "fictional lab/reviewer names only"
+  },
+  "raw_layer_manifest": "corpus/raw_manifest.json",
+  "scenario": "HLS Agentic R&D knowledge mining with Cohere models",
+  "therapeutic_area": "EGFR-mutated non-small cell lung cancer"
+}

@@ -1,0 +1,20 @@
+@if ((Entities?.Count ?? 0) > 0)
+{
+    <div class="chip-list">
+        @foreach (var entity in Entities!)
+        {
+            <span class="entity-chip">
+                <span class="chip-category">@entity.Category</span>
+                <span class="chip-name">@entity.Name</span>
+                @if (!string.IsNullOrWhiteSpace(entity.Version) && entity.Version != "—")
+                {
+                    <span class="chip-version">@entity.Version</span>
+                }
+            </span>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public IReadOnlyList<EntityChip> Entities { get; set; } = [];
+}

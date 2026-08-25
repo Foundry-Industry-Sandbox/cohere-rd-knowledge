@@ -1,0 +1,7 @@
+{
+  "format": "json",
+  "local_path": "00_raw/json/regulatory/OPENFDA_LABEL_TAGRISSO/OPENFDA_LABEL_TAGRISSO.json",
+  "raw_layer_policy": "Public regulatory or policy source page/document.",
+  "source_id": "OPENFDA_LABEL_TAGRISSO",
+  "url": "https://api.fda.gov/drug/label.json?search=openfda.brand_name:%22TAGRISSO%22&limit=1"
+}

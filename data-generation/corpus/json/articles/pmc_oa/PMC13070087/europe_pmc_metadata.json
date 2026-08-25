@@ -1,0 +1,52 @@
+{
+  "hitCount": 1,
+  "request": {
+    "cursorMark": "*",
+    "internalQuery": "PMCID:PMC13070087",
+    "pageSize": 1,
+    "queryString": "PMCID:PMC13070087",
+    "resultType": "LITE",
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "authorString": "Vyas A, Jeon WJ, Alhushki S, Singhi E, Rous FA, Thawani R, Desai A.",
+        "citedByCount": 0,
+        "doi": "10.1007/s11912-026-01751-0",
+        "firstIndexDate": "2026-04-13",
+        "firstPublicationDate": "2026-04-11",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC13070087"
+          ]
+        },
+        "hasBook": "N",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasPDF": "Y",
+        "hasReferences": "Y",
+        "hasSuppl": "N",
+        "hasTMAccessionNumbers": "N",
+        "hasTextMinedTerms": "N",
+        "id": "41964727",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "isOpenAccess": "Y",
+        "issue": "1",
+        "journalIssn": "1523-3790; 1534-6269; ",
+        "journalTitle": "Curr Oncol Rep",
+        "journalVolume": "28",
+        "pageInfo": "39",
+        "pmcid": "PMC13070087",
+        "pmid": "41964727",
+        "pubType": "review-article; review; journal article",
+        "pubYear": "2026",
+        "source": "MED",
+        "title": "Updates in the Management of EGFR-Mutated Non-small Cell Lung Cancer (NSCLC)."
+      }
+    ]
+  },
+  "version": "6.9"
+}

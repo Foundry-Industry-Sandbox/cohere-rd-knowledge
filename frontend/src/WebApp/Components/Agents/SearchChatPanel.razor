@@ -1,0 +1,20 @@
+@if (Result is not null)
+{
+    <div class="agent-panel">
+        <div class="answer-block">@Result.Answer</div>
+        @if (!string.IsNullOrWhiteSpace(Result.LineageSummary))
+        {
+            <p class="meta-line"><strong>Lineage:</strong> @Result.LineageSummary</p>
+        }
+        <h4 class="subsection-title">Citations</h4>
+        <CitationList Citations="Result.Citations" />
+    </div>
+}
+else
+{
+    <EmptyState Title="Awaiting agent output" Description="Search & Chat will retrieve grounded evidence from the Vector DB." />
+}
+
+@code {
+    [Parameter] public SearchChatResult? Result { get; set; }
+}
